@@ -10,7 +10,7 @@
             var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
             var date = d.getDate();
             var min = d.getMinutes();
-            if(min.toString().length=0){
+            if(min.toString().length<2){
                 min = "0" + min;
             }
             var hour = d.getHours();
