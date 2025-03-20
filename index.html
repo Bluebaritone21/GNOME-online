@@ -9,7 +9,10 @@
             var d = new Date();
             var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
             var date = d.getDate();
-            var min = d.getMinutes().length=1?"0"+""+d.getMinutes():d.getMinutes;
+            var min = d.getMinutes();
+            if(min.toString().length=1){
+                min = "0" + min;
+            }
             var hour = d.getHours();
             document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
         }
