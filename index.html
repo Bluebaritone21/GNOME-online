@@ -4,6 +4,12 @@
         <title>GNOME</title>
         <link rel="icon" href="https://www.gnome.org/img/favicon.png">
     </head>
+    <hidden>
+        <div id="window" class=window>
+            <div id="windowheader" class=header></div>
+            <p>G'day. This is example text.</p>
+        </div>
+    </hidden>
     <script>
         function time(){
             var d = new Date();
@@ -20,6 +26,9 @@
         setInterval(time,1000);
     </script>
     <style>
+        hidden{
+            display: none;
+        }
         body{
             background-image: url("default-background.webp");
             background-repeat: no-repeat;
@@ -63,24 +72,28 @@
     </style>
     <body>
         <div class="activity-bar">Loading...</div>
-        <script>
-            function makeDevTools(){
+        <br />
+        <button id=debug-button onclick="makeDevTools()">debug</button>
+        <button onclick="makeWindow()">Make window</button>
+    </body>
+    <script>
+        var gensym = 0;
+        function makeDevTools(){
             var script = document.createElement('script');
                 script.src='https://cdn.jsdelivr.net/npm/eruda';
                 document.body.appendChild(script); eruda.init();
-            }
-        </script>
-        <br />
-        <button id=debug-button onclick="makeDevTools()">debug</button>
-        <div id="mydiv" class=window>
-            <div id="mydivheader" class=header></div>
-            <p>G'day. This is example text.</p>
-          </div>
-    </body>
-    <script>
+        }
+        function makeWindow(){
+            clone = document.getElementById("window").cloneNode(true);
+            clone.id = "window"+gensym;
+            clone.querySelector("#windowheader").id = "window"+gensym+"header";
+            document.getElementsByTagName("body")[0].appendChild(clone);
+            dragElement(document.getElementById(window+gensym));
+            gensym++;
+        }
+        
         //Make the DIV element draggagle:
         var lastheight = 0;
-        dragElement(document.getElementById("mydiv"));
         
         function dragElement(elmnt) {
           var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
