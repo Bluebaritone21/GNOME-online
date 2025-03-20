@@ -84,12 +84,12 @@
                 document.body.appendChild(script); eruda.init();
         }
         function makeWindow(){
+            gensym++;
             clone = document.getElementById("window").cloneNode(true);
             clone.id = "window"+gensym;
             clone.querySelector("#windowheader").id = "window"+gensym+"header";
             document.getElementsByTagName("body")[0].appendChild(clone);
             dragElement(document.getElementById(window+gensym));
-            gensym++;
         }
         
         //Make the DIV element draggagle:
