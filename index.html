@@ -7,11 +7,11 @@
     <script>
         function time(){
             var d = new Date();
-            var month = d.getMonth();
+            var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
             var date = d.getDate();
             var min = d.getMinutes();
             var hour = d.getHours();
-            document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + hour + ":" + min
+            document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
         }
 
         setInterval(time,1000);
