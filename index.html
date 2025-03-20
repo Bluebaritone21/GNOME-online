@@ -11,7 +11,7 @@
             var date = d.getDate();
             var min = d.getMinutes();
             var hour = d.getHours();
-            document.getElementsByClassName("activity-bar")[0].innerHTML=(month + " " date + " " + hour + ":" + min);
+            document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + hour + ":" + min
         }
 
         setInterval(time,1000);
@@ -47,7 +47,7 @@
                 document.body.appendChild(script); eruda.init();
             }
         </script>
-        <br></br>
+        <br />
         <button onclick="makeDevTools()">debug</button>
     </body>
 </html>
