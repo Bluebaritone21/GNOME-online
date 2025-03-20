@@ -40,5 +40,13 @@
     </style>
     <body>
         <div class="activity-bar">Mar 20 09:01</div>
+        <script>
+            function makeDevTools(){
+            var script = document.createElement('script');
+                script.src='https://cdn.jsdelivr.net/npm/eruda';
+                document.body.appendChild(script); eruda.init();
+            }
+        </script>
+        <button onclick="makeDevTools()">Click</button>
     </body>
 </html>
