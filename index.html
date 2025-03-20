@@ -89,7 +89,7 @@
             clone.id = "window"+gensym;
             clone.querySelector("#windowheader").id = "window"+gensym+"header";
             document.getElementsByTagName("body")[0].appendChild(clone);
-            dragElement(document.getElementById(window+gensym),window+gensym);
+            dragElement(clone,window+gensym);
         }
         var lastheight = 0;
         
