@@ -4,6 +4,18 @@
         <title>GNOME</title>
         <link rel="icon" href="https://www.gnome.org/img/favicon.png">
     </head>
+    <script>
+        function time(){
+        var d = new Date();
+        var month = d.getMonth();
+        var date = d.getDate();
+        var min = d.getMinutes();
+        var hour = d.getHours();
+        document.getElementsByClassName("activity-bar")[0].innerHTML=(month + " " date + " " + hour + ":" + min);
+        }
+
+        setInterval(time,1000);
+    </script>
     <style>
         body{
             background-image: url("default-background.webp");
