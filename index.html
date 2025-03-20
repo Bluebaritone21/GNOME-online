@@ -33,7 +33,7 @@
             border-radius:100%;
             width:30;
             height:30;
-            background-color:grey;
+            background-color:lightgrey;
             border:none;
             position:absolute;
             top:5;
@@ -104,7 +104,7 @@
             clone.id = "window"+gensym;
             clone.querySelector("#windowheader").id = "window"+gensym+"header";
             document.getElementsByTagName("body")[0].appendChild(clone);
-            clone.querySelector(".close").addEventListener("click",function(){document.getElementsByTagName("body")[0].remove(clone)});
+            clone.querySelector(".close").addEventListener("click",function(){clone.remove()});
             dragElement(clone);
         }
         var lastheight = 0;
