@@ -50,7 +50,11 @@
             background-color:white;
             box-shadow:0 0 5px rgba(0,0,0,0.2);
         }
-
+        #debug-button{
+            position: absolute;
+            left:    0;
+            bottom:   0;
+        }
 .header {
   padding: 10px;
   cursor: move;
@@ -67,7 +71,7 @@
             }
         </script>
         <br />
-        <button onclick="makeDevTools()">debug</button>
+        <button id=debug-button onclick="makeDevTools()">debug</button>
         <div id="mydiv" class=window>
             <div id="mydivheader" class=header></div>
             <p>G'day. This is example text.</p>
