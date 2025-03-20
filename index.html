@@ -7,7 +7,7 @@
     <hidden>
         <div id="window" class=window>
             <div id="windowheader" class=header></div>
-            <p>G'day. This is example text.</p>
+            <button class="close" id="close">&times;</button>
         </div>
     </hidden>
     <script>
@@ -28,6 +28,16 @@
     <style>
         hidden{
             display: none;
+        }
+        .close{
+            border-radius:100%;
+            width:30;
+            height:30;
+            background-color:grey;
+            border:none;
+            position:absolute;
+            top:5;
+            right:5;
         }
         body{
             background-image: url("gnome_example.jpg");
@@ -54,6 +64,8 @@
             position: absolute;
             text-align: center;
             border-radius: 10px;
+            width:100;
+            height:100;
             overflow: auto;
             background-color:white;
             box-shadow:0 0 5px rgba(0,0,0,0.4);
@@ -66,11 +78,11 @@
             left:    0;
             bottom:   0;
         }
-.header {
-  padding: 10px;
-  cursor: move;
-  background-color: none;
-}
+        .header {
+            padding: 10px;
+            cursor: move;
+            background-color: none;
+        }
     </style>
     <body>
         <div class="activity-bar">Loading...</div>
@@ -87,10 +99,12 @@
         }
         function makeWindow(){
             gensym++;
+            var currentGensym=gensym;
             clone = document.getElementById("window").cloneNode(true);
             clone.id = "window"+gensym;
             clone.querySelector("#windowheader").id = "window"+gensym+"header";
             document.getElementsByTagName("body")[0].appendChild(clone);
+            clone.querySelector(".close").addEventListener("click",function(){document.getElementsByTagName("body")[0].remove(clone)});
             dragElement(clone);
         }
         var lastheight = 0;
