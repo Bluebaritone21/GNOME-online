@@ -1,0 +1,96 @@
+.fg-accent{
+  color: var(--blue4);
+}
+.bg-accent{
+  background-color: var(--blue3);
+  color: white;
+}
+.fg-destructive{
+  color: #c01c28;
+}
+.bg-destructive{
+  background-color: #e01b24;
+  color: white;
+}
+.fg-success{
+  color: #1b8553;
+}
+.bg-success{
+  background-color: var(--green4);
+  color: white;
+}
+.fg-warning{
+  color: #9c6e03;
+}
+.bg-warning{
+  background-color: #e5a50a;
+  color: var(--text);
+}
+.bg-window{
+  background-color:	#fafafa;
+  color: var(--text);
+}
+.bg-view{
+  background-color: white;
+  color: var(--text);
+}
+.bg-sidebar{
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+/*************************************************/
+@property --text {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(0,0,0,0.8);
+}
+@property --blue1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #99c1f1;
+}
+@property --blue2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #62a0ea;
+}
+@property --blue3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #3584e4;
+}
+@property --blue4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #1c71d8;
+}
+@property --blue5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #1a5fb4;
+}
+@property --green1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #8ff0a4;
+}
+@property --green2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #57e389;
+}
+@property --green3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #33d17a;
+}
+@property --green4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #2ec27e;
+}
+@property --green5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #26a269;
+}
