@@ -1,0 +1,166 @@
+hidden{
+    display: none;
+}
+.white-icon{
+    filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
+}
+.close{
+    border-radius:100%;
+    width:25px;
+    height:25px;
+    background-color:rgba(124,124,124,0.5);
+    border:none;
+    position:absolute;
+    top:5px;
+    right:5px;
+    font-size: 15pt;
+}
+body{
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    background-color: rgb(50,50,50);
+    overflow: hidden;
+}
+desktop{
+    width:100vw;
+    height:100vh;
+    background-image: url("https://zebreus.github.io/all-gnome-backgrounds/thumbs500/adwaita-l-e181a39df30ba6b532a611d1bdf8de63aea945d7.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:absolute;
+    top:0px;
+    left:0px;
+    margin: 0px;
+    padding: 0px;
+    transition: scale 0.5s ease-in-out,border-radius 0.5s ease-in-out;
+    scale:1.0;
+    z-index:0;
+    overflow:hidden;
+}
+desktop.small{
+    scale:0.7;
+    border-radius: 30px;
+}
+#activity-button{
+    background-color: black;
+    border-radius:10px;
+    border:0;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    color:white;
+    position: absolute;
+    top:5px;
+    left:5px;
+    z-index: 100001;
+}
+#activity-button:hover{
+    background-color: rgb(50,50,50);
+}
+#quicksettings-button{
+    position: absolute;
+    top:5px;
+    right:5px;
+    z-index: 100002;
+    background-color: black;
+    border-radius: 10px;
+    border:0;
+
+}
+#quicksettings-button:hover{
+    background-color: rgb(50,50,50);
+}
+.taskbar{
+    background-color: rgb(25,25,25);
+    border-radius: 20px;
+    border: 0;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.app-button{
+    background:none;
+    border:none;
+}
+.app-button:hover{
+    background:none;
+    border:none;
+}
+.activity-bar{
+    position: fixed;
+    background-color: black;
+    color:white;
+    width: 100vw;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12pt;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    margin: 0;
+    z-index: 100000;
+}
+.window {
+    position: absolute;
+    text-align: center;
+    border-radius: 20px;
+    width:100px;
+    height:100px;
+    top:30px;
+    left:20px;
+    overflow: hidden;
+    background-color:white;
+    box-shadow:0 0 5px rgba(0,0,0,0.4);
+}
+input{
+    background-color: lightgrey;
+    border:0;
+    border-radius:10px;
+}
+input:hover{
+    background-color: white;
+    border:1px darkgrey;
+}
+button{
+    background-color: white;
+    border:0;
+    border-radius:10px;
+}
+button:hover{
+    background-color: lightgrey;
+    border:1px darkgrey;
+}
+textarea:focus{
+    border:none;
+    background-color: none;
+}
+textarea{
+    border:none;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+}
+.window:hover{
+    resize: both;
+}
+.window:active{
+    resize: both;
+}
+#debug-button{
+    position: absolute;
+    left:    0;
+    bottom:   0;
+}
+.header {
+    padding: 20px;
+    cursor: move;
+    background-color: none;
+}
+.shrink{
+    -webkit-transform:scale(0.5);
+    -moz-transform:scale(0.5);
+    -ms-transform:scale(0.5);
+    transform:scale(0.5);
+}

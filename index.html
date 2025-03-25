@@ -2,7 +2,15 @@
 <html>
     <head>
         <title>GNOME</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <link rel="icon" href="https://www.gnome.org/img/favicon.png">
+        <link rel="stylesheet" href="style.css">
+        <script src="wm.js"></script>
+        <script src="apps/console.js" defer></script>
+        <script src="apps/epiphany.js" defer></script>
+        <script src="apps/texteditor.js" defer></script>
     </head>
     <hidden>
         <div id="window" class=window>
@@ -11,139 +19,17 @@
             <button class="close" id="close">&times;</button>
         </div>
     </hidden>
-    <script>
-        function time(){
-            var d = new Date();
-            var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
-            var date = d.getDate();
-            var min = d.getMinutes();
-            if(min.toString().length<2){
-                min = "0" + min;
-            }
-            var hour = d.getHours();
-            document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
-        }
-
-        setInterval(time,1000);
-    </script>
-    <style>
-        hidden{
-            display: none;
-        }
-        .close{
-            border-radius:100%;
-            width:30;
-            height:30;
-            background-color:lightgrey;
-            border:none;
-            position:absolute;
-            top:5px;
-            right:5px;
-        }
-        body{
-            background-image: url("gnome_example.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .activity-bar{
-            position: fixed;
-            background-color: black;
-            color:white;
-            width: 100vw;
-            height: 30px;
-            line-height: 30px;
-            font-size: 12pt;
-            text-align: center;
-            font-weight: bold;
-            margin: 0;
-            z-index: 100000;
-        }
-        .window {
-            position: absolute;
-            text-align: center;
-            border-radius: 10px;
-            width:100;
-            height:100;
-            overflow: auto;
-            background-color:white;
-            box-shadow:0 0 5px rgba(0,0,0,0.4);
-        }
-        .window:hover{
-            resize: both;
-        }
-        #debug-button{
-            position: absolute;
-            left:    0;
-            bottom:   0;
-        }
-        .header {
-            padding: 10px;
-            cursor: move;
-            background-color: none;
-        }
-    </style>
     <body>
+        <div class="taskbar" id="taskbar">
+        </div>
+        <desktop>
+            <br />
+        </desktop>
         <div class="activity-bar">Loading...</div>
-        <br />
-        <button id=debug-button onclick="makeDevTools()">debug</button>
-        <button onclick="makeWindow()">Make window</button>
+        <button id="activity-button" onclick="toggleActivities()">Activities</button>
+        <button id="quicksettings-button">
+            <img id="network-button" src="https://teams.pages.gitlab.gnome.org/Design/icon-development-kit-www/img/symbolic/ait/radiowaves-1-symbolic.svg" class="white-icon"/>
+            <img id="battery-button" />
+        </button>
     </body>
-    <script>
-        var gensym = 0;
-        function makeDevTools(){
-            var script = document.createElement('script');
-                script.src='https://cdn.jsdelivr.net/npm/eruda';
-                document.body.appendChild(script); eruda.init();
-        }
-        function makeWindow(){
-            gensym++;
-            var currentGensym=gensym;
-            clone = document.getElementById("window").cloneNode(true);
-            clone.id = "window"+gensym;
-            clone.querySelector("#windowheader").id = "window"+gensym+"header";
-            document.getElementsByTagName("body")[0].appendChild(clone);
-            clone.querySelector(".close").id=gensym;
-            clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove()});
-            dragElement(clone);
-        }
-        var lastheight = 0;
-        
-        function dragElement(elmnt) {
-          var deltaX = 0, deltaY = 0, X = 0, Y = 0;
-          document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-          
-          function dragMouseDown(e) {
-            elmnt.style.zIndex=lastheight;
-            e = e || window.event;
-            e.preventDefault();
-
-            X = e.clientX;
-            Y = e.clientY;
-            lastheight++;
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-          }
-          function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // calculate the new cursor position:
-            deltaX = X - e.clientX;
-            deltaY = Y - e.clientY;
-            X = e.clientX;
-            Y = e.clientY;
-            // set the element's new position:
-            elmnt.style.top = (elmnt.offsetTop - deltaY) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - deltaX) + "px";
-          }
-        
-          function closeDragElement() {
-            /* stop moving when mouse button is released:*/
-            document.onmouseup = null;
-            document.onmousemove = null;
-          }
-        }
-        </script>
 </html>
