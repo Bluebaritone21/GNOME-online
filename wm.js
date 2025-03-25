@@ -120,11 +120,13 @@ window.addEventListener("online",function(e){
     var wifi_button = this.document.getElementById("network-button");
     wifi_button.src = getIcon("radiowaves-1");
     wifi_button.classList.add("white-icon");
+    wifi_button.title="connected";
 })
 window.addEventListener("offline",function(e){
     var wifi_button = this.document.getElementById("network-button");
     wifi_button.src = getIcon("radiowaves-5");
     wifi_button.classList.add("white-icon");
+    wifi_button.title="not connected";
 })
 
   function getIcon(name){
