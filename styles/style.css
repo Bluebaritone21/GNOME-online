@@ -21,7 +21,7 @@ body{
     margin: 0;
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    background-color: rgb(50,50,50);
+    background-color: var(--dark3);
     overflow: hidden;
     color: var(--text);
 }
@@ -46,39 +46,39 @@ desktop.small{
     border-radius: 30px;
 }
 #activity-button{
-    background-color: black;
+    background-color: var(--dark5);
     border-radius:10px;
     border:0;
     font-family: "Inter", sans-serif;
     font-weight: 900;
-    color:white;
+    color: var(--light1);
     position: absolute;
     top:5px;
     left:5px;
     z-index: 100001;
 }
 #activity-button:hover{
-    background-color: rgb(50,50,50);
+    background-color: var(--dark3);
 }
 #quicksettings-button{
     position: absolute;
     top:5px;
     right:5px;
     z-index: 100002;
-    background-color: black;
+    background-color: var(--dark5);
     border-radius: 10px;
     border:0;
 
 }
 #quicksettings-button:hover{
-    background-color: rgb(50,50,50);
+    background-color: var(--dark3);
 }
 .taskbar{
-    background-color: rgb(25,25,25);
+    background-color: var(--dark4);
     border-radius: 20px;
     border: 0;
     font-weight: bold;
-    color: white;
+    color: var(--light1);
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -94,8 +94,8 @@ desktop.small{
 }
 .activity-bar{
     position: fixed;
-    background-color: black;
-    color:white;
+    background-color: var(--dark5);
+    color: var(--light1);
     width: 100vw;
     height: 30px;
     line-height: 30px;
@@ -118,22 +118,22 @@ desktop.small{
     box-shadow:0 0 5px rgba(0,0,0,0.4);
 }
 input{
-    background-color: lightgrey;
+    background-color: var(--light4);
     border:0;
     border-radius:10px;
 }
 input:hover{
-    background-color: white;
-    border:1px darkgrey;
+    background-color: var(--light1);
+    border:1px var(dark1);
 }
 button{
-    background-color: white;
+    background-color: var(--light1);
     border:0;
     border-radius:10px;
 }
 button:hover{
-    background-color: lightgrey;
-    border:1px darkgrey;
+    background-color: var(--light4);
+    border:1px var(--dark1);
 }
 textarea:focus{
     border:none;
@@ -161,8 +161,5 @@ textarea{
     background-color: none;
 }
 .shrink{
-    -webkit-transform:scale(0.5);
-    -moz-transform:scale(0.5);
-    -ms-transform:scale(0.5);
     transform:scale(0.5);
 }

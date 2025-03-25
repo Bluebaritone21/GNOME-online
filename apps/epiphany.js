@@ -17,7 +17,7 @@ function epiphany(){
     urlBar.style.top=`5px`;
     urlBar.style.width=`80%`;
     urlBar.style.left=`10%`;
-    urlBar.value=`https://www.gnome.org`;
+    urlBar.value=`https://moogle.com`;
     urlBar.onkeypress = function(e){
         if (!e) e = window.event;
         var keyCode = e.code || e.key;
@@ -30,7 +30,7 @@ function epiphany(){
             iframe.src=url;
            }
     }
-    iframe.src='https://www.gnome.org';
+    iframe.src='data:text/html,<body style=background-color:beige><h1 style="text-align:center;font-size:xxx-large"><t style="color:red">M</t><t style="color:green">o</t><t style="color:blue">o</t><t style="color:yellow">g</t><t style="color:red">l</t><t style=color:green>e</t><i style="color:blue">!</i></h1><script async src="https://cse.google.com/cse.js?cx=440edbf7f43bc417e"> </script> <div class="gcse-searchbox"></div><div class="gcse-searchresults"></div>';
     iframe.style.width=`100%`;
     iframe.style.height=`calc(100% - 60px)`;
     iframe.style.border=`none`;

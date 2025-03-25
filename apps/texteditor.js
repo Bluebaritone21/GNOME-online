@@ -4,7 +4,7 @@ function texteditor(){
     textbox.style.height='calc(100% - 40px)';
     textbox.style.resize='none';
     var win = makeWindow(600,500,textbox);
-    win.style.backgroundColor='#eaeaea';
+    win.style.backgroundColor=colour("light4");
     var title  =document.createElement('h3');
     title.innerText='Untitled Document';
     title.style.position='absolute';

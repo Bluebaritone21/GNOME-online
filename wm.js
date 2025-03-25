@@ -95,26 +95,26 @@ function time(){
 setInterval(time,1000);
 
 navigator.getBattery().then(function(battery) {
-    var battery_button = document.getElementById("battery-button");
-    battery_button.title = battery.level * 100 + "%";
-    if(battery.level == 1){
-        battery_button.classList.add("white-icon");
-        battery_button.src= getIcon("battery-level-100");
-    }else if(battery.level >=0.3){
-        battery_button.classList.add("white-icon");
-        battery_button.src = getIcon("battery-level-"+Math.round(battery.level*10)*10);
-    }else if(battery.level >= 0.2){
-        battery_button.classList.add("white-icon");
-        battery_button.src = getIcon("battery-low");
-    }else{
-        battery_button.classList.remove("white-icon");
-        battery_button.src = getIcon("battery-action");
-    }
-    // ... and any subsequent updates.
-    battery.onlevelchange = function() {
-        battery_button.title = battery.level * 100 + "%";
-    };
-  });
+  var battery_button = document.getElementById("battery-button");
+  battery_button.title = battery.level * 100 + "%";
+  if(battery.level == 1){
+      battery_button.classList.add("white-icon");
+      battery_button.src= getIcon("battery-level-100");
+  }else if(battery.level >=0.3){
+      battery_button.classList.add("white-icon");
+      battery_button.src = getIcon("battery-level-"+Math.round(battery.level*10)*10);
+  }else if(battery.level >= 0.2){
+      battery_button.classList.add("white-icon");
+      battery_button.src = getIcon("battery-low");
+  }else{
+      battery_button.classList.remove("white-icon");
+      battery_button.src = getIcon("battery-action");
+  }
+  // ... and any subsequent updates.
+  battery.onlevelchange = function() {
+      battery_button.title = battery.level * 100 + "%";
+  };
+});
 
 window.addEventListener("online",function(e){
     var wifi_button = this.document.getElementById("network-button");
@@ -122,6 +122,7 @@ window.addEventListener("online",function(e){
     wifi_button.classList.add("white-icon");
     wifi_button.title="connected";
 })
+
 window.addEventListener("offline",function(e){
     var wifi_button = this.document.getElementById("network-button");
     wifi_button.src = getIcon("radiowaves-5");
@@ -129,6 +130,10 @@ window.addEventListener("offline",function(e){
     wifi_button.title="not connected";
 })
 
-  function getIcon(name){
+function colour(clr){
+    return elmnt.style.color = "var(--"+clr+")";
+}
+
+function getIcon(name){
     return "https://teams.pages.gitlab.gnome.org/Design/icon-development-kit-www/img/symbolic/ait/"+name+"-symbolic.svg";
-  }
+}

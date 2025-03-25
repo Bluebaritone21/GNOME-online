@@ -6,8 +6,8 @@ function terminal(){
     commandBar.style.left = "5%";
     commandBar.style.bottom = "5px";
     commandBar.style.height = "15px"; 
-    commandBar.style.backgroundColor = "#1f1f1f";
-    commandBar.style.color = "#ffffff";
+    commandBar.style.backgroundColor = colour("dark3");
+    commandBar.style.color = colour("light1");
     var logs = document.createElement("pre");
     logs.style.position = "absolute";
     logs.style.top = "30px";
@@ -15,11 +15,11 @@ function terminal(){
     logs.style.width = "100%";
     logs.style.overflow = "scroll";
     logs.style.height = "calc(100% - 65px)";
-    logs.style.backgroundColor = "#0f0f0f";
-    logs.style.color="white";
+    logs.style.backgroundColor = colour("dark4");
+    logs.style.color = colour("light1");
     logs.style.textAlign="left";
     var window = makeWindow(500,500,commandBar);
-    window.style.backgroundColor = "#0f0f0f";
+    window.style.backgroundColor = colour("dark4");
     window.appendChild(logs);
     function clear(){
         logs.innerText="";

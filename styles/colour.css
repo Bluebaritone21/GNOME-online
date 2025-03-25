@@ -44,30 +44,80 @@
   inherits: false;
   initial-value: rgba(0,0,0,0.8);
 }
-@property --blue1 {
+@property --red1 {
   syntax: "<color>";
   inherits: false;
-  initial-value: #99c1f1;
+  initial-value: #f66151;
 }
-@property --blue2 {
+@property --red2 {
   syntax: "<color>";
   inherits: false;
-  initial-value: #62a0ea;
+  initial-value: #ed333b;
 }
-@property --blue3 {
+@property --red3 {
   syntax: "<color>";
   inherits: false;
-  initial-value: #3584e4;
+  initial-value: #e01b24;
 }
-@property --blue4 {
+@property --red4 {
   syntax: "<color>";
   inherits: false;
-  initial-value: #1c71d8;
+  initial-value: #c01c28;
 }
-@property --blue5 {
+@property --red5 {
   syntax: "<color>";
   inherits: false;
-  initial-value: #1a5fb4;
+  initial-value: #a51d2d;
+}
+@property --orange1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ffbe6f;
+}
+@property --orange2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ffa348;
+}
+@property --orange3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ff7800;
+}
+@property --orange4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #e66100;
+}
+@property --orange5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c64600;
+}
+@property --yellow1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f9f06b;
+}
+@property --yellow2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f8e45c;
+}
+@property --yellow3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f6d32d;
+}
+@property --yellow4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f5c211;
+}
+@property --yellow5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #e5a50a;
 }
 @property --green1 {
   syntax: "<color>";
@@ -93,4 +143,129 @@
   syntax: "<color>";
   inherits: false;
   initial-value: #26a269;
+}
+@property --blue1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #99c1f1;
+}
+@property --blue2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #62a0ea;
+}
+@property --blue3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #3584e4;
+}
+@property --blue4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #1c71d8;
+}
+@property --blue5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #1a5fb4;
+}
+@property --purple1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #dc8add;
+}
+@property --purple2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c061cb;
+}
+@property --purple3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #9141ac;
+}
+@property --purple4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #813d9c;
+}
+@property --purple5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #613583;
+}
+@property --brown1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #cdab8f;
+}
+@property --brown2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #b5835a;
+}
+@property --brown3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #986a44;
+}
+@property --brown4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #865e3c;
+}
+@property --brown5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #63452c;
+}
+@property --light1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f6f5f4;
+}
+@property --light2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f6f5f4;
+}
+@property --light3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #deddda;
+}
+@property --light4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0bfbc;
+}
+@property --light5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #9a9996;
+}
+@property --dark1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #77767b;
+}
+@property --dark2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #5e5c64;
+}
+@property --dark3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #3d3846;
+}
+@property --dark4 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #241f31;
+}
+@property --dark5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #000000;
 }
