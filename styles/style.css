@@ -3,6 +3,15 @@
 hidden{
     display: none;
 }
+#quicksettings{
+    border-radius:20px;
+    background-color: var(--dark-4);
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    display: none;
+}
+
 .white-icon{
     filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
 }
@@ -117,12 +126,13 @@ desktop.small{
     overflow: hidden;
     box-shadow:0 0 5px rgba(0,0,0,0.4);
 }
-input{
+input[type=text]{
     background-color: var(--light4);
+    font-family: "Inter", sans-serif;
     border:0;
     border-radius:10px;
 }
-input:hover{
+input[type=text]:hover{
     background-color: var(--light1);
     border:1px var(dark1);
 }

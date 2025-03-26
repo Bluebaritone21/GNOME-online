@@ -30,6 +30,31 @@ function registerApp(icon, openfunction ,titleText) {
     taskbar.appendChild(button);
 }
 
+//Functions for the quick-settings
+quicksettings = false;
+
+
+function toggleQuicksettings(){
+    if(!quicksettings){
+        $("quicksettings").style.display="block";
+    }else{
+        $("quicksettings").style.display="none";
+    }
+    quicksettings = !quicksettings;
+}
+
+function toggleFullscreen(){
+    if(document.fullscreenElement===null){
+        document.documentElement.requestFullscreen();
+        $("fullscreen-button").classList.remove("bg-dark");
+        $("fullscreen-button").classList.add("bg-accent");
+    }else{
+        document.exitFullscreen();
+        $("fullscreen-button").classList.add("bg-dark");
+        $("fullscreen-button").classList.remove("bg-accent");
+    }
+}
+
 function makeWindow(wdth,hght,contents){
     gensym++;
     var currentGensym=gensym;
