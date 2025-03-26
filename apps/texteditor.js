@@ -10,8 +10,6 @@ function texteditor(){
     title.style.position='absolute';
     title.style.top='-5px';
     title.style.textAlign="center";
-    title.style.transform = "transtateX(-50%)";
-    title.style.left='50%';
     win.appendChild(title);
 }
 
