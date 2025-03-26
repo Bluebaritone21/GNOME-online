@@ -9,7 +9,9 @@ function texteditor(){
     title.innerText='Untitled Document';
     title.style.position='absolute';
     title.style.top='-5px';
-    title.style.left='30%';
+    title.style.textAlign="center";
+    title.style.transform = "transtateX(-50%)";
+    title.style.left='50%';
     win.appendChild(title);
 }
 
