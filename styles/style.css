@@ -7,9 +7,10 @@ hidden{
     border-radius:20px;
     background-color: var(--dark-4);
     position: absolute;
-    top: 20px;
-    right: 5px;
+    top: 30px;
+    right: 10px;
     display: none;
+    padding: 20px;
 }
 
 .white-icon{
