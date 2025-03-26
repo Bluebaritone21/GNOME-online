@@ -17,7 +17,7 @@ function debug(){
 }
 
 function registerApp(icon, openfunction ,titleText) {
-    var taskbar = document.getElementById("taskbar");
+    var taskbar = $("taskbar");
     var button = document.createElement("button");
     button.classList.add("app-button");
     button.onclick = openfunction;
@@ -33,7 +33,7 @@ function registerApp(icon, openfunction ,titleText) {
 function makeWindow(wdth,hght,contents){
     gensym++;
     var currentGensym=gensym;
-    var clone = document.getElementById("window").cloneNode(true);
+    var clone = $("window").cloneNode(true);
     clone.id = "window"+gensym;
     clone.querySelector("#windowheader").id = "window"+gensym+"header";
     document.getElementsByTagName("desktop")[0].appendChild(clone);
@@ -48,7 +48,7 @@ var lastheight = 0;
 
 function dragElement(elmnt) {
   var deltaX = 0, deltaY = 0, X = 0, Y = 0;
-  document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  $(elmnt.id + "header").onmousedown = dragMouseDown;
   
   function dragMouseDown(e) {
     elmnt.style.zIndex=lastheight;
@@ -95,7 +95,7 @@ function time(){
 setInterval(time,1000);
 
 navigator.getBattery().then(function(battery) {
-  var battery_button = document.getElementById("battery-button");
+  var battery_button = $("battery-button");
   battery_button.title = battery.level * 100 + "%";
   if(battery.level == 1){
       battery_button.classList.add("white-icon");
@@ -129,15 +129,19 @@ navigator.getBattery().then(function(battery) {
   };
 });
 
+function $(id){
+    return document.getElementById(id);
+}
+
 window.addEventListener("online",function(e){
-    var wifi_button = this.document.getElementById("network-button");
+    var wifi_button = $("network-button");
     wifi_button.src = getIcon("radiowaves-1");
     wifi_button.classList.add("white-icon");
     wifi_button.title="connected";
 })
 
 window.addEventListener("offline",function(e){
-    var wifi_button = this.document.getElementById("network-button");
+    var wifi_button = $("network-button");
     wifi_button.src = getIcon("radiowaves-5");
     wifi_button.classList.add("white-icon");
     wifi_button.title="not connected";
