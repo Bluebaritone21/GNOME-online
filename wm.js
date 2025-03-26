@@ -131,7 +131,7 @@ window.addEventListener("offline",function(e){
 })
 
 function colour(clr){
-    return elmnt.style.color = "var(--"+clr+")";
+    return "var(--"+clr+")";
 }
 
 function getIcon(name){
