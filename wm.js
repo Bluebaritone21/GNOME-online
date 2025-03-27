@@ -109,12 +109,14 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
-window.addEventListener("online",function(e){
+function online(){
     var wifi_button = $("network-button");
     wifi_button.src = getIcon("radiowaves-1");
     wifi_button.classList.add("white-icon");
     wifi_button.title="connected";
-})
+}
+
+window.addEventListener("online",online)
 
 window.addEventListener("offline",function(e){
     var wifi_button = $("network-button");
@@ -124,6 +126,7 @@ window.addEventListener("offline",function(e){
 })
 
 window.onload = function(){
+    online()
     navigator.getBattery().then(function(battery) {
         function updateIcon(){
         var battery_button = $("battery-button");
