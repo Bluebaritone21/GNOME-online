@@ -10,8 +10,8 @@ hidden{
     border-radius:20px;
     background-color: var(--dark4);
     position: absolute;
-    top: 30px;
-    right: 0px;
+    top: 35px;
+    right: 5px;
     padding: 20px;
     transition: opacity 0.2s ease-in-out;
 }
@@ -20,6 +20,7 @@ hidden{
     margin:5px;
     height:20px;
     width:100%;
+    font-size: larger;
     font-weight: bold;
 }
 

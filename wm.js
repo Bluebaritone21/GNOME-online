@@ -25,8 +25,8 @@ function registerApp(icon, openfunction ,titleText) {
     button.onclick = openfunction;
     var image = document.createElement("img");
     image.src = icon;
-    image.style.height = "50px";
-    image.style.width = "50px";
+    image.style.height = "70px";
+    image.style.width = "70px";
     image.title = titleText;
     button.appendChild(image);
     taskbar.appendChild(button);
