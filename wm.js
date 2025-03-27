@@ -109,22 +109,21 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+window.addEventListener("online",function(e){
+    var wifi_button = $("network-button");
+    wifi_button.src = getIcon("radiowaves-1");
+    wifi_button.classList.add("white-icon");
+    wifi_button.title="connected";
+})
+
+window.addEventListener("offline",function(e){
+    var wifi_button = $("network-button");
+    wifi_button.src = getIcon("radiowaves-5");
+    wifi_button.classList.add("white-icon");
+    wifi_button.title="not connected";
+})
 
 window.onload = function(){
-    window.addEventListener("online",function(e){
-        var wifi_button = $("network-button");
-        wifi_button.src = getIcon("radiowaves-1");
-        wifi_button.classList.add("white-icon");
-        wifi_button.title="connected";
-    })
-
-    window.addEventListener("offline",function(e){
-        var wifi_button = $("network-button");
-        wifi_button.src = getIcon("radiowaves-5");
-        wifi_button.classList.add("white-icon");
-        wifi_button.title="not connected";
-    })
-
     navigator.getBattery().then(function(battery) {
         function updateIcon(){
         var battery_button = $("battery-button");
