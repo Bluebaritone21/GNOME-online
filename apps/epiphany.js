@@ -17,7 +17,7 @@ function epiphany(){
     urlBar.style.top=`5px`;
     urlBar.style.width=`80%`;
     urlBar.style.left=`10%`;
-    urlBar.value=`moogle.html`;
+    urlBar.value=`moogle.com`;
     urlBar.onkeypress = function(e){
         if (!e) e = window.event;
         var keyCode = e.code || e.key;
@@ -30,7 +30,7 @@ function epiphany(){
             iframe.src=url;
            }
     }
-    iframe.src='moogle.html';
+    iframe.src='moogle.com';
     iframe.style.width=`100%`;
     iframe.style.height=`calc(100% - 60px)`;
     iframe.style.border=`none`;
