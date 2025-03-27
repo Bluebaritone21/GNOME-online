@@ -14,6 +14,10 @@ hidden{
     padding: 20px;
 }
 
+#quicksettings button{
+    margin:10px;
+}
+
 
 .white-icon{
     filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
