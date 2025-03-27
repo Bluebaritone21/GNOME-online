@@ -177,10 +177,10 @@ textarea{
 .shrink{
     transform:scale(0.5);
 }
-button .bg-accent:hover{
+.bg-accent:hover{
     background-color: var(--blue3);
 }
 
-button .bg-dark:hover{
+.bg-dark:hover{
     background-color: var(--dark2);
 }
