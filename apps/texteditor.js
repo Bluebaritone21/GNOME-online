@@ -1,7 +1,7 @@
 function texteditor(){
     var textbox=document.createElement(`textarea`);
     textbox.style.width='100%';
-    textbox.style.height='calc(100%  - 60px)';
+    textbox.style.height='calc(100%  - 65px)';
     textbox.style.resize='none';
     var win = makeWindow(600,500,textbox);
     win.style.backgroundColor=colour("light4");
