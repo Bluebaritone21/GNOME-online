@@ -67,7 +67,7 @@ desktop.small{
     border-radius: 30px;
 }
 #activity-button{
-    background-color: var(--dark5);
+    background-color: none;
     border-radius:10px;
     border:0;
     font-family: "Inter", sans-serif;
@@ -86,7 +86,7 @@ desktop.small{
     top:5px;
     right:5px;
     z-index: 100002;
-    background-color: var(--dark5);
+    background-color: none;
     border-radius: 10px;
     border:0;
 
