@@ -3,8 +3,10 @@ var activities = false;
 function toggleActivities(){
     if(!activities){
         document.getElementsByTagName("desktop")[0].classList.add("small");
+        $("activity-bar").style.backgroundColor="var(--dark3)";
     }else{
         document.getElementsByTagName("desktop")[0].classList.remove("small");
+        $("activity-bar").style.backgroundColor="var(--dark5)";
     }
     activities = !activities;
 }
@@ -109,6 +111,20 @@ function dragElement(elmnt) {
 }
 
 window.onload = function(){
+    window.addEventListener("online",function(e){
+        var wifi_button = $("network-button");
+        wifi_button.src = getIcon("radiowaves-1");
+        wifi_button.classList.add("white-icon");
+        wifi_button.title="connected";
+    })
+
+    window.addEventListener("offline",function(e){
+        var wifi_button = $("network-button");
+        wifi_button.src = getIcon("radiowaves-5");
+        wifi_button.classList.add("white-icon");
+        wifi_button.title="not connected";
+    })
+
     navigator.getBattery().then(function(battery) {
         function updateIcon(){
         var battery_button = $("battery-button");
@@ -149,20 +165,6 @@ window.onload = function(){
 function $(id){
     return document.getElementById(id);
 }
-
-window.addEventListener("online",function(e){
-    var wifi_button = $("network-button");
-    wifi_button.src = getIcon("radiowaves-1");
-    wifi_button.classList.add("white-icon");
-    wifi_button.title="connected";
-})
-
-window.addEventListener("offline",function(e){
-    var wifi_button = $("network-button");
-    wifi_button.src = getIcon("radiowaves-5");
-    wifi_button.classList.add("white-icon");
-    wifi_button.title="not connected";
-})
 
 function colour(clr){
     return "var(--"+clr+")";
