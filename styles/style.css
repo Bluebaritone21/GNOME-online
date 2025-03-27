@@ -10,7 +10,7 @@ hidden{
     background-color: var(--dark4);
     position: absolute;
     top: 30px;
-    right: 10px;
+    right: 0px;
     padding: 20px;
     transition: display 0.1s ease-in-out;
 }
