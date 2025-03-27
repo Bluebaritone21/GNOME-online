@@ -4,6 +4,7 @@ hidden{
     display: none;
 }
 #quicksettings{
+    border:0;
     border-radius:20px;
     background-color: var(--dark-4);
     position: absolute;
@@ -11,7 +12,6 @@ hidden{
     height: 100px;
     top: 30px;
     right: 10px;
-    display: none;
     padding: 20px;
 }
 
