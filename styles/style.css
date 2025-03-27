@@ -7,7 +7,7 @@ hidden{
     z-index: 10000;
     border:0;
     border-radius:20px;
-    background-color: var(--dark-4);
+    background-color: var(--dark4);
     position: absolute;
     top: 30px;
     right: 10px;
