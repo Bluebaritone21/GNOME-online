@@ -5,6 +5,7 @@ hidden{
 }
 #quicksettings{
     display: none;
+    opacity: 0;
     border:0;
     border-radius:20px;
     background-color: var(--dark4);
@@ -12,7 +13,7 @@ hidden{
     top: 30px;
     right: 0px;
     padding: 20px;
-    transition: display 0.1s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
 }
 
 #quicksettings button{
@@ -56,7 +57,7 @@ desktop{
     left:0px;
     margin: 0px;
     padding: 0px;
-    transition: scale 0.25s ease-in-out,border-radius 0.5s ease-in-out;
+    transition: scale 0.25s ease-in-out,border-radius 0.25s ease-in-out;
     scale:1.0;
     z-index:0;
     overflow:hidden;

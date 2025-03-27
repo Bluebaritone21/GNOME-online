@@ -37,7 +37,9 @@ quicksettings = false;
 function toggleQuicksettings(){
     if(!quicksettings){
         $("quicksettings").style.display="block";
+        $("quicksettings").style.opacity="1";
     }else{
+        $("quicksettings").style.opacity="0";
         $("quicksettings").style.display="none";
     }
     quicksettings = !quicksettings;
