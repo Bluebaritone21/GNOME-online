@@ -107,42 +107,44 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
-function time(){
-    var d = new Date();
-    var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
-    var date = d.getDate();
-    var min = d.getMinutes();
-    if(min.toString().length<2){
-        min = "0" + min;
+
+window.onload = function(){
+    navigator.getBattery().then(function(battery) {
+        function updateIcon(){
+        var battery_button = $("battery-button");
+        battery_button.title = battery.level * 100 + "%";
+        if(battery.level == 1){
+            battery_button.classList.add("white-icon");
+            battery_button.src= getIcon("battery-level-100");
+        }else if(battery.level >=0.3){
+            battery_button.classList.add("white-icon");
+            battery_button.src = getIcon("battery-level-"+Math.round(battery.level*10)*10);
+        }else if(battery.level >= 0.2){
+            battery_button.classList.add("white-icon");
+            battery_button.src = getIcon("battery-low");
+        }else{
+            battery_button.classList.remove("white-icon");
+            battery_button.src = getIcon("battery-action");
+        }
+    function time(){
+        var d = new Date();
+        var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
+        var date = d.getDate();
+        var min = d.getMinutes();
+        if(min.toString().length<2){
+            min = "0" + min;
+        }
+        var hour = d.getHours();
+        document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
     }
-    var hour = d.getHours();
-    document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
+    time()
+    setInterval(time,1000);
 }
-
-setInterval(time,1000);
-
-navigator.getBattery().then(function(battery) {
-  function updateIcon(){
-  var battery_button = $("battery-button");
-  battery_button.title = battery.level * 100 + "%";
-  if(battery.level == 1){
-      battery_button.classList.add("white-icon");
-      battery_button.src= getIcon("battery-level-100");
-  }else if(battery.level >=0.3){
-      battery_button.classList.add("white-icon");
-      battery_button.src = getIcon("battery-level-"+Math.round(battery.level*10)*10);
-  }else if(battery.level >= 0.2){
-      battery_button.classList.add("white-icon");
-      battery_button.src = getIcon("battery-low");
-  }else{
-      battery_button.classList.remove("white-icon");
-      battery_button.src = getIcon("battery-action");
-  }
-  }
   updateIcon();
   // ... and any subsequent updates.
   battery.onlevelchange = updateIcon;
 });
+}
 
 function $(id){
     return document.getElementById(id);
