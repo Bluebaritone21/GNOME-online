@@ -1,4 +1,4 @@
-function terminal(){
+function console(){
     var commandBar = document.createElement("input");
     commandBar.type = "text";
     commandBar.style.position = "absolute";
@@ -44,4 +44,4 @@ function terminal(){
     }
 }
 
-registerApp("https://apps.gnome.org/icons/scalable/org.gnome.Console.svg",terminal,"Javascript Console");
+registerApp("apps/icons/console.svg",console,"Javascript Console");

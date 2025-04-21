@@ -1,5 +1,57 @@
 @import "colour.css";
 
+@font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("InterVariable.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("InterVariable-Italic.woff2") format("woff2");
+  }
+  
+  @font-feature-values InterVariable {
+      @character-variant {
+          cv01: 1; cv02: 2; cv03: 3; cv04: 4; cv05: 5; cv06: 6; cv07: 7; cv08: 8;
+          cv09: 9; cv10: 10; cv11: 11; cv12: 12; cv13: 13;
+          alt-1:            1; /* Alternate one */
+          alt-3:            9; /* Flat-top three */
+          open-4:           2; /* Open four */
+          open-6:           3; /* Open six */
+          open-9:           4; /* Open nine */
+          lc-l-with-tail:   5; /* Lower-case L with tail */
+          simplified-u:     6; /* Simplified u */
+          alt-double-s:     7; /* Alternate German double s */
+          uc-i-with-serif:  8; /* Upper-case i with serif */
+          uc-g-with-spur:  10; /* Capital G with spur */
+          single-story-a:  11; /* Single-story a */
+          compact-lc-f:    12; /* Compact f */
+          compact-lc-t:    13; /* Compact t */
+      }
+      @styleset {
+          ss01: 1; ss02: 2; ss03: 3; ss04: 4; ss05: 5; ss06: 6; ss07: 7; ss08: 8;
+          open-digits: 1;                /* Open digits */
+          disambiguation: 2;             /* Disambiguation (with zero) */
+          disambiguation-except-zero: 4; /* Disambiguation (no zero) */
+          round-quotes-and-commas: 3;    /* Round quotes &amp; commas */
+          square-punctuation: 7;         /* Square punctuation */
+          square-quotes: 8;              /* Square quotes */
+          circled-characters: 5;         /* Circled characters */
+          squared-characters: 6;         /* Squared characters */
+      }
+  }
+  
+  :root {
+    /* default Inter settings */
+    font-family: "Inter", sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
+  }
+
 hidden{
     display: none;
 }
@@ -15,11 +67,25 @@ hidden{
     padding: 20px;
     transition: opacity 0.2s ease-in-out;
 }
+vr{
+    box-sizing: border-box;
+    height: 110%;
+    top:-5px;
+    border-right:1px solid var(--text);
+}
 
-#quicksettings button{
+#quicksettings table tr td{
+    width:50%
+}
+
+#quicksettings table tr td button{
+    text-align: left;
+    display:inline-block;
+    box-sizing: border-box;
     margin:5px;
     height:20px;
     width:100%;
+    overflow:hidden;
     font-size: medium;
     font-weight: bold;
 }
@@ -41,16 +107,18 @@ hidden{
 }
 body{
     margin: 0;
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
     background-color: var(--dark3);
     overflow: hidden;
     color: var(--text);
 }
+body, h1, h2, h3, h4, h5, h6, p, button, textarea, input, div {
+    font-family: "Inter", sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
+}
 desktop{
     width:100vw;
     height:100vh;
-    background-image: url("https://zebreus.github.io/all-gnome-backgrounds/thumbs500/adwaita-l-e181a39df30ba6b532a611d1bdf8de63aea945d7.webp");
+    background-image: url("../wall-lt.webp");
     background-repeat: no-repeat;
     background-size: cover;
     position:absolute;
@@ -141,7 +209,7 @@ desktop.small{
     box-shadow:0 0 5px rgba(0,0,0,0.4);
 }
 input[type=text]{
-    background-color: var(--light4);
+    background-color: var(--light3);
     font-family: "Inter", sans-serif;
     border:0;
     border-radius:10px;
@@ -155,6 +223,13 @@ button{
     border:0;
     border-radius:10px;
 }
+button:hover.bg-success{
+    background-color: #1b8553;
+    color: var(--light1);
+  }
+.bg-success img{
+    filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
+}
 button:hover{
     background-color: var(--light4);
     border:1px var(--dark1);
@@ -166,18 +241,12 @@ textarea:focus{
 textarea{
     border:none;
     font-family: "Inter", sans-serif;
-    font-weight: 400;
 }
 .window:hover{
     resize: both;
 }
 .window:active{
     resize: both;
-}
-#debug-button{
-    position: absolute;
-    left:    0;
-    bottom:   0;
 }
 .header {
     padding: 20px;

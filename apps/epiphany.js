@@ -3,21 +3,29 @@ function epiphany(){
     var iframe=document.createElement(`iframe`);
     var useCORS=false;
     var corsButton=document.createElement(`button`);
-    corsButton.innerHTML='&#9776;';
+    var icon=document.createElement("img");
+    icon.src="symbolic/network-proxy-symbolic.svg";
+    corsButton.appendChild(icon);
     corsButton.style.position='absolute';
-    corsButton.onclick = function(){useCORS=!useCORS;};
+    corsButton.onclick = function(){useCORS=!useCORS;
+                                    if(useCORS){
+                                        corsButton.classList.add("bg-success");
+                                    }else{
+                                        corsButton.classList.remove("bg-success");
+                                    }
+                                   };
     corsButton.style.top='5px';
     corsButton.style.right='50px';
     corsButton.style.height='30px';
     corsButton.style.fontSize='15pt';
-    corsButton.title='Disply URL using a cors proxy';
+    corsButton.title='Send Network requests through a CORS proxy (may fix some websites)';
     urlBar.type=`text`;
     urlBar.style.height=`30px`;
     urlBar.style.position=`absolute`;
     urlBar.style.top=`5px`;
-    urlBar.style.width=`80%`;
-    urlBar.style.left=`10%`;
-    urlBar.value=`moogle.com`;
+    urlBar.style.width=`calc(100% - 120px)`;
+    urlBar.style.right=`90px`;
+    urlBar.value=`moogle.com.html`;
     urlBar.onkeypress = function(e){
         if (!e) e = window.event;
         var keyCode = e.code || e.key;
@@ -30,14 +38,17 @@ function epiphany(){
             iframe.src=url;
            }
     }
-    iframe.src='moogle.com';
+    iframe.src='moogle.com.html';
     iframe.style.width=`100%`;
-    iframe.style.height=`calc(100% - 60px)`;
+    iframe.style.height=`calc(100% - 45px)`;
     iframe.style.border=`none`;
+    iframe.style.position="absolute";
+    iframe.style.top="45px";
+    iframe.style.left="0px";
     iframe.allowFullscreen = "allow";
     var window = makeWindow(1000,600,iframe);
     window.appendChild(urlBar);
     window.appendChild(corsButton);
 }
 
-registerApp('https://apps.gnome.org/icons/scalable/org.gnome.Epiphany.svg',epiphany,"Epiphany");
+registerApp('apps/icons/epiphany.svg',epiphany,"Epiphany");

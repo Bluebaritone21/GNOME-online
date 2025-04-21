@@ -5,4 +5,4 @@ function calculator(){
     makeWindow(310,442,warning)
 }
 
-registerApp("https://apps.gnome.org/icons/scalable/org.gnome.Calculator.svg",calculator,"Calculator");
+registerApp("apps/icons/calculator.svg",calculator,"Calculator");

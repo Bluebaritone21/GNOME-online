@@ -1,12 +1,13 @@
-function texteditor(){
+function texteditor(text,ttl){
     var textbox=document.createElement(`textarea`);
     textbox.style.width='100%';
     textbox.style.height='calc(100%  - 65px)';
     textbox.style.resize='none';
+    textbox.value=text;
     var win = makeWindow(600,500,textbox);
     win.style.backgroundColor=colour("light4");
-    var title  =document.createElement('h3');
-    title.innerText='Untitled Document';
+    var title=document.createElement('h3');
+    title.innerText=ttl;
     title.style.position='absolute';
     title.style.top='-5px';
     title.style.textAlign="center";
@@ -15,4 +16,4 @@ function texteditor(){
     win.appendChild(title);
 }
 
-registerApp("https://apps.gnome.org/icons/scalable/org.gnome.TextEditor.svg",texteditor, "Text Editor");
+registerApp("apps/icons/texteditor.svg",function(){texteditor("","Untitled Document")}, "Text Editor");

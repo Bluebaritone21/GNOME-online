@@ -4,11 +4,11 @@
         <title>GNOME</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <link rel="icon" href="https://www.gnome.org/img/favicon.png">
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/colour.css">
         <script src="wm.js"></script>
+        <script src="filesys.js"></script>
         <script src="apps/console.js" defer></script>
         <script src="apps/epiphany.js" defer></script>
         <script src="apps/texteditor.js" defer></script>
@@ -28,13 +28,19 @@
         <div class="activity-bar" id="activity-bar">Loading...</div>
         <button id="activity-button" onclick="toggleActivities()">Activities</button>
         <button id="quicksettings-button" onclick="toggleQuicksettings()">
-            <img id="network-button" src="https://teams.pages.gitlab.gnome.org/Design/icon-development-kit-www/img/symbolic/ait/radiowaves-5-symbolic.svg" title="connected" class="white-icon"/>
-            <img id="battery-button" src="https://teams.pages.gitlab.gnome.org/Design/icon-development-kit-www/img/symbolic/ait/battery-level-100-symbolic.svg" class="white-icon"/>
+            <img id="network-button" src="symbolic/radiowaves-5-symbolic.svg" title="connected" class="white-icon"/>
+            <img id="battery-button" src="symbolic/battery-level-100-symbolic.svg" class="white-icon"/>
         </button>
         <div id="quicksettings">
-            <button id="fullscreen-button" class="bg-dark" onclick="toggleFullscreen()"><img src="https://teams.pages.gitlab.gnome.org/Design/icon-development-kit-www/img/symbolic/ui/fullscreen-square-symbolic.svg" class="white-icon" /> Fullscreen</button>
-            <br>
-            <button id="darkmode-button" class="bg-dark"><img src="https://teams.pages.gitlab.gnome.org/Design/icon-development-kit-www/img/symbolic/ui/dark-mode-symbolic.svg" class="white-icon"/> Dark Style</button>
+            <table>
+            <tr>    
+                <td><button id="fullscreen-button" class="bg-dark" onclick="toggleFullscreen()"><img src="symbolic/fullscreen-square-symbolic.svg" class="white-icon"/> <vr></vr>&Tab;Fullscreen</button></td>
+                <td><button id="debug-button" class="bg-dark" onclick="debug()"><img src="symbolic/bug-symbolic.svg" class="white-icon"/> <vr></vr>&Tab;Debug</button></td>
+            </tr><tr>
+                <td><button id="darkmode-button" class="bg-dark"><img src="symbolic/dark-mode-symbolic.svg" class="white-icon"/> <vr></vr>&Tab;Dark Style</button></td>
+                <td><button id="loadfs-button" class="bg-dark" onclick="mountFS()"><img src="symbolic/folder-remote-symbolic.svg" class="white-icon" /> <vr></vr>&Tab;Load Files</button></td>
+            </tr>
+            </table>
         </div>
     </body>
 </html>
