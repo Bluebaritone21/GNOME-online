@@ -1,4 +1,4 @@
-//wm.js: Window Manager, Filesystem and API definitions
+//wm.js: Window Manager and API definitions
 
 
 var gensym = 0;
@@ -16,19 +16,26 @@ function toggleActivities(){
     }
     activities = !activities;
 }
+
+debugOn = false;
+
 function debug(){
+    if(!debugOn){
         var script = document.createElement('script');
         script.src='https://cdn.jsdelivr.net/npm/eruda';
         script.onload=function(e){eruda.init();}
         document.body.appendChild(script);
-
+        $("debug-button").classList.remove("bg-dark");
+        $("debug-button").classList.add("bg-accent");
+        debugOn = true;
+    }
 }
 
 function registerApp(icon, openfunction ,titleText) {
     var taskbar = $("taskbar");
     var button = document.createElement("button");
     button.classList.add("app-button");
-    button.onclick = openfunction;
+    button.onclick = function(){try{openfunction()}catch(e){error(e)}};
     var image = document.createElement("img");
     image.src = icon;
     image.style.height = "70px";
@@ -77,6 +84,7 @@ function makeWindow(wdth,hght,contents){
     clone.style.width = wdth+"px";
     clone.style.height= hght+"px";
     clone.appendChild(contents);
+    clone.style.zIndex == ++lastheight;
     return clone;
 }
 var lastheight = 0;
@@ -176,13 +184,94 @@ function time(){
     var hour = d.getHours();
     document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
 }
+
 time()
 setInterval(time,1000);
+}
+
+d = document;
+
+function UIelmnt(type){
+    return d.createElement(type);
+}
+
+function repos(elmt,x,y){
+    elmt.style.position="absolute";
+    elmt.style.left=(typeof(x) == "string")?x:x+"px";
+    elmt.style.top=(typeof(y) == "string")?y:y+"px";
+}
+
+function resize(elmt,w,h){
+    elmt.style.position="absolute";
+    elmt.style.width=(typeof(w) == "string")?w:w+"px";
+    elmt.style.height=(typeof(h) == "string")?h:h+"px";
 }
 
 function $(id){
     return document.getElementById(id);
 }
+
+
+function label(text,type="p",cls=""){
+    var lbl = UIelmnt(type);
+    lbl.innerText = text;
+    lbl.classList.add(cls);
+    return lbl;
+}
+
+function confirm(text, callback,level="success"){
+    var buttonCancel = UIelmnt("button");
+    var buttonOk = UIelmnt("button");
+    buttonOk.innerText="Ok";
+    buttonCancel.innerText="Cancel";
+    buttonOk.classList.add("bg-accent");
+    buttonCancel.style.fontWeight="bold";
+    buttonCancel.style.fontSize="15pt";
+    buttonCancel.style.padding="10px";
+    buttonCancel.onclick = function(e){
+        win.remove();
+    }
+    buttonOk.style.fontWeight="bold";
+    buttonOk.style.fontSize="15pt";
+    buttonOk.style.padding="10px";
+    buttonOk.onclick = function(e){
+        win.remove();
+        callback();
+    }
+    var lb = label(text,"h4","fg-"+level);
+    lb.style.whiteSpace = "nowrap";
+    repos(lb,0,5);
+    lb.style.overflowX="scroll"
+    resize(lb,"100%","unset")
+    var win = makeWindow(300,145,lb);
+    win.querySelector(".close").remove();
+    win.appendChild(buttonCancel);
+    win.appendChild(buttonOk);
+    win.style.textAlign = "center"; // 'cuz CSS is dumb and can't spell centre.
+}
+
+function makeAlert(text,level="success"){
+    var button = UIelmnt("button");
+    button.innerText="Ok";
+    button.classList.add("bg-accent");
+    button.style.fontWeight="bold";
+    button.style.fontSize="15pt";
+    button.style.padding="10px";
+    button.onclick = function(e){
+        win.remove();
+    }
+    var lb = label(text,"h4","fg-"+level);
+    lb.style.whiteSpace = "nowrap";
+    repos(lb,0,5);
+    lb.style.overflowX="scroll"
+    resize(lb,"100%","unset")
+    var win = makeWindow(300,145,lb);
+    win.querySelector(".close").remove();
+    win.appendChild(button);
+    win.style.textAlign = "center"; // 'cuz CSS is dumb and can't spell centre.
+}
+
+
 
 function colour(clr){
     return "var(--"+clr+")";
@@ -190,4 +279,28 @@ function colour(clr){
 
 function getIcon(name){
     return "symbolic/"+name+"-symbolic.svg";
+}
+
+
+error = function(text){makeAlert(text,"destructive")};
+console.error = error;
+
+window.onerror = function(text,url,line,col,err){error("line "+line+", col "+col+": "+text)}
+
+warn = function(text){makeAlert(text,"warning")};
+
+alert = function(text){makeAlert(text,"")};
+window.alert = alert;
+
+function makeWebviewWindow(w,h,url){
+    var iframe=document.createElement(`iframe`);
+    iframe.style.position=`absolute`;
+    iframe.style.top=`40px`;
+    iframe.style.left=`0px`;
+    iframe.src=url;
+    iframe.style.width=`100%`;
+    iframe.style.height=`calc(100% - 40px)`;
+    iframe.style.border=`none`;
+    iframe.allowFullscreen = "allow";
+    makeWindow(w,h,iframe);
 }

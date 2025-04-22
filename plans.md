@@ -6,9 +6,17 @@
     c. Modify `makeWindow()` to open on the current Workspace.
     d. Build styling system for multiple Desktops
 2. Build filesystem apps
-    a. Build filesystem API (`filesys.js`)
-    b. Nautilus App
-    c. Modify Text Editor to work with the filesystem
+    a. Nautilus App
+        i.   Add the drop-down menu for creating directories and moving directories and files
+        ii.  Add better detection of certain filetypes like `md`
+        iii. Add the option to edit JS files, instead of just executing them.
+        iv. Add an argument to Nautilus to make it function as a file picker (I.E. Pass the file 
+             selected back to the program that called it, instead of opening it normally)
+    b. Modify Text Editor to work with the filesystem
+        i.   Add a save button
+        ii.  Add the option to switch to a monospace font and disable spellchecking
+        iii. Add an open button
+        iv. Modify the command-line args to just take a file.
 3. Enhanced Console
     a. Terminal mode (formats function calls like how they would be in Unix)
     b. Get rid of that annoying text box
@@ -21,13 +29,14 @@
         * creating, 
         * moving, and
         * styling (or colouring) 
-        elements (hereby called widgets)
+        elements
     d. Redo makeWindow to take a *list* of children, **not** a single child.
-6. Add multi-tab functionality to Epiphany
+6. Add multi-tab functionality to Epiphany and make it take a File OR a URL.
 7. Markdown Editor App
 8. Manage the remote mirrors of this
     a. Copy this to the Github mirror (minus Minecraft)
     b. *Possibly* clone this to Glitch.me (minus Minecraft)
+9. Make Loupe take a file as an argument, and when called without them, show an open menu.
 
 🄯2025-04-21 Matthew Allison. Few Rights Reserved. Do what you want, within the confines of 
    the GPL v2.0.

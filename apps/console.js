@@ -1,26 +1,20 @@
 function console(){
-    var commandBar = document.createElement("input");
+    var commandBar = UIelmnt("input");
     commandBar.type = "text";
-    commandBar.style.position = "absolute";
-    commandBar.style.width = "90%";
-    commandBar.style.left = "5%";
-    commandBar.style.bottom = "5px";
-    commandBar.style.height = "15px"; 
+    repos(commandBar,"5%","calc(100% - 30px)");
+    resize(commandBar,"90%",15);
     commandBar.style.backgroundColor = colour("dark3");
     commandBar.style.color = colour("light1");
-    var logs = document.createElement("pre");
-    logs.style.position = "absolute";
-    logs.style.top = "30px";
-    logs.style.left = "0px";
-    logs.style.width = "100%";
+    var logs = UIelmnt("pre");
+    repos(logs,0,30);
+    resize(logs,"100%","calc(100% - 75px)");
     logs.style.overflow = "scroll";
-    logs.style.height = "calc(100% - 65px)";
-    logs.style.backgroundColor = colour("dark4");
     logs.style.color = colour("light1");
     logs.style.textAlign="left";
     var window = makeWindow(500,500,commandBar);
     window.style.backgroundColor = colour("dark4");
     window.appendChild(logs);
+    window.style.overflow="scroll";
     function clear(){
         logs.innerText="";
     }

@@ -7,12 +7,24 @@
         <link rel="icon" href="https://www.gnome.org/img/favicon.png">
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/colour.css">
+        <script>
+            function debug(){
+                var script = document.createElement('script');
+                script.src='https://cdn.jsdelivr.net/npm/eruda';
+                script.onload=function(e){eruda.init();}
+                d.body.appendChild(script);
+            }
+        </script>
         <script src="wm.js"></script>
         <script src="filesys.js"></script>
+        <!-- Default Apps-->
         <script src="apps/console.js" defer></script>
         <script src="apps/epiphany.js" defer></script>
         <script src="apps/texteditor.js" defer></script>
+        <script src="apps/loupe.js" defer></script>
+        <script src="apps/minecraft.js" defer></script>
         <script src="apps/calculator.js" defer></script>
+        <script src="apps/nautilus.js" defer></script>
     </head>
     <hidden>
         <div id="window" class="window bg-window">
@@ -34,11 +46,11 @@
         <div id="quicksettings">
             <table>
             <tr>    
-                <td><button id="fullscreen-button" class="bg-dark" onclick="toggleFullscreen()"><img src="symbolic/fullscreen-square-symbolic.svg" class="white-icon"/> <vr></vr>&Tab;Fullscreen</button></td>
-                <td><button id="debug-button" class="bg-dark" onclick="debug()"><img src="symbolic/bug-symbolic.svg" class="white-icon"/> <vr></vr>&Tab;Debug</button></td>
+                <td><button id="fullscreen-button" class="bg-dark" onclick="toggleFullscreen()"><img src="symbolic/fullscreen-square-symbolic.svg" class="white-icon"/> &Tab;Fullscreen</button></td>
+                <td><button id="debug-button" class="bg-dark" onclick="debug()"><img src="symbolic/bug-symbolic.svg" class="white-icon"/> &Tab;Debug</button></td>
             </tr><tr>
-                <td><button id="darkmode-button" class="bg-dark"><img src="symbolic/dark-mode-symbolic.svg" class="white-icon"/> <vr></vr>&Tab;Dark Style</button></td>
-                <td><button id="loadfs-button" class="bg-dark" onclick="mountFS()"><img src="symbolic/folder-remote-symbolic.svg" class="white-icon" /> <vr></vr>&Tab;Load Files</button></td>
+                <td><button id="darkmode-button" class="bg-dark"><img src="symbolic/dark-mode-symbolic.svg" class="white-icon"/> &Tab;Dark Style</button></td>
+                <td><button id="loadfs-button" class="bg-dark" onclick="mountFS()"><img src="symbolic/folder-remote-symbolic.svg" class="white-icon" /> &Tab; Filesystem</button></td>
             </tr>
             </table>
         </div>

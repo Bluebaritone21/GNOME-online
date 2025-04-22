@@ -1,7 +1,6 @@
-function epiphany(){
+function epiphany(url="moogle.com.html",useCORS=false){
     var urlBar=document.createElement(`input`);
     var iframe=document.createElement(`iframe`);
-    var useCORS=false;
     var corsButton=document.createElement(`button`);
     var icon=document.createElement("img");
     icon.src="symbolic/network-proxy-symbolic.svg";
@@ -25,7 +24,7 @@ function epiphany(){
     urlBar.style.top=`5px`;
     urlBar.style.width=`calc(100% - 120px)`;
     urlBar.style.right=`90px`;
-    urlBar.value=`moogle.com.html`;
+    urlBar.value=url;
     urlBar.onkeypress = function(e){
         if (!e) e = window.event;
         var keyCode = e.code || e.key;
@@ -38,7 +37,7 @@ function epiphany(){
             iframe.src=url;
            }
     }
-    iframe.src='moogle.com.html';
+    iframe.src=url;
     iframe.style.width=`100%`;
     iframe.style.height=`calc(100% - 45px)`;
     iframe.style.border=`none`;
@@ -51,4 +50,4 @@ function epiphany(){
     window.appendChild(corsButton);
 }
 
-registerApp('apps/icons/epiphany.svg',epiphany,"Epiphany");
+registerApp('apps/icons/epiphany.svg',function(e){epiphany()},"Epiphany");

@@ -1,35 +1,41 @@
 async function mountFS(){
+  if(fs==null){
     fs = await window.showDirectoryPicker({mode:"readwrite"});
+    $("loadfs-button").classList.add("bg-accent");
+    $("loadfs-button").classList.remove("bg-dark");
+  }
 }
 
-async function readFS(){
-  return await getFiles(fs,undefined)
+function passDirTo(dir,fnc,err=error){
+  getFiles(dir).then(fnc,err);
 }
 
-const dir = {name:"",
-             files:[]
-            }
+class dir{constructor(path,files,handle,name){
+                                 this.path=path;
+                                 this.files=files;
+                                 this.handle=handle;
+                                 this.name=name;
+                                 this.kind="dir";
+                                }}
 
-async function getFiles(dirHandle, path = dirHandle.name){
+async function getFiles(dirHandle, path = dirHandle.name, name = dirHandle.name){
   const dirs = [];
   const files = [];
   for await (const entry of dirHandle.values()) {
-    const nestedPath = `${path}/${entry.name}`;
+    let nestedPath = `${path}/${entry.name}`;
     if (entry.kind === "file") {
       files.push(
         entry.getFile().then((file) => {
           file.directoryHandle = dirHandle;
           file.handle = entry;
-          return Object.defineProperty(file, "webkitRelativePath", {
-            configurable: true,
-            enumerable: true,
-            get: () => nestedPath,
-          });
+          file.kind = entry.kind;
+          file.path = nestedPath;
+          return file;
         })
       );
     } else if (entry.kind === "directory") {
-      dirs.push(getFiles(entry, nestedPath));
+      dirs.push(getFiles(entry, nestedPath, entry.name));
     }
   }
-  return (await Promise.all(dirs)).concat(await Promise.all(files));
+  return new dir(path, (await Promise.all(dirs)).concat(await Promise.all(files)), dirHandle, name);
 }
