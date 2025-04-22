@@ -1,10 +1,10 @@
 # Plans for GNOME Online
 
 1. Multiple Workspaces
-    a. Drop-down in Activities for switching Workspaces
-    b. Buttons in Activities to create a new Workspace and delete the one you are on.
-    c. Modify `makeWindow()` to open on the current Workspace.
-    d. Build styling system for multiple Desktops
+    1. Drop-down in Activities for switching Workspaces
+    2. Buttons in Activities to create a new Workspace and delete the one you are on.
+    3. Modify `makeWindow()` to open on the current Workspace.
+    4. Build styling system for multiple Desktops
 2. Build filesystem apps
     1. Nautilus App
         1.   Add the drop-down menu for creating directories and moving directories and files
