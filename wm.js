@@ -9,7 +9,7 @@ fs = null;
 function toggleActivities(){
     if(!activities){
         document.getElementsByTagName("desktop")[0].classList.add("small");
-        $("activity-bar").style.backgroundColor="var(--dark3)";
+        $("activity-bar").style.backgroundColor="var(--dark4)";
     }else{
         document.getElementsByTagName("desktop")[0].classList.remove("small");
         $("activity-bar").style.backgroundColor="var(--dark5)";
@@ -84,14 +84,16 @@ function makeWindow(wdth,hght,contents){
     clone.style.width = wdth+"px";
     clone.style.height= hght+"px";
     clone.appendChild(contents);
-    clone.style.zIndex == ++lastheight;
+    clone.style.zIndex = lastheight++;
     return clone;
 }
 var lastheight = 0;
 
+
 function dragElement(elmnt) {
   var deltaX = 0, deltaY = 0, X = 0, Y = 0;
   $(elmnt.id + "header").onmousedown = dragMouseDown;
+  $(elmnt.id + "header").addEventListener("dbclick",function(){repos(elmnt,0,30);resize(elmnt,"100%","calc(100% - 30px)");})
   
   function dragMouseDown(e) {
     elmnt.style.zIndex=lastheight;
@@ -141,7 +143,7 @@ window.addEventListener("offline",function(e){
 
 window.onload = function(){
     online()
-    navigator.getBattery().then(function(battery) {
+    try{navigator.getBattery().then(function(battery) {
         function updateIcon(){
             var battery_button = $("battery-button");
             battery_button.title = battery.level * 100 + "%"+(battery.charging?" - charging":"");
@@ -169,10 +171,10 @@ window.onload = function(){
                 }
             }}
         updateIcon();
-  // ... and any subsequent updates.
-  battery.onlevelchange = updateIcon;
-  battery.onchargingchange = updateIcon;
-});
+        // ... and any subsequent updates.
+        battery.onlevelchange = updateIcon;
+        battery.onchargingchange = updateIcon;
+        });}catch{error("Your browser doesn't support the Battery API!")}finally{
 function time(){
     var d = new Date();
     var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
@@ -187,7 +189,7 @@ function time(){
 
 time()
 setInterval(time,1000);
-}
+}}
 
 d = document;
 
@@ -202,7 +204,6 @@ function repos(elmt,x,y){
 }
 
 function resize(elmt,w,h){
-    elmt.style.position="absolute";
     elmt.style.width=(typeof(w) == "string")?w:w+"px";
     elmt.style.height=(typeof(h) == "string")?h:h+"px";
 }
@@ -248,6 +249,28 @@ function confirm(text, callback,level="success"){
     win.appendChild(buttonCancel);
     win.appendChild(buttonOk);
     win.style.textAlign = "center"; // 'cuz CSS is dumb and can't spell centre.
+}
+
+function rclickMenu(elmnt,options){
+    elmnt.addEventListener('contextmenu', function(e) {
+        try{
+            var list = [...options,{l:"Cancel",f:function(){}}];
+            e.preventDefault();
+            var lst = UIelmnt("div");
+            var menu = makeWindow(200, 30 + ((options.length + 1) * 35),lst);
+            menu.style.resize = "none";
+            repos(menu,e.x,e.y);
+            $(`${menu.id}header`).remove();
+            menu.querySelector(".close").remove();
+            menu.style.overflowY = "scroll";
+            list.forEach(function(item){
+                let blt = UIelmnt("li");
+                blt.innerText = item.l;
+                blt.onclick = function(){item.f();menu.remove();}
+                lst.appendChild(blt);
+            });
+        }catch(er){error(er)}
+    }); 
 }
 
 function makeAlert(text,level="success"){

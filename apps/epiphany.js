@@ -1,4 +1,4 @@
-function epiphany(url="moogle.com.html",useCORS=false){
+function epiphany(url="file://MyFiles/GNOME/moogle.html",useCORS=false){
     var urlBar=document.createElement(`input`);
     var iframe=document.createElement(`iframe`);
     var corsButton=document.createElement(`button`);
@@ -22,22 +22,28 @@ function epiphany(url="moogle.com.html",useCORS=false){
     urlBar.style.height=`30px`;
     urlBar.style.position=`absolute`;
     urlBar.style.top=`5px`;
-    urlBar.style.width=`calc(100% - 120px)`;
-    urlBar.style.right=`90px`;
-    urlBar.value=url;
+    urlBar.style.width=`calc(100% - 180px)`;
+    urlBar.style.right=`130px`;
+    function urlise(txt){
+        let val = txt;
+        if(!val.includes("http://") && !val.includes("https://") && !val.includes("file://")){val = "http://"+val}
+        if(val.includes("file://")){val = val.replace("file://","../../")}
+        return val;   
+    }
+    urlBar.value=url
     urlBar.onkeypress = function(e){
         if (!e) e = window.event;
         var keyCode = e.code || e.key;
         if (keyCode == 'Enter'){
             if(useCORS){
-               var url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(urlBar.value);
+               var url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(urlise(urlBar.value));
             }else{
-               var url=urlBar.value;
+               var url=urlise(urlBar.value);
             }
             iframe.src=url;
            }
     }
-    iframe.src=url;
+    iframe.src=urlise(url);
     iframe.style.width=`100%`;
     iframe.style.height=`calc(100% - 45px)`;
     iframe.style.border=`none`;

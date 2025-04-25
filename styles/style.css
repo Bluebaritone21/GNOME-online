@@ -46,8 +46,9 @@
       }
   }
   
-  :root {
+ :root {
     /* default Inter settings */
+    cursor: url("../cursors/default.cur"), default;
     font-family: "Inter", sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
   }
@@ -110,7 +111,7 @@ vr{
 }
 body{
     margin: 0;
-    background-color: var(--dark3);
+    background-color: var(--dark4);
     overflow: hidden;
     color: var(--text);
 }
@@ -118,14 +119,15 @@ li{
     list-style-type:none;
     text-align: left;
     border-radius: 10px;
+    line-height: 30px;
 }
 span{
     display: table-cell;
     vertical-align: middle;
 }
 li:hover{
-    background-color: rgba(0,0,0,0.1);
-    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: url("../cursors/pointer.cur"), pointer;
 }
 body, h1, h2, h3, h4, h5, h6, p, button, textarea, input, div, ul,.window,li {
     font-family: "Inter", sans-serif;
@@ -181,7 +183,7 @@ desktop.small{
     background-color: var(--dark3);
 }
 .taskbar{
-    background-color: var(--dark4);
+    background-color: var(--dark3);
     border-radius: 20px;
     border: 0;
     font-weight: bold;
@@ -225,6 +227,43 @@ desktop.small{
     overflow: hidden;
     box-shadow:0 0 5px rgba(0,0,0,0.4);
 }
+input[type=range]{
+    appearance: none; /* Hides the slider so that custom slider can be made */
+    width: calc(100% - 35px); /* Specific width is required for Firefox. */
+    background: none;
+    transform: translateY(-5px);
+}
+
+#brightness-cover{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    pointer-events: none;
+    background-color: black;
+    opacity: 0%;
+    z-index: 100000004;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: url("../cursors/pointer.cur"), pointer;
+    background: var(--blue4);
+    border-radius: 30px;
+    border-radius: 1.3px;
+  }
+
+input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 30px;
+    background: var(--light3);
+    cursor: url("../cursors/pointer.cur"), pointer;
+    margin-top: -5px;
+}
 input[type=text]{
     background-color: var(--light3);
     font-family: "Inter", sans-serif;
@@ -239,7 +278,7 @@ button{
     background-color: var(--light1);
     border:0;
     border-radius:10px;
-    cursor: pointer;
+    cursor: url("../cursors/pointer.cur"), pointer;
 }
 button:hover.bg-success{
     background-color: #1b8553;
@@ -251,6 +290,7 @@ button:hover.bg-success{
 button:hover{
     background-color: var(--light4);
     border:1px var(--dark1);
+    cursor: url("../cursors/pointer.cur"), pointer;
 }
 textarea:focus{
     border:none;
@@ -268,7 +308,7 @@ textarea{
 }
 .header {
     padding: 20px;
-    cursor: move;
+    cursor: url("../cursors/all-scroll.cur"), all-scroll;
     background-color: none;
 }
 .shrink{
@@ -280,4 +320,11 @@ textarea{
 
 .bg-dark:hover{
     background-color: var(--dark2);
+}
+
+button.clear-button{
+    background-color: #fafafa;
+}
+button.clear-button:hover{
+    background-color: var(--light3);
 }

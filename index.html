@@ -19,9 +19,9 @@
         <script src="filesys.js"></script>
         <!-- Default Apps-->
         <script src="apps/console.js" defer></script>
-        <script src="apps/epiphany.js" defer></script>
         <script src="apps/texteditor.js" defer></script>
         <script src="apps/loupe.js" defer></script>
+        <script src="apps/epiphany.js" defer></script>
         <script src="apps/minecraft.js" defer></script>
         <script src="apps/calculator.js" defer></script>
         <script src="apps/nautilus.js" defer></script>
@@ -36,23 +36,26 @@
     <body>
         <div class="taskbar" id="taskbar">
         </div>
-        <desktop></desktop>
-        <div class="activity-bar" id="activity-bar">Loading...</div>
+        <desktop id=desktop></desktop>
+        <div class="activity-bar" id="activity-bar">If you see this for more than a split second, something's wrong.</div>
         <button id="activity-button" onclick="toggleActivities()">Activities</button>
         <button id="quicksettings-button" onclick="toggleQuicksettings()">
             <img id="network-button" src="symbolic/radiowaves-5-symbolic.svg" title="connected" class="white-icon"/>
-            <img id="battery-button" src="symbolic/battery-level-100-symbolic.svg" class="white-icon"/>
+            <img id="battery-button" src="symbolic/battery-missing-symbolic.svg" class="white-icon"/>
         </button>
         <div id="quicksettings">
-            <table>
-            <tr>    
+            <label for=brightness-range><img src="symbolic/display-brightness-high-symbolic.svg" class="white-icon"></input>
+                <input type=range id=brigtness-range value="100" min="0" max="100" step="1" onchange="$('brightness-cover').style.opacity=(100-this.value)+'%'"></input>
+                <table>
+                    <tr>    
                 <td><button id="fullscreen-button" class="bg-dark" onclick="toggleFullscreen()"><img src="symbolic/fullscreen-square-symbolic.svg" class="white-icon"/> &Tab;Fullscreen</button></td>
                 <td><button id="debug-button" class="bg-dark" onclick="debug()"><img src="symbolic/bug-symbolic.svg" class="white-icon"/> &Tab;Debug</button></td>
             </tr><tr>
                 <td><button id="darkmode-button" class="bg-dark"><img src="symbolic/dark-mode-symbolic.svg" class="white-icon"/> &Tab;Dark Style</button></td>
                 <td><button id="loadfs-button" class="bg-dark" onclick="mountFS()"><img src="symbolic/folder-remote-symbolic.svg" class="white-icon" /> &Tab; Filesystem</button></td>
             </tr>
-            </table>
-        </div>
-    </body>
+        </table>
+    </div>
+    <div id="brightness-cover"></div>
+</body>
 </html>

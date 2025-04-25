@@ -1,20 +1,47 @@
-function texteditor(text,ttl){
+function texteditor(file=null){
+    function save(handle,contents){
+        try{handle.createWritable().then(function(s){s.write(contents).then(
+                                          function() {s.close()})
+                                                     }
+                                         );}
+        catch(e){error(e)}
+    }
+    var ttl="Untitled Document";
     var textbox=UIelmnt(`textarea`);
-    textbox.style.width='100%';
-    textbox.style.height='calc(100%  - 65px)';
+    repos(textbox,0,43);
+    resize(textbox,'calc(100% - 5px)','calc(100%  - 48px)');
     textbox.style.resize='none';
-    textbox.value=text;
+    textbox.value="";
     var win = makeWindow(600,500,textbox);
     win.style.backgroundColor=colour("light3");
     var title=UIelmnt('h3');
     title.innerText=ttl;
-    title.style.position='absolute';
-    title.style.top='-5px';
+    repos(title,"25%",-5);
     title.style.textAlign="center";
     title.style.width="50%";
-    title.style.left="25%";
     title.style.pointerEvents="none";
+    if(file!=null){
+        title.innerText=file.path;
+        const reader = new FileReader();
+        reader.onload = () => {
+            textbox.value = reader.result;
+        };
+        reader.onerror = () => {
+            error("Error reading the file. Please try again.");
+        };
+        reader.readAsText(file);
+    }
     win.appendChild(title);
+    var saveButton = UIelmnt("button");
+    saveButton.style.position = "absolute";
+    saveButton.style.top = "10px";
+    saveButton.style.right = "35px";
+    saveButton.style.backgroundColor=colour("light3");
+    var saveIcon = UIelmnt("img");
+    saveIcon.src = getIcon("floppy");
+    saveButton.appendChild(saveIcon);
+    resize(saveButton,30,30);
+    saveButton.onclick = function(){if(file==null){window.showSaveFilePicker().then(function(h){save(h,textbox.value)})}else{save(file.handle,textbox.value)}}
+    win.appendChild(saveButton);
 }
-
-registerApp("apps/icons/texteditor.svg",function(){texteditor("","Untitled Document")}, "Text Editor");
+registerApp("apps/icons/texteditor.svg",function(){texteditor()}, "Text Editor");

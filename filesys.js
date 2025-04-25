@@ -3,6 +3,10 @@ async function mountFS(){
     fs = await window.showDirectoryPicker({mode:"readwrite"});
     $("loadfs-button").classList.add("bg-accent");
     $("loadfs-button").classList.remove("bg-dark");
+  }else{
+    fs = null;
+    $("loadfs-button").classList.remove("bg-accent");
+    $("loadfs-button").classList.add("bg-dark");
   }
 }
 

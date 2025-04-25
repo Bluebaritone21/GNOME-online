@@ -6,7 +6,7 @@ function nautilus(dir){
     resize(sidebar,200,"100%");
     sidebar.classList.add("bg-sidebar");
     sidebar.style.pointerEvents="none";
-    var win = makeWindow(800,500,sidebar);
+    var win = makeWindow(810,500,sidebar);
     var list = UIelmnt("div");
     //Quick-access buttons
     var shortcuts = UIelmnt("div");
@@ -20,17 +20,26 @@ function nautilus(dir){
     resize(backButton,30,30);
     var backIcon = UIelmnt("img");
     backButton.title="Go Back";
-    backIcon.src = "symbolic/left-large-symbolic.svg";
+    backIcon.src = getIcon("left-large");
     backButton.appendChild(backIcon);
     backButton.onclick = function(){if(hist.length>=1){draw(hist.pop())}else{draw(dir)}}
     win.appendChild(backButton);
+    //Refresh button
+    var refreshButton = UIelmnt("button");
+    repos(refreshButton,240,5);
+    resize(refreshButton,30,30);
+    var refreshIcon = UIelmnt("img");
+    refreshButton.title = "Refresh List (useful after you saved a file.)";
+    refreshIcon.src = getIcon("arrow-circular-top-right");
+    refreshButton.appendChild(refreshIcon);
+    win.appendChild(refreshButton);
     //Directory path display
     var dirPath = UIelmnt("div");
     var dirText = UIelmnt("h4");
-    repos(dirText,245,-14);
+    repos(dirText,275,-14);
     dirText.style.pointerEvents = "none";
-    repos(dirPath,240,5);
-    resize(dirPath,"calc(100% - 275px)",30);
+    repos(dirPath,275,5);
+    resize(dirPath,"calc(100% - 310px)",30);
     dirPath.style.backgroundColor = colour("light2");
     dirPath.style.textAlign = "left";
     dirPath.style.borderRadius = "10px";
@@ -39,6 +48,7 @@ function nautilus(dir){
     win.appendChild(dirText)
     repos(list,205,45);
     resize(list,"calc(100% - 210px)","calc(100% - 45px)");
+    list.style.textAlign="left";
     list.style.overflowY = "scroll";
     try{
         win.appendChild(list);
@@ -52,12 +62,14 @@ function nautilus(dir){
         error(e);
     }
     function draw(dr){try{
+        function refresh(){passDirTo(dr.handle,draw)};
+        refreshButton.onclick = refresh;
         shortcuts.innerHTML = "";
         for(i in shortdirs){
             let fld=shortdirs[i]
             let blt=UIelmnt("li");
             blt.innerText=" "+fld.name;
-            blt.height="40px";
+            blt.style.height="30px";
             blt.display="block";
             blt.onclick=function(){
                 if(dr!=fld){
@@ -70,91 +82,80 @@ function nautilus(dir){
         dirText.innerText = " "+dr.path;
         list.innerHTML="";
         for(i in dr.files){
-            let blt=UIelmnt("li");
+            let blt=UIelmnt("button");
             let file = dr.files[i];
-            var span = UIelmnt("span");
-        var text = UIelmnt("inline");
-        var icn = UIelmnt("img");
-        icn.src = file.kind==="dir"?(file.name==".Trash"?"icons/user-trash.svg":
-                                    (file.name=="GNOME"?"icons/user-home.svg":
-                                    (file.name=="Camera"?"icons/folder-pictures.svg":
-                                    (file.name=="Downloads"?"icons/folder-download.svg":
-                                    (file.name=="Documents"?"icons/folder-documents.svg":"icons/folder.svg"))))):
-                  (file.type.includes("image")?"icons/image-x-generic.svg":
-                  (file.type.includes("video")?"icons/video-x-generic.svg":
-                  (file.type==="text/html"?"icons/text-html.svg":
-                  (file.type=="text/javascript"?"icons/application-x-executable.svg":
-                  (file.type.includes("text")?"icons/text.svg":
-                  (file.type==="application/pdf"?"icons/x-office-document.svg":
-                  "icons/application-x-generic.svg"))))));
-        icn.width = 32;
-        span.appendChild(icn);
-        text.innerText = file.name;
-        span.appendChild(text);
-        blt.appendChild(span);
-        list.appendChild(blt);
-        blt.style.height="32px"
-        blt.onclick = function(){
-            if(file.kind === "file"){
-                if(file.type.includes("image")){
-                    loupe("../../"+file.path);
-                }else if(file.type==="text/html"){
-                    epiphany("../../"+file.path);
-                }else if(file.type==="text/javascript"){
-                    confirm("Are you sure you want to run this?",function(){const reader = new FileReader();
-                        reader.onload = () => {
-                            eval(reader.result,file.path);
-                        };
-                        reader.onerror = () => {
-                            showMessage("Error reading the file. Please try again.", "error");
-                        };
-                        reader.readAsText(file);})
-                }else if(file.type.includes("text")){const reader = new FileReader();
-                    reader.onload = () => {
-                        texteditor(reader.result,file.path);
-                    };
-                    reader.onerror = () => {
-                        showMessage("Error reading the file. Please try again.", "error");
-                    };
-                    reader.readAsText(file);
-                }else if(file.type==="application/pdf"){
-                    epiphany("../../"+file.path);
-                }else{
-                    let title = UIelmnt("h3");
-                    title.innerText = "What App do you want to open this?";
-                    title.classList.add("fg-success")
-                    let win = makeWindow(300,400,title);
-                    let options = UIelmnt("div");
-                    win.appendChild(options);
-                    let txtbutton = UIelmnt("li");
-                    txtbutton.innerText = "Text Editor";
-                    txtbutton.onclick = function(){const reader = new FileReader();
-                        reader.onload = () => {
-                            texteditor(reader.result,file.path);win.remove()
-                        };
-                        reader.onerror = () => {
-                            showMessage("Error reading the file. Please try again.", "error");
-                        };
-                        reader.readAsText(file);
-                    }
-                    options.appendChild(txtbutton);
-                    let webbutton = UIelmnt("li");
-                    webbutton.innerText = "Epiphany";
-                    webbutton.onclick = function(){epiphany("../../"+file.path);win.remove()}
-                    options.appendChild(webbutton);
-                    let imgbutton = UIelmnt("li");
-                    imgbutton.innerText = "Loupe";
-                    imgbutton.onclick = function(){loupe("../../"+file.path);win.remove()}
-                    options.appendChild(imgbutton)
+            var text = UIelmnt("inline");
+            var icn = UIelmnt("img");
+            icn.src = file.kind==="dir"?(file.name==".Trash"?"icons/user-trash.svg":
+                                        (file.name=="GNOME"?"icons/user-home.svg":
+                                        (file.name=="Camera"?"icons/folder-pictures.svg":
+                                        (file.name=="Downloads"?"icons/folder-download.svg":
+                                        (file.name=="Documents"?"icons/folder-documents.svg":"icons/folder.svg"))))):
+                      (file.type.includes("image")?"icons/image-x-generic.svg":
+                      (file.type.includes("video")?"icons/video-x-generic.svg":
+                      (file.type==="text/html"?"icons/text-html.svg":
+                      (file.type=="text/javascript"?"icons/application-x-executable.svg":
+                      (file.type.includes("text")?"icons/text.svg":
+                      (file.type==="application/pdf"?"icons/x-office-document.svg":
+                      "icons/application-x-generic.svg"))))));
+            blt.appendChild(icn);
+            blt.classList.add("clear-button");
+            resize(blt,128+20,128+20);
+            blt.style.overflow="hidden";
+            blt.style.textAlign="center";
+            blt.appendChild(UIelmnt("br"));
+            text.innerText = file.name;
+            blt.appendChild(text);
+            list.appendChild(blt);
+            rclickMenu(blt,[{l:"Edit with Text Editor",f:function(){texteditor(file)}},
+                                 {l:"Delete file",f:function(){confirm("Are you sure you want to do this? It cannot be undone!", function(){dr.handle.removeEntry(file.name).then(refresh)})}}]);
+            blt.onclick = function(){
+                if(file.kind === "file"){
+                    if(file.type.includes("image")){
+                        loupe("../../"+file.path);
+                    }else if(file.type==="text/html"){
+                        epiphany("file://"+file.path);
+                    }else if(file.type==="text/javascript"){
+                        confirm("Are you sure you want to run this?",function(){const reader = new FileReader();
+                            reader.onload = () => {
+                                eval(reader.result,file.path);
+                            };
+                            reader.onerror = () => {
+                                showMessage("Error reading the file. Please try again.", "error");
+                            };
+                            reader.readAsText(file);})
+                    }else if(file.type.includes("text")){
+                        texteditor(file);
+                    }else if(file.type==="application/pdf"){
+                        epiphany("file://"+file.path);
+                    }else{
+                        let title = UIelmnt("h3");
+                        title.innerText = "What App do you want to open this?";
+                        title.classList.add("fg-success")
+                        let win = makeWindow(300,400,title);
+                        let options = UIelmnt("div");
+                        win.appendChild(options);
+                        let txtbutton = UIelmnt("li");
+                        txtbutton.innerText = "Text Editor";
+                        txtbutton.onclick = function(){texteditor(file);win.remove()}
+                        options.appendChild(txtbutton);
+                        let webbutton = UIelmnt("li");
+                        webbutton.innerText = "Epiphany";
+                        webbutton.onclick = function(){epiphany("file://"+file.path);win.remove()}
+                        options.appendChild(webbutton);
+                        let imgbutton = UIelmnt("li");
+                        imgbutton.innerText = "Loupe";
+                        imgbutton.onclick = function(){loupe("../../"+file.path);win.remove()}
+                        options.appendChild(imgbutton)
 
-                }
-            }else if(file.kind === "dir"){
-                hist.push(dr);
-                draw(file);
-            }else{
-                error("Expected a file or Directory, got "+file.kind+". If you are not Matthew, please tell him.");
-            }
-        }}
+                    }
+                }else if(file.kind === "dir"){
+                    hist.push(dr);
+                    draw(file);
+                }else{
+                    error("Expected a file or Directory, got "+file.kind+". If you are not Matthew, please tell him.");
+                }}
+        }
     }catch(e){
         error(e);
     }}
