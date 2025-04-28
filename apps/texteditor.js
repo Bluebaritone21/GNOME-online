@@ -8,11 +8,13 @@ function texteditor(file=null){
     }
     var ttl="Untitled Document";
     var textbox=UIelmnt(`textarea`);
+    textbox.spellcheck = "false";
+    rclickMenu(textbox,[{l:"Toggle spellcheck",f:function(){textbox.spellcheck = textbox.spellcheck=="true"?"false":"true";}}])
     repos(textbox,0,43);
     resize(textbox,'calc(100% - 5px)','calc(100%  - 48px)');
     textbox.style.resize='none';
     textbox.value="";
-    var win = makeWindow(600,500,textbox);
+    var win = makeWindow(1000,600,textbox);
     win.style.backgroundColor=colour("light3");
     var title=UIelmnt('h3');
     title.innerText=ttl;
@@ -41,7 +43,7 @@ function texteditor(file=null){
     saveIcon.src = getIcon("floppy");
     saveButton.appendChild(saveIcon);
     resize(saveButton,30,30);
-    saveButton.onclick = function(){if(file==null){window.showSaveFilePicker().then(function(h){save(h,textbox.value)})}else{save(file.handle,textbox.value)}}
+    saveButton.onclick = function(){if(file==null){window.showSaveFilePicker().then(function(h){save(h,textbox.value);h.getFile().then(function(f){title.innerText=f.name})})}else{save(file.handle,textbox.value)}}
     win.appendChild(saveButton);
 }
 registerApp("apps/icons/texteditor.svg",function(){texteditor()}, "Text Editor");

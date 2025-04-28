@@ -1,4 +1,6 @@
-function epiphany(url="file://MyFiles/GNOME/moogle.html",useCORS=false){
+function epiphany(url="about:moogle.html",useCORS=false){
+    var isFile = typeof url != "string";
+    var fileUrl = isFile?URL.createObjectURL(url):"";
     var urlBar=document.createElement(`input`);
     var iframe=document.createElement(`iframe`);
     var corsButton=document.createElement(`button`);
@@ -26,11 +28,11 @@ function epiphany(url="file://MyFiles/GNOME/moogle.html",useCORS=false){
     urlBar.style.right=`130px`;
     function urlise(txt){
         let val = txt;
-        if(!val.includes("http://") && !val.includes("https://") && !val.includes("file://")){val = "http://"+val}
-        if(val.includes("file://")){val = val.replace("file://","../../")}
+        if(!val.includes("http://") && !val.includes("https://") && !val.includes("about:") && !val.includes("blob:")){val = "http://"+val}
+        if(val.includes("about:")){val = val.replace("about:","./")}
         return val;   
     }
-    urlBar.value=url
+    urlBar.value=isFile?fileUrl:url;
     urlBar.onkeypress = function(e){
         if (!e) e = window.event;
         var keyCode = e.code || e.key;
@@ -43,7 +45,7 @@ function epiphany(url="file://MyFiles/GNOME/moogle.html",useCORS=false){
             iframe.src=url;
            }
     }
-    iframe.src=urlise(url);
+    iframe.src=isFile?fileUrl:urlise(url);
     iframe.style.width=`100%`;
     iframe.style.height=`calc(100% - 45px)`;
     iframe.style.border=`none`;
@@ -51,7 +53,7 @@ function epiphany(url="file://MyFiles/GNOME/moogle.html",useCORS=false){
     iframe.style.top="45px";
     iframe.style.left="0px";
     iframe.allowFullscreen = "allow";
-    var window = makeWindow(1000,600,iframe);
+    var window = makeWindow(1000,600,iframe,function(){try{if(isFile){URL.revokeObjectURL(fileUrl)}}catch(e){error(e)}});
     window.appendChild(urlBar);
     window.appendChild(corsButton);
 }

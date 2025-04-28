@@ -112,9 +112,9 @@ function nautilus(dir){
             blt.onclick = function(){
                 if(file.kind === "file"){
                     if(file.type.includes("image")){
-                        loupe("../../"+file.path);
+                        loupe(file);
                     }else if(file.type==="text/html"){
-                        epiphany("file://"+file.path);
+                        epiphany(file);
                     }else if(file.type==="text/javascript"){
                         confirm("Are you sure you want to run this?",function(){const reader = new FileReader();
                             reader.onload = () => {
@@ -127,7 +127,7 @@ function nautilus(dir){
                     }else if(file.type.includes("text")){
                         texteditor(file);
                     }else if(file.type==="application/pdf"){
-                        epiphany("file://"+file.path);
+                        epiphany(file);
                     }else{
                         let title = UIelmnt("h3");
                         title.innerText = "What App do you want to open this?";
@@ -141,11 +141,11 @@ function nautilus(dir){
                         options.appendChild(txtbutton);
                         let webbutton = UIelmnt("li");
                         webbutton.innerText = "Epiphany";
-                        webbutton.onclick = function(){epiphany("file://"+file.path);win.remove()}
+                        webbutton.onclick = function(){epiphany(file);win.remove()}
                         options.appendChild(webbutton);
                         let imgbutton = UIelmnt("li");
                         imgbutton.innerText = "Loupe";
-                        imgbutton.onclick = function(){loupe("../../"+file.path);win.remove()}
+                        imgbutton.onclick = function(){loupe(file);win.remove()}
                         options.appendChild(imgbutton)
 
                     }

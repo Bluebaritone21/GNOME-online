@@ -1,6 +1,33 @@
 //wm.js: Window Manager and API definitions
 
 
+function validatePassword(){
+    var box = $("password-box");
+    const password = "hax-for-fun"; 
+    /*
+    If you are here looking for a secure login manager, you won't find it.
+    This WHOLE SCREEN can get deleted or hidden by a few keystrokes on the 
+    client's computer, and the rest of the desktop is still visible below it. 
+    If you want to make a proper login, don't use a plain text password. I 
+    just figured, since this is insecure anyways, why not just NOT hash my 
+    passwords. If you are doing this for real, use the passHashTo function 
+    below.
+    ~BlueBaritone21
+    */
+    if(box.value == password){
+        box.value =  "";
+        $("login-screen").style.display = "none";
+        $("activity-button").style.display = "block";
+        $("activity-bar").style.backgroundColor=colour("dark5");
+    }
+
+}
+
+function passHashTo(msg,f){
+    var decoder = (new TextDecoder);
+    window.crypto.subtle.digest("SHA-256", (new TextEncoder).encode(msg)).then(function(h){f(decoder.decode(h))});
+}
+
 var gensym = 0;
 var activities = false;
 
@@ -72,14 +99,14 @@ function toggleFullscreen(){
     }
 }
 
-function makeWindow(wdth,hght,contents){
+function makeWindow(wdth,hght,contents,onClose=function(){}){
     gensym++;
     var currentGensym=gensym;
     var clone = $("window").cloneNode(true);
     clone.id = "window"+gensym;
     clone.querySelector("#windowheader").id = "window"+gensym+"header";
     document.getElementsByTagName("desktop")[0].appendChild(clone);
-    clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove()});
+    clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove();onClose()});
     dragElement(clone);
     clone.style.width = wdth+"px";
     clone.style.height= hght+"px";
@@ -184,7 +211,7 @@ function time(){
         min = "0" + min;
     }
     var hour = d.getHours();
-    document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
+    document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + hour + ":" + min
 }
 
 time()
@@ -216,7 +243,7 @@ function $(id){
 function label(text,type="p",cls=""){
     var lbl = UIelmnt(type);
     lbl.innerText = text;
-    lbl.classList.add(cls);
+    if(cls){lbl.classList.add(cls);}
     return lbl;
 }
 
@@ -227,13 +254,13 @@ function confirm(text, callback,level="success"){
     buttonCancel.innerText="Cancel";
     buttonOk.classList.add("bg-accent");
     buttonCancel.style.fontWeight="bold";
-    buttonCancel.style.fontSize="15pt";
+    buttonCancel.style.fontSize="10pt";
     buttonCancel.style.padding="10px";
     buttonCancel.onclick = function(e){
         win.remove();
     }
     buttonOk.style.fontWeight="bold";
-    buttonOk.style.fontSize="15pt";
+    buttonOk.style.fontSize="10pt";
     buttonOk.style.padding="10px";
     buttonOk.onclick = function(e){
         win.remove();
@@ -278,7 +305,7 @@ function makeAlert(text,level="success"){
     button.innerText="Ok";
     button.classList.add("bg-accent");
     button.style.fontWeight="bold";
-    button.style.fontSize="15pt";
+    button.style.fontSize="10pt";
     button.style.padding="10px";
     button.onclick = function(e){
         win.remove();
@@ -294,7 +321,21 @@ function makeAlert(text,level="success"){
     win.style.textAlign = "center"; // 'cuz CSS is dumb and can't spell centre.
 }
 
+/*window.onbeforeunload = function(e) {
+    e.preventDefault();    
+}*/
 
+function lock(){
+    $("login-screen").style.display = "block";
+    $("activity-button").style.display = "none";
+    $("activity-bar").style.backgroundColor = colour("dark4");
+}
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        lock();
+    }
+});
 
 function colour(clr){
     return "var(--"+clr+")";

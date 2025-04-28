@@ -1,5 +1,12 @@
 @import "colour.css";
 
+
+/*fonts*/
+@font-face {
+    font-family: AdwaitaMono;
+    src: url('AdwaitaMono.woff') format('woff'), 
+}
+
 @font-face {
     font-family: Inter;
     font-style: normal;
@@ -48,7 +55,7 @@
   
  :root {
     /* default Inter settings */
-    cursor: url("../cursors/default.cur"), default;
+    cursor: url("../cursors/default.png"), default;
     font-family: "Inter", sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
   }
@@ -68,6 +75,7 @@ hidden{
     padding: 20px;
     transition: opacity 0.2s ease-in-out;
     box-shadow:0 0 5px rgba(0,0,0,0.4);
+    z-index: 99999;
 }
 
 vr{
@@ -127,12 +135,17 @@ span{
 }
 li:hover{
     background-color: rgba(0, 0, 0, 0.1);
-    cursor: url("../cursors/pointer.cur"), pointer;
+    cursor: url("../cursors/pointer.png") 4 0, pointer;
 }
-body, h1, h2, h3, h4, h5, h6, p, button, textarea, input, div, ul,.window,li {
+body, h1, h2, h3, h4, h5, h6, p, button, input, div, ul,.window,li {
     font-family: "Inter", sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
 }
+h1, h2, h3, h4, h5, h6, p, textarea, input{
+    cursor: url("../cursors/text.png") 8 8, text;
+}
+
+
 
 desktop{
     width:100vw;
@@ -243,13 +256,25 @@ input[type=range]{
     pointer-events: none;
     background-color: black;
     opacity: 0%;
-    z-index: 100000004;
+    z-index: 10000004;
+}
+
+#login-screen{
+    position: absolute;
+    top:0px;
+    left:0px;
+    display: none;
+    z-index: 99998;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--dark4);
+    text-align: center;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 5px;
-    cursor: url("../cursors/pointer.cur"), pointer;
+    cursor: url("../cursors/pointer.png") 4 0, pointer;
     background: var(--blue4);
     border-radius: 30px;
     border-radius: 1.3px;
@@ -261,24 +286,30 @@ input[type=range]::-webkit-slider-thumb {
     width: 16px;
     border-radius: 30px;
     background: var(--light3);
-    cursor: url("../cursors/pointer.cur"), pointer;
+    cursor: url("../cursors/pointer.png") 4 0, pointer;
     margin-top: -5px;
 }
-input[type=text]{
+input[type=text], input[type=password]{
     background-color: var(--light3);
     font-family: "Inter", sans-serif;
     border:0;
     border-radius:10px;
 }
-input[type=text]:hover{
+input[type=text]:hover, input[type=password]{
     background-color: var(--light1);
     border:1px var(dark1);
 }
+
+.circle{
+    border-radius: 100%;
+    background-color: var(--light4);
+}
+
 button{
     background-color: var(--light1);
     border:0;
     border-radius:10px;
-    cursor: url("../cursors/pointer.cur"), pointer;
+    cursor: url("../cursors/pointer.png") 4 0, pointer;
 }
 button:hover.bg-success{
     background-color: #1b8553;
@@ -290,15 +321,16 @@ button:hover.bg-success{
 button:hover{
     background-color: var(--light4);
     border:1px var(--dark1);
-    cursor: url("../cursors/pointer.cur"), pointer;
+    cursor: url("../cursors/pointer.png") 4 0, pointer;
 }
 textarea:focus{
     border:none;
     background-color: none;
 }
-textarea{
+textarea, pre{
     border:none;
-    font-family: "Inter", sans-serif;
+    font-family: "AdwaitaMono", sans-serif;
+    font-size: 10pt;
 }
 .window:hover{
     resize: both;
@@ -308,7 +340,7 @@ textarea{
 }
 .header {
     padding: 20px;
-    cursor: url("../cursors/all-scroll.cur"), all-scroll;
+    cursor: url("../cursors/all-scroll.png") 8 8, move;
     background-color: none;
 }
 .shrink{
