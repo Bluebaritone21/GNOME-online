@@ -221,7 +221,7 @@ window.onload = function() {
         time();
         setInterval(time, 1000);
         
-        $("boot-cover").style.display = "none";
+        setTimeout(function(){$("boot-cover").style.display = "none";},5000);
     }
 };
 
