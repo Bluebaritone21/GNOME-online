@@ -3,24 +3,28 @@
 
 function validatePassword(){
     var box = $("password-box");
-    const password = "hax-for-fun"; 
-    /*
-    If you are here looking for a secure login manager, you won't find it.
-    This WHOLE SCREEN can get deleted or hidden by a few keystrokes on the 
-    client's computer, and the rest of the desktop is still visible below it. 
-    If you want to make a proper login, don't use a plain text password. I 
-    just figured, since this is insecure anyways, why not just NOT hash my 
-    passwords. If you are doing this for real, use the passHashTo function 
-    below.
-    ~BlueBaritone21
-    */
-    if(box.value == password){
-        box.value =  "";
-        $("login-screen").style.display = "none";
-        $("activity-button").style.display = "block";
-        $("activity-bar").style.backgroundColor=colour("dark5");
-    }
+    passHashTo(box.value,function(hash){ 
+        /*
+        If you are here looking for a secure login manager, you won't find it.
+        This WHOLE SCREEN can get deleted or hidden by a few keystrokes on the 
+        client's computer, and the rest of the desktop is still visible below it. 
+        If you want to make a proper login, don't use a plain text password. I 
+        just figured, since this is insecure anyways, why not just NOT hash my 
+        passwords. If you are doing this for real, use the passHashTo function 
+        below.
+        ~BlueBaritone21
+        */
+        if(hash == localStorage.passHash){
+            box.value =  "";
+            $("login-screen").style.display = "none";
+            $("activity-button").style.display = "block";
+            $("activity-bar").style.backgroundColor=colour("dark5");
+        }
+    });
+}
 
+function setPassTo(pass){
+    passHashTo(pass,function(h){localStorage.passHash=h})
 }
 
 function passHashTo(msg,f){
@@ -333,9 +337,12 @@ function makeAlert(text,level="success"){
 }*/
 
 function lock(){
-    $("login-screen").style.display = "block";
-    $("activity-button").style.display = "none";
-    $("activity-bar").style.backgroundColor = colour("dark4");
+    if(typeof localStorage.passHash != "undefined"){
+        $("login-screen").style.display = "block";
+        $("username-login").innerText = localStorage.username;
+        $("activity-button").style.display = "none";
+        $("activity-bar").style.backgroundColor = colour("dark4");
+    }
 }
 
 document.addEventListener("visibilitychange", () => {
