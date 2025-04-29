@@ -1,17 +1,15 @@
 //wm.js: Window Manager and API definitions
 
-
 function validatePassword(){
     var box = $("password-box");
     passHashTo(box.value,function(hash){ 
         /*
         If you are here looking for a secure login manager, you won't find it.
         This WHOLE SCREEN can get deleted or hidden by a few keystrokes on the 
-        client's computer, and the rest of the desktop is still visible below it. 
-        If you want to make a proper login, don't use a plain text password. I 
-        just figured, since this is insecure anyways, why not just NOT hash my 
-        passwords. If you are doing this for real, use the passHashTo function 
-        below.
+        client's computer, and the rest of the desktop is still visible below it.
+        Plus, ANY PROGRAM can change or remove your password! (Though, it is still
+        hashed.)
+        YOU HAVE BEEN WARNED!
         ~BlueBaritone21
         */
         if(hash == localStorage.passwordHash){
@@ -27,12 +25,12 @@ function removeLogin(){
     localStorage.passwordHash = "";
 }
 
-function userSetupGUI(){
+function addLogin(){
     var usernameBox = UIelmnt("input");
     usernameBox.type = "text";
     var passwordBox = UIelmnt("input");
     passwordBox.type = "password";
-    var win = confirm("Enter the details.",function(){setUserDetails(usernameBox.value,passwordBox.value);});
+    var win = confirm("Enter your new username & password",function(){setUserDetails(usernameBox.value,passwordBox.value);});
     win.appendChild(UIelmnt("br"));
     win.appendChild(usernameBox);
     win.appendChild(UIelmnt("br"));
