@@ -1,5 +1,23 @@
 //wm.js: Window Manager and API definitions
 
+
+// login manager
+
+function lock(){
+    if(localStorage.passwordHash){
+        $("login-screen").style.display = "block";
+        $("username-login").innerText = localStorage.username;
+        $("activity-button").style.display = "none";
+        $("activity-bar").style.backgroundColor = colour("dark4");
+    }
+}
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        lock();
+    }
+});
+
 function validatePassword(){
     var box = $("password-box");
     passHashTo(box.value,function(hash){ 
@@ -49,6 +67,9 @@ function passHashTo(msg,f){
     window.crypto.subtle.digest("SHA-256", (new TextEncoder).encode(msg)).then(function(h){f(decoder.decode(h))});
 }
 
+
+// END login manager
+
 var gensym = 0;
 var activities = false;
 
@@ -79,23 +100,8 @@ function debug(){
     }
 }
 
-function registerApp(icon, openfunction ,titleText) {
-    var taskbar = $("taskbar");
-    var button = document.createElement("button");
-    button.classList.add("app-button");
-    button.onclick = function(){try{openfunction()}catch(e){error(e)}};
-    var image = document.createElement("img");
-    image.src = icon;
-    image.style.height = "70px";
-    image.style.width = "70px";
-    image.title = titleText;
-    button.appendChild(image);
-    taskbar.appendChild(button);
-}
-
 //Functions for the quick-settings
 quicksettings = false;
-
 
 function toggleQuicksettings(){
     if(!quicksettings){
@@ -120,23 +126,7 @@ function toggleFullscreen(){
     }
 }
 
-function makeWindow(wdth,hght,contents,onClose=function(){}){
-    gensym++;
-    var currentGensym=gensym;
-    var clone = $("window").cloneNode(true);
-    clone.id = "window"+gensym;
-    clone.querySelector("#windowheader").id = "window"+gensym+"header";
-    document.getElementsByTagName("desktop")[0].appendChild(clone);
-    clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove();onClose()});
-    dragElement(clone);
-    clone.style.width = wdth+"px";
-    clone.style.height= hght+"px";
-    clone.appendChild(contents);
-    clone.style.zIndex = lastheight++;
-    return clone;
-}
 var lastheight = 0;
-
 
 function dragElement(elmnt) {
   var deltaX = 0, deltaY = 0, X = 0, Y = 0;
@@ -173,6 +163,7 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
 function online(){
     var wifi_button = $("network-button");
     wifi_button.src = getIcon("radiowaves-1");
@@ -188,6 +179,10 @@ window.addEventListener("offline",function(e){
     wifi_button.classList.add("white-icon");
     wifi_button.title="not connected";
 })
+
+window.onbeforeunload = function(e) {
+    e.preventDefault();
+}
 
 window.onload = function() {
     online();
@@ -351,25 +346,6 @@ function makeAlert(text,level="success"){
     return win;
 }
 
-/*window.onbeforeunload = function(e) {
-    e.preventDefault();    
-}*/
-
-function lock(){
-    if(localStorage.passwordHash){
-        $("login-screen").style.display = "block";
-        $("username-login").innerText = localStorage.username;
-        $("activity-button").style.display = "none";
-        $("activity-bar").style.backgroundColor = colour("dark4");
-    }
-}
-
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        lock();
-    }
-});
-
 function colour(clr){
     return "var(--"+clr+")";
 }
@@ -377,7 +353,6 @@ function colour(clr){
 function getIcon(name){
     return "symbolic/"+name+"-symbolic.svg";
 }
-
 
 error = function(text){makeAlert(text,"destructive")};
 console.error = error;
@@ -400,4 +375,34 @@ function makeWebviewWindow(w,h,url){
     iframe.style.border=`none`;
     iframe.allowFullscreen = "allow";
     makeWindow(w,h,iframe);
+}
+
+function makeWindow(wdth,hght,contents,onClose=function(){}){
+    gensym++;
+    var currentGensym=gensym;
+    var clone = $("window").cloneNode(true);
+    clone.id = "window"+gensym;
+    clone.querySelector("#windowheader").id = "window"+gensym+"header";
+    document.getElementsByTagName("desktop")[0].appendChild(clone);
+    clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove();onClose()});
+    dragElement(clone);
+    clone.style.width = wdth+"px";
+    clone.style.height= hght+"px";
+    clone.appendChild(contents);
+    clone.style.zIndex = lastheight++;
+    return clone;
+}
+
+function registerApp(icon, openfunction ,titleText) {
+    var taskbar = $("taskbar");
+    var button = document.createElement("button");
+    button.classList.add("app-button");
+    button.onclick = function(){try{openfunction()}catch(e){error(e)}};
+    var image = document.createElement("img");
+    image.src = icon;
+    image.style.height = "70px";
+    image.style.width = "70px";
+    image.title = titleText;
+    button.appendChild(image);
+    taskbar.appendChild(button);
 }
