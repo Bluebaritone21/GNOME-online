@@ -1,372 +1,411 @@
 @import "colour.css";
 
-
 /*fonts*/
 @font-face {
-    font-family: AdwaitaMono;
-    src: url('AdwaitaMono.woff') format('woff'), 
+  font-family: AdwaitaMono;
+  src: url("AdwaitaMono.woff") format("woff");
 }
 
 @font-face {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url("InterVariable.woff2") format("woff2");
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("InterVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("InterVariable-Italic.woff2") format("woff2");
+}
+
+@font-feature-values InterVariable {
+  @character-variant {
+    cv01: 1;
+    cv02: 2;
+    cv03: 3;
+    cv04: 4;
+    cv05: 5;
+    cv06: 6;
+    cv07: 7;
+    cv08: 8;
+    cv09: 9;
+    cv10: 10;
+    cv11: 11;
+    cv12: 12;
+    cv13: 13;
+    alt-1: 1; /* Alternate one */
+    alt-3: 9; /* Flat-top three */
+    open-4: 2; /* Open four */
+    open-6: 3; /* Open six */
+    open-9: 4; /* Open nine */
+    lc-l-with-tail: 5; /* Lower-case L with tail */
+    simplified-u: 6; /* Simplified u */
+    alt-double-s: 7; /* Alternate German double s */
+    uc-i-with-serif: 8; /* Upper-case i with serif */
+    uc-g-with-spur: 10; /* Capital G with spur */
+    single-story-a: 11; /* Single-story a */
+    compact-lc-f: 12; /* Compact f */
+    compact-lc-t: 13; /* Compact t */
   }
-  @font-face {
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url("InterVariable-Italic.woff2") format("woff2");
+  @styleset {
+    ss01: 1;
+    ss02: 2;
+    ss03: 3;
+    ss04: 4;
+    ss05: 5;
+    ss06: 6;
+    ss07: 7;
+    ss08: 8;
+    open-digits: 1; /* Open digits */
+    disambiguation: 2; /* Disambiguation (with zero) */
+    disambiguation-except-zero: 4; /* Disambiguation (no zero) */
+    round-quotes-and-commas: 3; /* Round quotes &amp; commas */
+    square-punctuation: 7; /* Square punctuation */
+    square-quotes: 8; /* Square quotes */
+    circled-characters: 5; /* Circled characters */
+    squared-characters: 6; /* Squared characters */
   }
-  
-  @font-feature-values InterVariable {
-      @character-variant {
-          cv01: 1; cv02: 2; cv03: 3; cv04: 4; cv05: 5; cv06: 6; cv07: 7; cv08: 8;
-          cv09: 9; cv10: 10; cv11: 11; cv12: 12; cv13: 13;
-          alt-1:            1; /* Alternate one */
-          alt-3:            9; /* Flat-top three */
-          open-4:           2; /* Open four */
-          open-6:           3; /* Open six */
-          open-9:           4; /* Open nine */
-          lc-l-with-tail:   5; /* Lower-case L with tail */
-          simplified-u:     6; /* Simplified u */
-          alt-double-s:     7; /* Alternate German double s */
-          uc-i-with-serif:  8; /* Upper-case i with serif */
-          uc-g-with-spur:  10; /* Capital G with spur */
-          single-story-a:  11; /* Single-story a */
-          compact-lc-f:    12; /* Compact f */
-          compact-lc-t:    13; /* Compact t */
-      }
-      @styleset {
-          ss01: 1; ss02: 2; ss03: 3; ss04: 4; ss05: 5; ss06: 6; ss07: 7; ss08: 8;
-          open-digits: 1;                /* Open digits */
-          disambiguation: 2;             /* Disambiguation (with zero) */
-          disambiguation-except-zero: 4; /* Disambiguation (no zero) */
-          round-quotes-and-commas: 3;    /* Round quotes &amp; commas */
-          square-punctuation: 7;         /* Square punctuation */
-          square-quotes: 8;              /* Square quotes */
-          circled-characters: 5;         /* Circled characters */
-          squared-characters: 6;         /* Squared characters */
-      }
-  }
-  
- :root {
-    /* default Inter settings */
-    cursor: url("../cursors/default.png"), default;
-    font-family: "Inter", sans-serif;
-    font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
-  }
-
-hidden{
-    display: none;
-}
-#quicksettings{
-    display: none;
-    opacity: 0;
-    border:0;
-    border-radius:20px;
-    background-color: var(--dark4);
-    position: absolute;
-    top: 35px;
-    right: 5px;
-    padding: 20px;
-    transition: opacity 0.2s ease-in-out;
-    box-shadow:0 0 5px rgba(0,0,0,0.4);
-    z-index: 99999;
 }
 
-vr{
-    box-sizing: border-box;
-    height: 100%;
-    top: -5px;
-    border-left:2px ridge rgba(0,0,0,0.2);
+:root {
+  /* default Inter settings */
+  cursor: url("../cursors/default.png"), default;
+  font-family: "Inter", sans-serif;
+  font-feature-settings: "liga" 1, "calt" 1, "cv05" 1; /* Inter features */
 }
 
-#quicksettings table tr td{
-    width:50%
+hidden {
+  display: none;
+}
+#quicksettings {
+  display: none;
+  opacity: 0;
+  border: 0;
+  border-radius: 20px;
+  background-color: var(--dark4);
+  position: absolute;
+  top: 35px;
+  right: 5px;
+  padding: 20px;
+  transition: opacity 0.2s ease-in-out;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  z-index: 99999;
 }
 
-#quicksettings table tr td button{
-    text-align: left;
-    display:inline-block;
-    box-sizing: border-box;
-    margin:5px;
-    height:40px;
-    border-radius: 40px;
-    width:150px;
-    overflow:hidden;
-    font-size: medium;
-    font-weight: bold;
+vr {
+  box-sizing: border-box;
+  height: 100%;
+  top: -5px;
+  border-left: 2px ridge rgba(0, 0, 0, 0.2);
 }
 
-
-.white-icon{
-    filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
-}
-.close{
-    border-radius:100%;
-    width:25px;
-    height:25px;
-    background-color:rgba(124,124,124,0.5);
-    border:none;
-    position:absolute;
-    top:5px;
-    right:5px;
-    font-size: 15pt;
-}
-body{
-    margin: 0;
-    background-color: var(--dark4);
-    overflow: hidden;
-    color: var(--text);
-}
-li{
-    list-style-type:none;
-    text-align: left;
-    border-radius: 10px;
-    line-height: 30px;
-}
-span{
-    display: table-cell;
-    vertical-align: middle;
-}
-li:hover{
-    background-color: rgba(0, 0, 0, 0.1);
-    cursor: url("../cursors/pointer.png") 4 0, pointer;
-}
-body, h1, h2, h3, h4, h5, h6, p, button, input, div, ul,.window,li {
-    font-family: "Inter", sans-serif;
-    font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
-}
-h1, h2, h3, h4, h5, h6, p, textarea, input{
-    cursor: url("../cursors/text.png") 8 8, text;
+#quicksettings table tr td {
+  width: 50%;
 }
 
+#quicksettings table tr td button {
+  text-align: left;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 5px;
+  height: 40px;
+  border-radius: 40px;
+  width: 150px;
+  overflow: hidden;
+  font-size: medium;
+  font-weight: bold;
+}
 
+.white-icon {
+  filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%)
+    hue-rotate(48deg) brightness(109%) contrast(100%);
+}
+.close {
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(124, 124, 124, 0.5);
+  border: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 15pt;
+}
+body {
+  margin: 0;
+  background-color: var(--dark4);
+  overflow: hidden;
+  color: var(--text);
+}
+li {
+  list-style-type: none;
+  text-align: left;
+  border-radius: 10px;
+  line-height: 30px;
+}
+span {
+  display: table-cell;
+  vertical-align: middle;
+}
+li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: url("../cursors/pointer.png") 4 0, pointer;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button,
+input,
+div,
+ul,
+.window,
+li {
+  font-family: "Inter", sans-serif;
+  font-feature-settings: "liga" 1, "calt" 1, "cv05" 1; /* Inter features */
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+textarea,
+input {
+  cursor: url("../cursors/text.png") 8 8, text;
+}
 
-desktop{
-    width:100vw;
-    height:100vh;
-    background-image: url("../wall-lt.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
-    position:absolute;
-    top:0px;
-    left:0px;
-    margin: 0px;
-    padding: 0px;
-    transition: scale 0.25s ease-in-out,border-radius 0.25s ease-in-out;
-    scale:1.0;
-    z-index:0;
-    overflow:hidden;
+desktop {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../wall-lt.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  transition: scale 0.25s ease-in-out, border-radius 0.25s ease-in-out;
+  scale: 1;
+  z-index: 0;
+  overflow: hidden;
 }
-desktop.small{
-    scale:0.7;
-    border-radius: 30px;
+desktop.small {
+  scale: 0.7;
+  border-radius: 30px;
 }
-#activity-button{
-    background-color: rgba(0,0,0,0);
-    border-radius:10px;
-    border:0;
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-    color: var(--light1);
-    position: absolute;
-    top:5px;
-    left:5px;
-    z-index: 100001;
+#activity-button {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  border: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  color: var(--light1);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 100001;
 }
-#activity-button:hover{
-    background-color: var(--dark3);
+#activity-button:hover {
+  background-color: var(--dark3);
 }
-#quicksettings-button{
-    position: absolute;
-    top:5px;
-    right:5px;
-    z-index: 100002;
-    background-color: rgba(0,0,0,0);
-    border-radius: 10px;
-    border:0;
-
+#quicksettings-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 100002;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  border: 0;
 }
-#quicksettings-button:hover{
-    background-color: var(--dark3);
+#quicksettings-button:hover {
+  background-color: var(--dark3);
 }
-.taskbar{
-    background-color: var(--dark3);
-    border-radius: 20px;
-    border: 0;
-    font-weight: bold;
-    color: var(--light1);
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+.taskbar {
+  background-color: var(--dark3);
+  border-radius: 20px;
+  border: 0;
+  font-weight: bold;
+  color: var(--light1);
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.app-button{
-    background:none;
-    border:none;
+.app-button {
+  background: none;
+  border: none;
 }
-.app-button:hover{
-    background:none;
-    border:none;
+.app-button:hover {
+  background: none;
+  border: none;
 }
-.activity-bar{
-    transition: background-color 0.25s ease-in-out;
-    position: fixed;
-    background-color: var(--dark5);
-    color: var(--light1);
-    width: 100vw;
-    height: 30px;
-    line-height: 30px;
-    font-size: 12pt;
-    text-align: center;
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-    margin: 0;
-    z-index: 100000;
+.activity-bar {
+  transition: background-color 0.25s ease-in-out;
+  position: fixed;
+  background-color: var(--dark5);
+  color: var(--light1);
+  width: 100vw;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12pt;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  margin: 0;
+  z-index: 100000;
 }
 .window {
-    position: absolute;
-    text-align: center;
-    border-radius: 20px;
-    width:100px;
-    height:100px;
-    top:30px;
-    left:20px;
-    overflow: hidden;
-    box-shadow:0 0 5px rgba(0,0,0,0.4);
+  position: absolute;
+  text-align: center;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  top: 30px;
+  left: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
-input[type=range]{
-    appearance: none; /* Hides the slider so that custom slider can be made */
-    width: calc(100% - 35px); /* Specific width is required for Firefox. */
-    background: none;
-    transform: translateY(-5px);
-}
-
-#brightness-cover{
-    position: absolute;
-    top:0px;
-    left:0px;
-    width:100vw;
-    height:100vh;
-    pointer-events: none;
-    background-color: black;
-    opacity: 0%;
-    z-index: 10000004;
+input[type="range"] {
+  appearance: none; /* Hides the slider so that custom slider can be made */
+  width: calc(100% - 35px); /* Specific width is required for Firefox. */
+  background: none;
+  transform: translateY(-5px);
 }
 
-#login-screen{
-    position: absolute;
-    top:0px;
-    left:0px;
-    display: none;
-    z-index: 99998;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--dark4);
-    text-align: center;
-}
-#boot-cover{
-    position: absolute;
-    top:0px;
-    left:0px;
-    z-index: 100005;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--dark5);
-    text-align: center;
+#brightness-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background-color: black;
+  opacity: 0%;
+  z-index: 10000004;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 5px;
-    cursor: url("../cursors/pointer.png") 4 0, pointer;
-    background: var(--blue4);
-    border-radius: 30px;
-    border-radius: 1.3px;
-  }
-
-input[type=range]::-webkit-slider-thumb {
-    appearance: none;
-    height: 16px;
-    width: 16px;
-    border-radius: 30px;
-    background: var(--light3);
-    cursor: url("../cursors/pointer.png") 4 0, pointer;
-    margin-top: -5px;
+#login-screen {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: none;
+  z-index: 99998;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark4);
+  text-align: center;
 }
-input[type=text], input[type=password]{
-    background-color: var(--light3);
-    font-family: "Inter", sans-serif;
-    border:0;
-    border-radius:10px;
-}
-input[type=text]:hover, input[type=password]{
-    background-color: var(--light1);
-    border:1px var(dark1);
+#boot-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 100005;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark5);
+  text-align: center;
 }
 
-.circle{
-    border-radius: 100%;
-    background-color: var(--light4);
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: url("../cursors/pointer.png") 4 0, pointer;
+  background: var(--blue4);
+  border-radius: 30px;
+  border-radius: 1.3px;
 }
 
-button{
-    background-color: var(--light1);
-    border:0;
-    border-radius:10px;
-    cursor: url("../cursors/pointer.png") 4 0, pointer;
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 30px;
+  background: var(--light3);
+  cursor: url("../cursors/pointer.png") 4 0, pointer;
+  margin-top: -5px;
 }
-button:hover.bg-success{
-    background-color: #1b8553;
-    color: var(--light1);
-  }
-.bg-success img{
-    filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
+input[type="text"],
+input[type="password"] {
+  background-color: var(--light3);
+  font-family: "Inter", sans-serif;
+  border: 0;
+  border-radius: 10px;
 }
-button:hover{
-    background-color: var(--light4);
-    border:1px var(--dark1);
-    cursor: url("../cursors/pointer.png") 4 0, pointer;
+input[type="text"]:hover,
+input[type="password"] {
+  background-color: var(--light1);
+  border: 1px var(dark1);
 }
-textarea:focus{
-    border:none;
-    background-color: none;
+
+.circle {
+  border-radius: 100%;
+  background-color: var(--light4);
 }
-textarea, pre{
-    border:none;
-    font-family: "AdwaitaMono", sans-serif;
-    font-size: 10pt;
+
+button {
+  background-color: var(--light1);
+  border: 0;
+  border-radius: 10px;
+  cursor: url("../cursors/pointer.png") 4 0, pointer;
 }
-.window:hover{
-    resize: both;
+button:hover.bg-success {
+  background-color: #1b8553;
+  color: var(--light1);
 }
-.window:active{
-    resize: both;
+.bg-success img {
+  filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%)
+    hue-rotate(48deg) brightness(109%) contrast(100%);
+}
+button:hover {
+  background-color: var(--light4);
+  border: 1px var(--dark1);
+  cursor: url("../cursors/pointer.png") 4 0, pointer;
+}
+textarea:focus {
+  border: none;
+  background-color: none;
+}
+textarea,
+pre {
+  border: none;
+  font-family: "AdwaitaMono", sans-serif;
+  font-size: 10pt;
+}
+.window:hover {
+  resize: both;
+}
+.window:active {
+  resize: both;
 }
 .header {
-    padding: 20px;
-    cursor: url("../cursors/all-scroll.png") 8 8, move;
-    background-color: none;
+  padding: 20px;
+  cursor: url("../cursors/all-scroll.png") 8 8, move;
+  background-color: none;
 }
-.shrink{
-    transform:scale(0.5);
+.shrink {
+  transform: scale(0.5);
 }
-.bg-accent:hover{
-    background-color: var(--blue2);
-}
-
-.bg-dark:hover{
-    background-color: var(--dark2);
+.bg-accent:hover {
+  background-color: var(--blue2);
 }
 
-button.clear-button{
-    background-color: #fafafa;
+.bg-dark:hover {
+  background-color: var(--dark2);
 }
-button.clear-button:hover{
-    background-color: var(--light3);
+
+button.clear-button {
+  background-color: #fafafa;
+}
+button.clear-button:hover {
+  background-color: var(--light3);
 }
