@@ -263,7 +263,7 @@ input[type=range]{
     position: absolute;
     top:0px;
     left:0px;
-    display: block;
+    display: none;
     z-index: 99998;
     width: 100vw;
     height: 100vh;
