@@ -28,7 +28,7 @@ function epiphany(url="about:moogle.html",useCORS=false){
     urlBar.style.right=`130px`;
     function urlise(txt){
         let val = txt;
-        if(!val.includes("http://") && !val.includes("https://") && !val.includes("about:") && !val.includes("blob:")){val = "http://"+val}
+        if(!val.includes("http://") && !val.includes("https://") && !val.includes("about:") && !val.includes("blob:")){val = "https://"+val}
         if(val.includes("about:")){val = val.replace("about:","./")}
         return val;   
     }
