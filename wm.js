@@ -14,7 +14,7 @@ function validatePassword(){
         below.
         ~BlueBaritone21
         */
-        if(hash == localStorage.passHash){
+        if(hash == localStorage.passwordHash){
             box.value =  "";
             $("login-screen").style.display = "none";
             $("activity-button").style.display = "block";
@@ -23,8 +23,21 @@ function validatePassword(){
     });
 }
 
-function setPassTo(pass){
-    passHashTo(pass,function(h){localStorage.passHash=h})
+function userSetupGUI(){
+    var usernameBox = UIelmnt("input");
+    usernameBox.type = "text";
+    var passwordBox = UIelmnt("input");
+    passwordBox.type = "password";
+    var win = confirm("Enter the details.",function(){setUserDetails(usernameBox.value,passwordBox.value);});
+    win.appendChild(UIelmnt("br"));
+    win.appendChild(usernameBox);
+    win.appendChild(UIelmnt("br"));
+    win.appendChild(passwordBox);
+}
+
+function setUserDetails(username,pass){
+    localStorage.username = username
+    passHashTo(pass,function(h){localStorage.passwordHash=h})
 }
 
 function passHashTo(msg,f){
@@ -287,6 +300,7 @@ function confirm(text, callback,level="success"){
     win.appendChild(buttonCancel);
     win.appendChild(buttonOk);
     win.style.textAlign = "center"; // 'cuz CSS is dumb and can't spell centre.
+    return win;
 }
 
 function rclickMenu(elmnt,options){
@@ -330,6 +344,7 @@ function makeAlert(text,level="success"){
     win.querySelector(".close").remove();
     win.appendChild(button);
     win.style.textAlign = "center"; // 'cuz CSS is dumb and can't spell centre.
+    return win;
 }
 
 /*window.onbeforeunload = function(e) {
