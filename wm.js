@@ -352,7 +352,7 @@ function makeAlert(text,level="success"){
 }*/
 
 function lock(){
-    if(typeof localStorage.passHash != "undefined"){
+    if(typeof localStorage.passwordHash != "undefined"){
         $("login-screen").style.display = "block";
         $("username-login").innerText = localStorage.username;
         $("activity-button").style.display = "none";
