@@ -23,6 +23,10 @@ function validatePassword(){
     });
 }
 
+function removeLogin(){
+    localStorage.passwordHash = "";
+}
+
 function userSetupGUI(){
     var usernameBox = UIelmnt("input");
     usernameBox.type = "text";
@@ -352,7 +356,7 @@ function makeAlert(text,level="success"){
 }*/
 
 function lock(){
-    if(typeof localStorage.passwordHash != "undefined"){
+    if(localStorage.passwordHash){
         $("login-screen").style.display = "block";
         $("username-login").innerText = localStorage.username;
         $("activity-button").style.display = "none";
