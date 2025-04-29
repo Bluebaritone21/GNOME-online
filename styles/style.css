@@ -270,6 +270,17 @@ input[type=range]{
     background-color: var(--dark4);
     text-align: center;
 }
+#boot-cover{
+    position: absolute;
+    top:0px;
+    left:0px;
+    display: none;
+    z-index: 100000;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--dark5);
+    text-align: center;
+}
 
 input[type=range]::-webkit-slider-runnable-track {
     width: 100%;

@@ -212,6 +212,7 @@ function time(){
     }
     var hour = d.getHours();
     document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + hour + ":" + min
+    $("boot-cover").style.display = "none";
 }
 
 time()
