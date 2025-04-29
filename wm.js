@@ -221,10 +221,9 @@ window.onload = function() {
         time();
         setInterval(time, 1000);
 
-        // Add a delay before hiding the boot screen
         setTimeout(function() {
             $("boot-cover").style.display = "none";
-        }, 1000); // Adjust the delay (in milliseconds) as needed
+        }, 5000);
     }
 };
 
