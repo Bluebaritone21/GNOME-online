@@ -212,11 +212,11 @@ function time(){
     }
     var hour = d.getHours();
     document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + hour + ":" + min
-    $("boot-cover").style.display = "none";
 }
 
 time()
 setInterval(time,1000);
+$("boot-cover").style.display = "none";
 }}
 
 d = document;
