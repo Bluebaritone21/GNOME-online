@@ -23,6 +23,7 @@ function validatePassword(){
 
 function removeLogin(){
     localStorage.passwordHash = "";
+    return "Login removed.";
 }
 
 function addLogin(){
@@ -35,6 +36,7 @@ function addLogin(){
     win.appendChild(usernameBox);
     win.appendChild(UIelmnt("br"));
     win.appendChild(passwordBox);
+    return "Please use the newly spawned window to set your username and password.";
 }
 
 function setUserDetails(username,pass){
@@ -139,7 +141,7 @@ var lastheight = 0;
 function dragElement(elmnt) {
   var deltaX = 0, deltaY = 0, X = 0, Y = 0;
   $(elmnt.id + "header").onmousedown = dragMouseDown;
-  $(elmnt.id + "header").addEventListener("dbclick",function(){repos(elmnt,0,30);resize(elmnt,"100%","calc(100% - 30px)");})
+  $(elmnt.id + "header").ondbclick = function(){repos(elmnt,0,30);resize(elmnt,"100%","calc(100% - 30px)");};
   
   function dragMouseDown(e) {
     elmnt.style.zIndex=lastheight;
