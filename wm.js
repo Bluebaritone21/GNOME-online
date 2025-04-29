@@ -220,10 +220,8 @@ window.onload = function() {
 
         time();
         setInterval(time, 1000);
-
-        setTimeout(function() {
-            $("boot-cover").style.display = "none";
-        }, 5000);
+        
+        $("boot-cover").style.display = "none";
     }
 };
 

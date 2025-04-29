@@ -274,7 +274,6 @@ input[type=range]{
     position: absolute;
     top:0px;
     left:0px;
-    display: none;
     z-index: 100005;
     width: 100vw;
     height: 100vh;
