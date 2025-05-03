@@ -8,8 +8,8 @@ function texteditor(file=null){
     }
     var ttl="Untitled Document";
     var textbox=UIelmnt(`textarea`);
-    textbox.spellcheck = "false";
-    rclickMenu(textbox,[{l:"Toggle spellcheck",f:function(){textbox.spellcheck = textbox.spellcheck=="true"?"false":"true";}}])
+    textbox.spellcheck = false;
+    rclickMenu(textbox, [{l: "Toggle spellcheck", f: function () {textbox.spellcheck = !textbox.spellcheck;}}]);
     repos(textbox,0,43);
     resize(textbox,'calc(100% - 5px)','calc(100%  - 48px)');
     textbox.style.resize='none';
