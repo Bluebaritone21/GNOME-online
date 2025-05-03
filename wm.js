@@ -265,7 +265,7 @@ function $(id){
 
 function label(text,type="p",cls=""){
     var lbl = UIelmnt(type);
-    lbl.innerText = text;
+    lbl.innerHTML = text;
     if(cls){lbl.classList.add(cls);}
     return lbl;
 }
