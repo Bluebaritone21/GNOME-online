@@ -6,7 +6,7 @@ function calculator(){
     var win = makeWindow(360,490,display);
     var hist = [];
     var histDisplay = UIelmnt("div");
-    var buttons = [[`<img src="${getIcon("entry-clear")}">`,"(",")","mod","tau"],
+    var buttons = [[`<img src="${getIcon("entry-clear")}">`,"(",")","mod","&tau;"],
                    ["7","8","9","&div;","&radic;"],
                    ["4","5","6","&times;","<i>x</i>&#178;"],
                    ["1","2","3","-","="],
@@ -20,7 +20,7 @@ function calculator(){
         var row = UIelmnt("tr");
         for(var cellI = 0; cellI<buttons[rowI].length; cellI++){
             var cell = UIelmnt("td");
-            var button = label(buttons[rowI][cellI],"button");
+            let button = label(buttons[rowI][cellI],"button");
             resize(button, "100%", "100%");
             button.style.display = "flex";
             button.style.alignItems = "center";
@@ -29,13 +29,20 @@ function calculator(){
                 cell.setAttribute("rowspan","2");
                 button.classList.add("bg-accent");
             }
+            if([..."0123456789","(",")","mod","&tau;","&div;","&times;","-","+","&radic;"].includes(buttons[rowI][cellI])){
+                let txt = buttons[rowI][cellI];
+                button.onclick = function(){display.innerHTML = display.innerHTML+txt};
+            }else if(`<img src="${getIcon("entry-clear")}">`==buttons[rowI][cellI]){
+                button.onclick = function(){display.innerHTML = display.innerHTML.slice(0, -1) || "0";};
+            }else if("<i>x</i>&#178;"==buttons[rowI][cellI]){
+                button.onclick = function(){display.innerHTML = display.innerHTML+"&#178;"}
+            }
             cell.appendChild(button);
             row.appendChild(cell);
         }
         buttonTable.appendChild(row);
     }
     win.appendChild(buttonTable);
-    
 }
 
 registerApp("apps/icons/calculator.svg",calculator,"Calculator");
