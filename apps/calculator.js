@@ -14,8 +14,8 @@ function calculator(){
     function evalMaths(maths){
     }
     var buttonTable = UIelmnt("table");
-    resize(buttonTable,"100%","calc(100% - 85px)");
-    repos(buttonTable,5,85);
+    resize(buttonTable,"calc(100% - 10px)","calc(100% - 95px)");
+    repos(buttonTable,5,95);
     for(var rowI = 0; rowI<buttons.length;rowI++){
         var row = UIelmnt("tr");
         for(var cellI = 0; cellI<buttons[rowI].length; cellI++){
