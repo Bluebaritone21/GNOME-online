@@ -8,7 +8,7 @@ function calculator(){
     var histDisplay = UIelmnt("div");
     var buttons = [[`<img src="${getIcon("entry-clear")}">`,"(",")","mod","tau"],
                    ["7","8","9","&div;","&radic;"],
-                   ["4","5","6","&times;","<i>x</i><sup>2</sup>"],
+                   ["4","5","6","&times;","<i>x</i>&#178;"],
                    ["1","2","3","-","="],
                    ["0",".","%","+"]];
     function evalMaths(maths){
