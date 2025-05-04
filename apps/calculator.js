@@ -6,10 +6,10 @@ function calculator(){
     var win = makeWindow(360,490,display);
     var hist = [];
     var histDisplay = UIelmnt("div");
-    var buttons = [["&#9003;","(",")","mod","tau"],
+    var buttons = [[`<img src="${getIcon("entry-clear")}">`,"(",")","mod","tau"],
                    ["7","8","9","&div;","&radic;"],
-                   ["4","5","6","&times;","&#120165;&#178;"],
-                   ["1","2","3","-",""],
+                   ["4","5","6","&times;","<i>x</i><sup>2</sup>"],
+                   ["1","2","3","-","="],
                    ["0",".","%","+",""]];
     function evalMaths(maths){
     }
@@ -18,7 +18,12 @@ function calculator(){
         var row = UIelmnt("tr");
         for(var cellI = 0; cellI<buttons[rowI].length; cellI++){
             var cell = UIelmnt("td");
-            cell.appendChild(label(buttons[rowI][cellI],"button"));
+            var button = label(buttons[rowI][cellI],"button");
+            if(buttons[rowI][cellI]=="="){
+                cell.rowspan="2";
+                button.classList.add("bg-accent");
+            }
+            cell.appendChild(button);
             row.appendChild(cell);
         }
         buttonTable.appendChild(row);
