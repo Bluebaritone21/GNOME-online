@@ -20,6 +20,8 @@ function calculator(){
             var cell = UIelmnt("td");
             var button = label(buttons[rowI][cellI],"button");
             resize(button, "100%", "100%");
+            button.style.display = "block";
+            button.style.boxSizing = "border-box";
             if(buttons[rowI][cellI]=="="){
                 cell.setAttribute("rowspan","2");
                 button.classList.add("bg-accent");
