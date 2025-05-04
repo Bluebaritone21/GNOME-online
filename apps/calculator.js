@@ -10,7 +10,7 @@ function calculator(){
                    ["7","8","9","&div;","&radic;"],
                    ["4","5","6","&times;","<i>x</i><sup>2</sup>"],
                    ["1","2","3","-","="],
-                   ["0",".","%","+",""]];
+                   ["0",".","%","+"]];
     function evalMaths(maths){
     }
     var buttonTable = UIelmnt("table");
