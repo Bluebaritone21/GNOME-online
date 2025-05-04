@@ -48,6 +48,11 @@
     inherits: true;
     initial-value: #3584e4;
 }
+@property --accent2{
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #62a0ea;
+}
 @property --text {
   syntax: "<color>";
   inherits: false;

@@ -199,6 +199,7 @@ window.onbeforeunload = function(e) {
 
 function setAccent(clr){
     document.documentElement.style.setProperty("--accent",colour(clr+"3"));
+    document.documentElement.style.setProperty("--accent2",colour(clr+"2"));
 }
 
 window.onload = function() {

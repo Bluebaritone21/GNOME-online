@@ -360,7 +360,8 @@ textarea, pre{
     transform:scale(0.5);
 }
 button.bg-accent:hover{
-    filter: brightness(1.2);
+    /*filter: brightness(1.2);*/
+    background-color: --accent2;
 }
 
 .bg-dark:hover{
