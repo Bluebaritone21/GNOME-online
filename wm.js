@@ -184,6 +184,10 @@ window.onbeforeunload = function(e) {
     e.preventDefault();
 }
 
+function setAccent(clr){
+    document.documentElement.style.setProperty("--accent",colour(clr+"3"));
+}
+
 window.onload = function() {
     online();
     try {
