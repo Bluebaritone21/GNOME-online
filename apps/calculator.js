@@ -19,6 +19,7 @@ function calculator(){
         for(var cellI = 0; cellI<buttons[rowI].length; cellI++){
             var cell = UIelmnt("td");
             var button = label(buttons[rowI][cellI],"button");
+            resize(button, "100%", "100%");
             if(buttons[rowI][cellI]=="="){
                 cell.rowspan="2";
                 button.classList.add("bg-accent");
