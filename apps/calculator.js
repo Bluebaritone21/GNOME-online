@@ -21,7 +21,7 @@ function calculator(){
             var button = label(buttons[rowI][cellI],"button");
             resize(button, "100%", "100%");
             if(buttons[rowI][cellI]=="="){
-                cell.rowspan="2";
+                cell.setAttribute("rowspan","2");
                 button.classList.add("bg-accent");
             }
             cell.appendChild(button);
