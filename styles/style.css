@@ -359,8 +359,8 @@ textarea, pre{
 .shrink{
     transform:scale(0.5);
 }
-.bg-accent:hover{
-    background-color: var(--blue2);
+button.bg-accent:hover{
+    filter: brightness(1.2);
 }
 
 .bg-dark:hover{
