@@ -133,6 +133,9 @@ span{
     display: table-cell;
     vertical-align: middle;
 }
+table{
+    table-layout: fixed;
+}
 li:hover{
     background-color: rgba(0, 0, 0, 0.1);
     cursor: url("../cursors/pointer.png") 4 0, pointer;
