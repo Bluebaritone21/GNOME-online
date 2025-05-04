@@ -1,8 +1,8 @@
 .fg-accent{
-  color: var(--blue4);
+  color: var(--accent);
 }
 .bg-accent{
-  background-color: var(--blue3);
+  background-color: var(--accent);
   color: white;
 }
 .fg-destructive{
@@ -43,6 +43,11 @@
 }
 
 /*************************************************/
+@property --accent{
+    syntax: "<color>";
+    inherits: true;
+    initial-value: --blue3;
+}
 @property --text {
   syntax: "<color>";
   inherits: false;
