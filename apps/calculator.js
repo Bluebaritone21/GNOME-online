@@ -31,7 +31,7 @@ function calculator(){
             }
             if([..."0123456789","(",")","mod","&tau;","&div;","&times;","-","+","&radic;"].includes(buttons[rowI][cellI])){
                 let txt = buttons[rowI][cellI];
-                button.onclick = function(){display.innerHTML = display.innerHTML+txt};
+                button.onclick = function(){display.innerHTML = (display.innerHTML!="0")?display.innerHTML+txt:txt};
             }else if(`<img src="${getIcon("entry-clear")}">`==buttons[rowI][cellI]){
                 button.onclick = function(){display.innerHTML = display.innerHTML.slice(0, -1) || "0";};
             }else if("<i>x</i>&#178;"==buttons[rowI][cellI]){
