@@ -126,6 +126,19 @@ function toggleFullscreen(){
     }
 }
 
+function toggleDarkStyle() {
+    let isDark = document.documentElement.classList.toggle('dark-mode');
+    let darkButton = $("darkmode-button");
+    
+    if (isDark) {
+        darkButton.classList.remove("bg-dark");
+        darkButton.classList.add("bg-accent");
+    } else {
+        darkButton.classList.add("bg-dark"); 
+        darkButton.classList.remove("bg-accent");
+    }
+}
+
 var lastheight = 0;
 
 function dragElement(elmnt) {

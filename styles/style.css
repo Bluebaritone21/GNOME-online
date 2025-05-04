@@ -373,3 +373,17 @@ button.clear-button{
 button.clear-button:hover{
     background-color: var(--light3);
 }
+
+.dark-mode .window {
+    background-color: var(--dark4);
+    color: var(--light1);
+}
+
+.dark-mode .window button {
+    background-color: var(--dark3);
+    color: var(--light1);
+}
+
+.dark-mode .window button:hover {
+    background-color: var(--dark2);
+}
