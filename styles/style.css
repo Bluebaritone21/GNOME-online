@@ -75,7 +75,7 @@
 }
 
 .dark-mode .window button:not([class]),
-.dark-mode .window button:not([class*=""]){
+.dark-mode .window button[class=""]{
     background-color: var(--dark3);
     color: var(--light1);
 }
@@ -85,7 +85,7 @@
 }
 
 .dark-mode .window button:not([class]):hover,
-.dark-mode .window button:not([class*=""]):hover{
+.dark-mode .window button[class=""]:hover{
     background-color: var(--dark2);
 }
 
