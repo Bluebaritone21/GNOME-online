@@ -14,20 +14,13 @@ function calculator(){
     function evalMaths(maths){
         var equation = maths;
         alert("Start: "+equation);
-        equation=equation.replaceAll("&div;", '/');
-        alert("After removing &div;: "+equation);
-        equation=equation.replaceAll("&times;", '*');
-        alert("After removing &times;: "+equation);
-        equation=equation.replaceAll("&#178;", '**2');
-        alert("After removing &#178;: "+equation);
-        equation=equation.replaceAll("radic;", 'Math.sqrt');
-        alert("After removing &radic;: "+equation);
-        equation=equation.replaceAll("&tau;", '(2 * Math.PI)');
-        alert("After removing &tau;: "+equation);
-        equation=equation.replaceAll("%",'/(100)');
-        alert("After removing %: "+equation);
+        equation=equation.replaceAll("÷", '/');
+        equation=equation.replaceAll("×", '*');
+        equation=equation.replaceAll("²", '**2');
+        equation=equation.replaceAll("√", 'Math.sqrt');
+        equation=equation.replaceAll("τ", '(2 * Math.PI)');
+        equation=equation.replaceAll("%", '/(100)');
         equation=equation.replaceAll("mod", '%');
-        alert("After removing mod: "+equation);
         try{
             display.innerText = eval(equation);
         }catch{
@@ -60,7 +53,7 @@ function calculator(){
             }else if("."==buttons[rowI][cellI]){
                 button.onclick = function(){display.innerHTML = display.innerHTML+"."};
             }else if("="==buttons[rowI][cellI]){
-                button.onclick = function(){evalMaths(display.innerHTML);};
+                button.onclick = function(){evalMaths(display.innerText);};
             }
             cell.appendChild(button);
             row.appendChild(cell);
