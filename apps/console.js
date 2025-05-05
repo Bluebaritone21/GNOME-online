@@ -22,6 +22,7 @@ function console(){
     logs.onblur = function(){cursor="";redraw()};
     window.style.overflow="scroll";
     var log='$ ';
+    redraw();
     var text='';
     function redraw(){
         logs.innerText = log + text + cursor;
@@ -41,6 +42,7 @@ function console(){
         var keyCode = e.key;
         if (keyCode == 'Enter'){
             try{
+            log = log + text;
             logText(eval(text));
             logText("$ ");
             }catch(error){
