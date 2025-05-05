@@ -14,7 +14,7 @@ function console(){
     logs.onfocus = function(){cursor="█";redraw()};
     logs.onblur = function(){cursor="";redraw()};
     window.style.overflow="scroll";
-    var log='$ ';
+    var log ='$ ';
     var text='';
     function redraw(){
         logs.innerText = log + text + cursor;
@@ -23,7 +23,6 @@ function console(){
         log="";
         redraw();
     }
-    clear();
     function logText(text){
         log = log + "\n" + text;
         redraw();
