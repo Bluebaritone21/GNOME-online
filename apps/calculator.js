@@ -13,13 +13,13 @@ function calculator(){
                    ["0",".","%","+"]];
     function evalMaths(maths){
         display.innerText = eval(maths
-            .replace(/&div;/g, '/')
-            .replace(/&times;/g, '*')
-            .replace(/&#178;/g, '**2')
+            .replace("&div;", '/')
+            .replace("&times;", '*')
+            .replace("&#178;", '**2')
             .replace("radic;", 'Math.sqrt')
             .replace("&tau;", '(2 * Math.PI)')
-            .replace("%",'/(100)*')
-            .replace(/mod/g, '%'));
+            .replace("%",'/(100)')
+            .replace("mod", '%'));
     }
     var buttonTable = UIelmnt("table");
     resize(buttonTable,"calc(100% - 10px)","calc(100% - 95px)");
