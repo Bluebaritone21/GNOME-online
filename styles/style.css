@@ -396,8 +396,8 @@ button.bg-accent:hover{
 }
 
 button.clear-button{
-    background-color: #fafafa;
+    background-color: rgba(0,0,0,0);
 }
 button.clear-button:hover{
-    background-color: var(--light3);
+    background-color: rgba(100,100,100,0.5);
 }
