@@ -12,14 +12,19 @@ function calculator(){
                    ["1","2","3","-","="],
                    ["0",".","%","+"]];
     function evalMaths(maths){
-        display.innerText = eval(maths
-            .replace("&div;", '/')
-            .replace("&times;", '*')
-            .replace("&#178;", '**2')
-            .replace("radic;", 'Math.sqrt')
-            .replace("&tau;", '(2 * Math.PI)')
-            .replace("%",'/(100)')
-            .replace("mod", '%'));
+        var equation = maths
+        .replace("&div;", '/')
+        .replace("&times;", '*')
+        .replace("&#178;", '**2')
+        .replace("radic;", 'Math.sqrt')
+        .replace("&tau;", '(2 * Math.PI)')
+        .replace("%",'/(100)')
+        .replace("mod", '%')
+        try{
+            display.innerText = eval(equation);
+        }catch(e){
+            error(e+"<br>",maths);
+        }
     }
     var buttonTable = UIelmnt("table");
     resize(buttonTable,"calc(100% - 10px)","calc(100% - 95px)");
