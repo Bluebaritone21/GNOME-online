@@ -60,6 +60,10 @@
     font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
 }
 
+.dark-mode desktop {
+    background-image: url("../wall-dk.webp");
+}
+
   .dark-mode .window {
     background-color: var(--dark4);
     color: var(--light1);
