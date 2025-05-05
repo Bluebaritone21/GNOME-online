@@ -198,8 +198,9 @@ window.onbeforeunload = function(e) {
 }
 
 function setAccent(clr){
-    document.documentElement.style.setProperty("--accent",colour(clr+"3"));
-    document.documentElement.style.setProperty("--accent2",colour(clr+"2"));
+    for(let i=1;i<=5;i++){
+        document.documentElement.style.setProperty("--accent"+i,colour(clr+i));
+    }
 }
 
 window.onload = function() {
