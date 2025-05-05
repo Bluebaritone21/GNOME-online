@@ -69,18 +69,21 @@
     color: var(--light1);
 }
 
-.dark-mode .window button {
+.dark-mode .window button:not([class]), 
+.dark-mode .window button:not([class*=""]) {
     background-color: var(--dark3);
     color: var(--light1);
 }
 
-.dark-mode .window button img {
+.dark-mode .window button img.icon{
     filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
 }
 
-.dark-mode .window button:hover {
+.dark-mode .window button:not([class]):hover,
+.dark-mode .window button:not([class*=""]):hover {
     background-color: var(--dark2);
 }
+
 
 hidden{
     display: none;

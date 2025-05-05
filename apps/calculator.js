@@ -6,7 +6,7 @@ function calculator(){
     var win = makeWindow(360,490,display);
     var hist = [];
     var histDisplay = UIelmnt("div");
-    var buttons = [[`<img src="${getIcon("entry-clear")}">`,"(",")","mod","&tau;"],
+    var buttons = [[`<img class="icon" src="${getIcon("entry-clear")}">`,"(",")","mod","&tau;"],
                    ["7","8","9","&div;","&radic;"],
                    ["4","5","6","&times;","<i>x</i>&#178;"],
                    ["1","2","3","-","="],

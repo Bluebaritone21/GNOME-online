@@ -24,6 +24,7 @@ function nautilus(dir){
     backButton.appendChild(backIcon);
     backButton.onclick = function(){if(hist.length>=1){draw(hist.pop())}else{draw(dir)}}
     win.appendChild(backButton);
+    backIcon.classList.add("icon");
     //Refresh button
     var refreshButton = UIelmnt("button");
     repos(refreshButton,240,5);
@@ -31,6 +32,7 @@ function nautilus(dir){
     var refreshIcon = UIelmnt("img");
     refreshButton.title = "Refresh List (useful after you saved a file.)";
     refreshIcon.src = getIcon("arrow-circular-top-right");
+    refreshIcon.classList.add("icon");
     refreshButton.appendChild(refreshIcon);
     win.appendChild(refreshButton);
     //Directory path display
