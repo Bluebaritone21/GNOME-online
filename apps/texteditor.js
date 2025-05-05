@@ -20,6 +20,7 @@ function texteditor(file=null){
     repos(titlebar,0,0);
     resize(titlebar,'100%',43);
     titlebar.classList.add('bg-sidebar');
+    titlebar.style.pointerEvents='none';
     win.appendChild(titlebar);
     title.innerText=ttl;
     repos(title,"25%",-5);
@@ -45,6 +46,7 @@ function texteditor(file=null){
     saveButton.style.backgroundColor=colour("light3");
     var saveIcon = UIelmnt("img");
     saveIcon.src = getIcon("floppy");
+    saveIcon.classList.add('icon');
     saveButton.appendChild(saveIcon);
     resize(saveButton,30,30);
     saveButton.onclick = function(){if(file==null){window.showSaveFilePicker().then(function(h){save(h,textbox.value);h.getFile().then(function(f){title.innerText=f.name})})}else{save(file.handle,textbox.value)}}
