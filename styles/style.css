@@ -74,7 +74,7 @@
     color: var(--light1);
 }
 
-.dark-mode button{
+.dark-mode button:not([class]){
     background-color: var(--dark3);
     color: var(--light1);
 }
@@ -83,7 +83,7 @@
     filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
 }
 
-.dark-mode button:hover{
+.dark-mode button:not([class]):hover{
     background-color: var(--dark2);
 }
 
