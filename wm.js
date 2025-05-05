@@ -129,7 +129,8 @@ function toggleFullscreen(){
 function toggleDarkStyle() {
     let isDark = document.documentElement.classList.toggle('dark-mode');
     let darkButton = $("darkmode-button");
-    
+    localStorage.darkStyle = isDark.toString();
+
     if (isDark) {
         darkButton.classList.remove("bg-dark");
         darkButton.classList.add("bg-accent");
@@ -205,6 +206,11 @@ function setAccent(clr){
 }
 
 window.onload = function() {
+    if(localStorage.darkStyle=="true"){
+        d.documentElement.classList.add("dark-mode");
+        darkButton.classList.remove("bg-dark");
+        darkButton.classList.add("bg-accent");
+    }
     online();
     if(localStorage.accentColour){
         setAccent(localStorage.accentColour);
