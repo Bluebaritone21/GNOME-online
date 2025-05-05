@@ -4,8 +4,6 @@ function calculator(){
     repos(display,4,35);
     resize(display,"calc(100% - 8px)",40);
     var win = makeWindow(360,490,display);
-    var hist = [];
-    var histDisplay = UIelmnt("div");
     var buttons = [[`<img class="icon" src="${getIcon("entry-clear")}">`,"(",")","mod","&tau;"],
                    ["7","8","9","&div;","&radic;"],
                    ["4","5","6","&times;","<i>x</i>&#178;"],
@@ -23,7 +21,7 @@ function calculator(){
         try{
             display.innerText = eval(equation);
         }catch(e){
-            error(e);
+            display.innerText = 'Error!';
         }
     }
     var buttonTable = UIelmnt("table");
@@ -38,6 +36,7 @@ function calculator(){
             button.style.display = "flex";
             button.style.alignItems = "center";
             button.style.justifyContent = "center";
+            button.style.fontWeight = 'bold';
             if(buttons[rowI][cellI]=="="){
                 cell.setAttribute("rowspan","2");
                 button.classList.add("bg-accent");
