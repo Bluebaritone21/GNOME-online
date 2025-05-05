@@ -13,13 +13,13 @@ function calculator(){
                    ["0",".","%","+"]];
     function evalMaths(maths){
         var equation = maths
-        equation=equation.replace("&div;", '/');
-        equation=equation.replace("&times;", '*');
-        equation=equation.replace("&#178;", '**2');
-        equation=equation.replace("radic;", 'Math.sqrt');
-        equation=equation.replace("&tau;", '(2 * Math.PI)');
-        equation=equation.replace("%",'/(100)');
-        equation=equation.replace("mod", '%');
+        equation=equation.replaceAll("&div;", '/');
+        equation=equation.replaceAll("&times;", '*');
+        equation=equation.replaceAll("&#178;", '**2');
+        equation=equation.replaceAll("radic;", 'Math.sqrt');
+        equation=equation.replaceAll("&tau;", '(2 * Math.PI)');
+        equation=equation.replaceAll("%",'/(100)');
+        equation=equation.replaceAll("mod", '%');
         try{
             display.innerText = eval(equation);
         }catch(e){
@@ -45,7 +45,7 @@ function calculator(){
             if([..."0123456789","(",")","mod","&tau;","&div;","&times;","-","+","&radic;","%"].includes(buttons[rowI][cellI])){
                 let txt = buttons[rowI][cellI];
                 button.onclick = function(){display.innerHTML = (display.innerHTML!="0")?display.innerHTML+txt:txt};
-            }else if(`<img src="${getIcon("entry-clear")}">`==buttons[rowI][cellI]){
+            }else if(`<img class="icon" src="${getIcon("entry-clear")}">`==buttons[rowI][cellI]){
                 button.onclick = function(){display.innerHTML = display.innerHTML.slice(0, -1) || "0";};
             }else if("<i>x</i>&#178;"==buttons[rowI][cellI]){
                 button.onclick = function(){display.innerHTML = display.innerHTML+"&#178;"};
