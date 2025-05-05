@@ -23,7 +23,7 @@ function calculator(){
         try{
             display.innerText = eval(equation);
         }catch(e){
-            error(e+"<br>",maths);
+            error(e+"<br>"+maths);
         }
     }
     var buttonTable = UIelmnt("table");
@@ -53,11 +53,7 @@ function calculator(){
                 button.onclick = function(){display.innerHTML = display.innerHTML+"."};
             }else if("="==buttons[rowI][cellI]){
                 button.onclick = function() {
-                    try {
                         evalMaths(display.innerHTML);
-                    } catch (e) {
-                        error(e);
-                    }
                 };
             }
             cell.appendChild(button);
