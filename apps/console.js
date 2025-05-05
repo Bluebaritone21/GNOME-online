@@ -6,6 +6,7 @@ function console(){
     logs.style.color = colour("light1");
     logs.style.textAlign="left";
     logs.tabIndex = 0;
+    logs.innerHTML = "$ ";
     logs.onclick = function(){logs.focus();};
     var window = makeWindow(500,500,logs);
     window.style.backgroundColor = colour("dark4");
@@ -15,7 +16,6 @@ function console(){
     window.style.overflow="scroll";
     var log='$ ';
     var text='';
-    logs.innerText = "$ ";
     function redraw(){
         logs.innerText = log + text + cursor;
     }
