@@ -69,6 +69,11 @@
     color: var(--light1);
 }
 
+.dark-mode .window textarea {
+    background-color: var(--dark3);
+    color: var(--light1);
+}
+
 .dark-mode .window button:not([class]), 
 .dark-mode .window button:not([class*=""]) {
     background-color: var(--dark3);

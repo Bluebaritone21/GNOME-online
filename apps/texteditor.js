@@ -15,8 +15,12 @@ function texteditor(file=null){
     textbox.style.resize='none';
     textbox.value="";
     var win = makeWindow(1000,600,textbox);
-    win.style.backgroundColor=colour("light3");
     var title=UIelmnt('h3');
+    var titlebar=UIelmnt('div');
+    repos(titlebar,0,0);
+    resize(titlebar,'100%',43);
+    titlebar.classList.add('bg-sidebar');
+    win.appendChild(titlebar);
     title.innerText=ttl;
     repos(title,"25%",-5);
     title.style.textAlign="center";
