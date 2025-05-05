@@ -1,44 +1,44 @@
 function console(){
-    var logs = UIelmnt("pre");
-    repos(logs,0,30);
-    resize(logs,"100%","calc(100% - 45px)");
-    logs.style.overflow = "scroll";
-    logs.style.color = colour("light1");
-    logs.style.textAlign="left";
-    logs.tabIndex = 0;
-    logs.innerHTML = "$ ";
-    logs.onclick = function(){logs.focus();};
-    var window = makeWindow(500,500,logs);
+    var display = UIelmnt("pre");
+    repos(display,0,30);
+    resize(display,"100%","calc(100% - 45px)");
+    display.style.overflow = "scroll";
+    display.style.color = colour("light1");
+    display.style.textAlign="left";
+    display.tabIndex = 0;
+    display.innerHTML = "$ ";
+    display.onclick = function(){display.focus();};
+    var window = makeWindow(500,500,display);
     window.style.backgroundColor = colour("dark4");
     var cursor = '';
-    logs.onfocus = function(){cursor="█";redraw()};
-    logs.onblur = function(){cursor="";redraw()};
+    display.onfocus = function(){cursor="█";redraw()};
+    display.onblur = function(){cursor="";redraw()};
     window.style.overflow="scroll";
-    var log ='$ ';
+    var logs ='$ ';
     var text='';
     function redraw(){
-        logs.innerText = log + text + cursor;
+        display.innerText = logs + text + cursor;
     }
     function clear(){
-        log="";
+        logs="";
         redraw();
     }
-    function logText(text){
-        log = log + "\n" + text;
+    function print(text){
+        logs = logs + "\n" + text;
         redraw();
         return(text);
     }
-    logs.addEventListener('keydown', function(e){
+    display.addEventListener('keydown', function(e){
         if (!e) e = window.event;
         var keyCode = e.key;
         if (keyCode == 'Enter'){
             try{
-            log = log + text;
-            logText(eval(text));
-            logText("$ ");
+            logs = logs + text;
+            print(eval(text));
+            print("$ ");
             }catch(error){
-                logText(error);
-                logText("$ ");
+                print(error);
+                print("$ ");
             }
             text = "";
         }else if(keyCode== 'Backspace'){
