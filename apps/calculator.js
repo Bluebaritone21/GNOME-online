@@ -13,13 +13,13 @@ function calculator(){
                    ["0",".","%","+"]];
     function evalMaths(maths){
         var equation = maths
-        .replace("&div;", '/')
-        .replace("&times;", '*')
-        .replace("&#178;", '**2')
-        .replace("radic;", 'Math.sqrt')
-        .replace("&tau;", '(2 * Math.PI)')
-        .replace("%",'/(100)')
-        .replace("mod", '%');
+        equation=equation.replace("&div;", '/');
+        equation=equation.replace("&times;", '*');
+        equation=equation.replace("&#178;", '**2');
+        equation=equation.replace("radic;", 'Math.sqrt');
+        equation=equation.replace("&tau;", '(2 * Math.PI)');
+        equation=equation.replace("%",'/(100)');
+        equation=equation.replace("mod", '%');
         try{
             display.innerText = eval(equation);
         }catch(e){
@@ -52,9 +52,7 @@ function calculator(){
             }else if("."==buttons[rowI][cellI]){
                 button.onclick = function(){display.innerHTML = display.innerHTML+"."};
             }else if("="==buttons[rowI][cellI]){
-                button.onclick = function() {
-                        evalMaths(display.innerHTML);
-                };
+                button.onclick = function(){evalMaths(display.innerHTML);};
             }
             cell.appendChild(button);
             row.appendChild(cell);
