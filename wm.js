@@ -86,7 +86,7 @@ function toggleActivities(){
     activities = !activities;
 }
 
-debugOn = false;
+var debugOn = false;
 
 function debug(){
     if(!debugOn){
@@ -127,16 +127,14 @@ function toggleFullscreen(){
 }
 
 function toggleDarkStyle() {
-    let isDark = document.documentElement.classList.toggle('dark-mode');
-    let darkButton = $("darkmode-button");
-    localStorage.darkStyle = isDark.toString();
-
-    if (isDark) {
-        darkButton.classList.remove("bg-dark");
-        darkButton.classList.add("bg-accent");
-    } else {
-        darkButton.classList.add("bg-dark"); 
-        darkButton.classList.remove("bg-accent");
+    localStorage.darkStyle = document.documentElement.classList.toggle('dark-mode').toString();
+    
+    if(localStorage.darkStyle=="true"){
+        $("darkmode-button").classList.remove("bg-dark");
+        $("darkmode-button").classList.add("bg-accent");
+    }else{
+        $("darkmode-button").classList.add("bg-dark"); 
+        $("darkmode-button").classList.remove("bg-accent");
     }
 }
 
