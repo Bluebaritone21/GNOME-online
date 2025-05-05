@@ -374,7 +374,7 @@ textarea, pre{
     transform:scale(0.5);
 }
 button.bg-accent:hover{
-    background-color: --accent2;
+    background-color: var(--accent2);
 }
 
 .bg-dark:hover{

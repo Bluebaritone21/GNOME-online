@@ -29,13 +29,15 @@ function calculator(){
                 cell.setAttribute("rowspan","2");
                 button.classList.add("bg-accent");
             }
-            if([..."0123456789","(",")","mod","&tau;","&div;","&times;","-","+","&radic;"].includes(buttons[rowI][cellI])){
+            if([..."0123456789","(",")","mod","&tau;","&div;","&times;","-","+","&radic;","%"].includes(buttons[rowI][cellI])){
                 let txt = buttons[rowI][cellI];
                 button.onclick = function(){display.innerHTML = (display.innerHTML!="0")?display.innerHTML+txt:txt};
             }else if(`<img src="${getIcon("entry-clear")}">`==buttons[rowI][cellI]){
                 button.onclick = function(){display.innerHTML = display.innerHTML.slice(0, -1) || "0";};
             }else if("<i>x</i>&#178;"==buttons[rowI][cellI]){
-                button.onclick = function(){display.innerHTML = display.innerHTML+"&#178;"}
+                button.onclick = function(){display.innerHTML = display.innerHTML+"&#178;"};
+            }else if("."==buttons[rowI][cellI]){
+                button.onclick = function(){display.innerHTML = display.innerHTML+"."};
             }
             cell.appendChild(button);
             row.appendChild(cell);
