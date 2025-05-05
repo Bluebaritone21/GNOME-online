@@ -11,17 +11,17 @@ function calculator(){
                    ["0",".","%","+"]];
     function evalMaths(maths){
         var equation = maths;
-        equation=equation.replaceAll("÷", '/');
-        equation=equation.replaceAll("×", '*');
-        equation=equation.replaceAll("²", '**2');
-        equation=equation.replaceAll("√", 'Math.sqrt');
-        equation=equation.replaceAll("τ", '(2 * Math.PI)');
+        equation=equation.replaceAll("\xf7", '/');
+        equation=equation.replaceAll("\xd7", '*');
+        equation=equation.replaceAll("\xb2", '**2');
+        equation=equation.replaceAll("\u221a", 'Math.sqrt');
+        equation=equation.replaceAll("\u03c4", '(2 * Math.PI)');
         equation=equation.replaceAll("%", '/(100)');
         equation=equation.replaceAll("mod", '%');
         try{
             display.innerText = eval(equation);
         }catch(e){
-            display.innerText = 'Error: '+e+"!";
+           display.innerText = 'Error: '+equation+"!";
         }
     }
     var buttonTable = UIelmnt("table");

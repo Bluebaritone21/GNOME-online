@@ -11,7 +11,7 @@ function console(){
     var window = makeWindow(500,500,display);
     window.style.backgroundColor = colour("dark4");
     var cursor = '';
-    display.onfocus = function(){cursor="█";redraw()};
+    display.onfocus = function(){cursor="\u2588";redraw()};
     display.onblur = function(){cursor="";redraw()};
     window.style.overflow="scroll";
     var logs ='$ ';
