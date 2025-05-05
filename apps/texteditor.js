@@ -43,7 +43,6 @@ function texteditor(file=null){
     saveButton.style.position = "absolute";
     saveButton.style.top = "10px";
     saveButton.style.right = "35px";
-    saveButton.style.backgroundColor=colour("light3");
     var saveIcon = UIelmnt("img");
     saveIcon.src = getIcon("floppy");
     saveIcon.classList.add('icon');
