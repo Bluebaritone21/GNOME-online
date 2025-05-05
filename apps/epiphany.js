@@ -5,6 +5,7 @@ function epiphany(url="about:moogle.html",useCORS=false){
     var iframe=document.createElement(`iframe`);
     var corsButton=document.createElement(`button`);
     var icon=document.createElement("img");
+    icon.classList.add("icon");
     icon.src="symbolic/network-proxy-symbolic.svg";
     corsButton.appendChild(icon);
     corsButton.style.position='absolute';
