@@ -397,6 +397,7 @@ button.bg-accent:hover{
 
 button.clear-button{
     background-color: rgba(0,0,0,0);
+    color: inherit;
 }
 button.clear-button:hover{
     background-color: rgba(100,100,100,0.5);
