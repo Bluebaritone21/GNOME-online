@@ -21,7 +21,7 @@ function calculator(){
         try{
             display.innerText = eval(equation);
         }catch(e){
-            display.innerText = 'Error!';
+            display.innerText = 'Error: '+e+"!";
         }
     }
     var buttonTable = UIelmnt("table");
