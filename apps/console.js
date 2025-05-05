@@ -1,22 +1,14 @@
 function console(){
-    var commandBar = UIelmnt("input");
-    commandBar.type = "text";
-    repos(commandBar,"5%","calc(100% - 30px)");
-    resize(commandBar,"90%",15);
-    commandBar.style.backgroundColor = colour("dark3");
-    commandBar.style.color = colour("light1");
     var logs = UIelmnt("pre");
     repos(logs,0,30);
-    resize(logs,"100%","calc(100% - 75px)");
+    resize(logs,"100%","calc(100% - 35px)");
     logs.style.overflow = "scroll";
     logs.style.color = colour("light1");
     logs.style.textAlign="left";
     logs.tabIndex = 0;
     logs.onclick = function(){logs.focus();};
-    var window = makeWindow(500,500,commandBar);
+    var window = makeWindow(500,500,logs);
     window.style.backgroundColor = colour("dark4");
-    window.appendChild(logs);
-    logs.focus();
     var cursor = '';
     logs.onfocus = function(){cursor="█";redraw()};
     logs.onblur = function(){cursor="";redraw()};
