@@ -1,7 +1,7 @@
 function console(){
     var logs = UIelmnt("pre");
     repos(logs,0,30);
-    resize(logs,"100%","calc(100% - 40px)");
+    resize(logs,"100%","calc(100% - 45px)");
     logs.style.overflow = "scroll";
     logs.style.color = colour("light1");
     logs.style.textAlign="left";
