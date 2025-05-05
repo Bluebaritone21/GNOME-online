@@ -13,7 +13,6 @@ function calculator(){
                    ["0",".","%","+"]];
     function evalMaths(maths){
         var equation = maths;
-        alert("Start: "+equation);
         equation=equation.replaceAll("÷", '/');
         equation=equation.replaceAll("×", '*');
         equation=equation.replaceAll("²", '**2');
@@ -23,8 +22,8 @@ function calculator(){
         equation=equation.replaceAll("mod", '%');
         try{
             display.innerText = eval(equation);
-        }catch{
-            error(equation);
+        }catch(e){
+            error(e);
         }
     }
     var buttonTable = UIelmnt("table");
