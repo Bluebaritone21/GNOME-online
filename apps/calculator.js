@@ -16,8 +16,9 @@ function calculator(){
             .replace(/&div;/g, '/')
             .replace(/&times;/g, '*')
             .replace(/&#178;/g, '**2')
-            .replace(/&radic;/g, 'Math.sqrt')
-            .replace(/&tau;/g, '(2 * Math.PI)')
+            .replace("radic;", 'Math.sqrt')
+            .replace("&tau;", '(2 * Math.PI)')
+            .replace("%",'/(100)*')
             .replace(/mod/g, '%'));
     }
     var buttonTable = UIelmnt("table");
