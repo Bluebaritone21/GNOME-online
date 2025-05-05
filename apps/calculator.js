@@ -53,7 +53,7 @@ function calculator(){
             }else if("="==buttons[rowI][cellI]){
                 button.onclick = function(){evalMaths(display.innerText);};
             }else if(["(",")","mod","&tau;","&div;","&times;","+","&radic;","%"].includes(buttons[rowI][cellI])){
-                button.onclick = function(){display.innerHTML = display.innerHTML+txt;}
+                button.onclick = function(){display.innerHTML = display.innerHTML+buttons[rowI][cellI];}
             }
             cell.appendChild(button);
             row.appendChild(cell);
