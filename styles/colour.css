@@ -1,8 +1,8 @@
 .fg-accent{
-  color: var(--accent);
+  color: var(--accent4);
 }
 .bg-accent{
-  background-color: var(--accent);
+  background-color: var(--accent3);
   color: white;
 }
 .fg-destructive{
@@ -43,15 +43,30 @@
 }
 
 /*************************************************/
-@property --accent{
+@property --accent1 {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #99c1f1;
+}
+@property --accent2 {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #62a0ea;
+}
+@property --accent3 {
     syntax: "<color>";
     inherits: true;
     initial-value: #3584e4;
 }
-@property --accent2{
+@property --accent4 {
     syntax: "<color>";
     inherits: true;
-    initial-value: #62a0ea;
+    initial-value: #1c71d8;
+}
+@property --accent5 {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #1a5fb4;
 }
 @property --text {
   syntax: "<color>";

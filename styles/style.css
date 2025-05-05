@@ -58,7 +58,21 @@
     cursor: url("../cursors/default.png"), default;
     font-family: "Inter", sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1, 'cv05' 1; /* Inter features */
-  }
+}
+
+  .dark-mode .window {
+    background-color: var(--dark4);
+    color: var(--light1);
+}
+
+.dark-mode .window button {
+    background-color: var(--dark3);
+    color: var(--light1);
+}
+
+.dark-mode .window button:hover {
+    background-color: var(--dark2);
+}
 
 hidden{
     display: none;
@@ -373,18 +387,4 @@ button.clear-button{
 }
 button.clear-button:hover{
     background-color: var(--light3);
-}
-
-.dark-mode .window {
-    background-color: var(--dark4);
-    color: var(--light1);
-}
-
-.dark-mode .window button {
-    background-color: var(--dark3);
-    color: var(--light1);
-}
-
-.dark-mode .window button:hover {
-    background-color: var(--dark2);
 }
