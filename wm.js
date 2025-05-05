@@ -201,10 +201,16 @@ function setAccent(clr){
     for(let i=1;i<=5;i++){
         document.documentElement.style.setProperty("--accent"+i,colour(clr+i));
     }
+    localStorage.accentColour=clr;
 }
 
 window.onload = function() {
     online();
+    if(localStorage.accentColour){
+        setAccent(localStorage.accentColour);
+    }else{
+        setAccent("blue");
+    }
     try {
         navigator.getBattery().then(function(battery) {
             function updateIcon() {
