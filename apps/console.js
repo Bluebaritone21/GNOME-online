@@ -37,7 +37,7 @@ function console(){
         var keyCode = e.key;
         if (keyCode == 'Enter'){
             try{
-            logText(eval(commandBar.value));
+            logText(eval(text));
             logText("$ ");
             }catch(error){
                 logText(error);
@@ -46,8 +46,8 @@ function console(){
             text = "";
         }else if(keyCode== 'Backspace'){
             text = text.slice(0, -1);
-        }else {
-            text = text + keyCode
+        }else if(keyCode.length = 1){
+            text = text + keyCode;
         }
         redraw();
     });
