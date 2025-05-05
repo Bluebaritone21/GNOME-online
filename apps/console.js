@@ -16,11 +16,15 @@ function console(){
     var window = makeWindow(500,500,commandBar);
     window.style.backgroundColor = colour("dark4");
     window.appendChild(logs);
+    logs.focus();
+    var cursor = '';
+    logs.onfocus = function(){cursor="█";redraw()};
+    logs.onblur = function(){cursor="";redraw()};
     window.style.overflow="scroll";
-    var log='';
+    var log='$ ';
     var text='';
     function redraw(){
-        logs.innerText = log + text;
+        logs.innerText = log + text + cursor;
     }
     function clear(){
         log="";
@@ -46,7 +50,7 @@ function console(){
             text = "";
         }else if(keyCode== 'Backspace'){
             text = text.slice(0, -1);
-        }else if(keyCode.length = 1){
+        }else if(keyCode.length == 1){
             text = text + keyCode;
         }
         redraw();
