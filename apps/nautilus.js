@@ -40,7 +40,7 @@ function nautilus(dir){
     dirText.style.pointerEvents = "none";
     repos(dirPath,275,5);
     resize(dirPath,"calc(100% - 310px)",30);
-    dirPath.style.backgroundColor = "rgba(50,50,50,0.5)";
+    dirPath.style.backgroundColor = "rgba(100,100,100,0.5)";
     dirPath.style.textAlign = "left";
     dirPath.style.borderRadius = "10px";
     dirPath.style.pointerEvents = "none";
