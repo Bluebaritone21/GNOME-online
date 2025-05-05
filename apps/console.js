@@ -12,6 +12,7 @@ function console(){
     logs.style.color = colour("light1");
     logs.style.textAlign="left";
     logs.tabIndex = 0;
+    logs.onclick = function(){logs.focus();};
     var window = makeWindow(500,500,commandBar);
     window.style.backgroundColor = colour("dark4");
     window.appendChild(logs);
@@ -33,7 +34,7 @@ function console(){
     }
     logs.addEventListener('keydown', function(e){
         if (!e) e = window.event;
-        var keyCode = e.code || e.key;
+        var keyCode = e.key;
         if (keyCode == 'Enter'){
             try{
             logText(eval(commandBar.value));
