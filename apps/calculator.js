@@ -19,11 +19,11 @@ function calculator(){
         .replace("radic;", 'Math.sqrt')
         .replace("&tau;", '(2 * Math.PI)')
         .replace("%",'/(100)')
-        .replace("mod", '%')
+        .replace("mod", '%');
         try{
             display.innerText = eval(equation);
         }catch(e){
-            error(e+"<br>"+maths);
+            error(equation);
         }
     }
     var buttonTable = UIelmnt("table");
