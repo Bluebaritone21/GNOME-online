@@ -11,6 +11,7 @@ function console(){
     logs.style.overflow = "scroll";
     logs.style.color = colour("light1");
     logs.style.textAlign="left";
+    logs.tabIndex = 0;
     var window = makeWindow(500,500,commandBar);
     window.style.backgroundColor = colour("dark4");
     window.appendChild(logs);
