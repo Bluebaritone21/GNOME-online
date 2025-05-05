@@ -1,6 +1,7 @@
 function calculator(){
     var display = label("0","h1");
     display.style.textAlign = "left";
+    display.overflowX = 'scroll';
     repos(display,4,35);
     resize(display,"calc(100% - 8px)",40);
     var win = makeWindow(360,490,display);
@@ -21,7 +22,7 @@ function calculator(){
         try{
             display.innerText = eval(equation);
         }catch(e){
-           display.innerText = 'Error: '+equation+"!";
+           display.innerText = 'Error!';
         }
     }
     var buttonTable = UIelmnt("table");
@@ -41,7 +42,7 @@ function calculator(){
                 cell.setAttribute("rowspan","2");
                 button.classList.add("bg-accent");
             }
-            if([..."0123456789","-"].includes(buttons[rowI][cellI])){
+            if([..."0123456789","-","(",")"].includes(buttons[rowI][cellI])){
                 let txt = buttons[rowI][cellI];
                 button.onclick = function(){display.innerHTML = (display.innerHTML!="0")?display.innerHTML+txt:txt};
             }else if(`<img class="icon" src="${getIcon("entry-clear")}">`==buttons[rowI][cellI]){
@@ -52,7 +53,7 @@ function calculator(){
                 button.onclick = function(){display.innerHTML = display.innerHTML+"."};
             }else if("="==buttons[rowI][cellI]){
                 button.onclick = function(){evalMaths(display.innerText);};
-            }else if(["(",")","mod","&tau;","&div;","&times;","+","&radic;","%"].includes(buttons[rowI][cellI])){
+            }else if(["mod","&div;","&times;","+","&radic;","%"].includes(buttons[rowI][cellI])){
                 let txt = buttons[rowI][cellI];
                 button.onclick = function(){display.innerHTML = display.innerHTML+txt;}
             }
