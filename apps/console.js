@@ -14,8 +14,8 @@ function console(){
     logs.onblur = function(){cursor="";redraw()};
     window.style.overflow="scroll";
     var log='$ ';
-    redraw();
     var text='';
+    logs.innerText = "$ ";
     function redraw(){
         logs.innerText = log + text + cursor;
     }
