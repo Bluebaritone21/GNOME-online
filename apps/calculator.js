@@ -12,6 +12,13 @@ function calculator(){
                    ["1","2","3","-","="],
                    ["0",".","%","+"]];
     function evalMaths(maths){
+        display.innerText = eval(maths
+            .replace(/&div;/g, '/')
+            .replace(/&times;/g, '*')
+            .replace(/&#178;/g, '**2')
+            .replace(/&radic;/g, 'Math.sqrt')
+            .replace(/&tau;/g, '(2 * Math.PI)')
+            .replace(/mod/g, '%'));
     }
     var buttonTable = UIelmnt("table");
     resize(buttonTable,"calc(100% - 10px)","calc(100% - 95px)");
@@ -38,6 +45,14 @@ function calculator(){
                 button.onclick = function(){display.innerHTML = display.innerHTML+"&#178;"};
             }else if("."==buttons[rowI][cellI]){
                 button.onclick = function(){display.innerHTML = display.innerHTML+"."};
+            }else if("="==buttons[rowI][cellI]){
+                button.onclick = function() {
+                    try {
+                        evalMaths(display.innerHTML);
+                    } catch (e) {
+                        error(e);
+                    }
+                };
             }
             cell.appendChild(button);
             row.appendChild(cell);
