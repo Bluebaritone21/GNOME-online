@@ -128,7 +128,6 @@ function toggleFullscreen(){
 
 function toggleDarkStyle() {
     localStorage.darkStyle = document.documentElement.classList.toggle('dark-mode').toString();
-    
     if(localStorage.darkStyle=="true"){
         $("darkmode-button").classList.remove("bg-dark");
         $("darkmode-button").classList.add("bg-accent");

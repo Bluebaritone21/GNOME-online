@@ -42,7 +42,7 @@ function calculator(){
                 cell.setAttribute("rowspan","2");
                 button.classList.add("bg-accent");
             }
-            if([..."0123456789","-","(",")"].includes(buttons[rowI][cellI])){
+            if([..."0123456789","-","(",")","&tau;","&radic;"].includes(buttons[rowI][cellI])){
                 let txt = buttons[rowI][cellI];
                 button.onclick = function(){display.innerHTML = (display.innerHTML!="0")?display.innerHTML+txt:txt};
             }else if(`<img class="icon" src="${getIcon("entry-clear")}">`==buttons[rowI][cellI]){
@@ -53,7 +53,7 @@ function calculator(){
                 button.onclick = function(){display.innerHTML = display.innerHTML+"."};
             }else if("="==buttons[rowI][cellI]){
                 button.onclick = function(){evalMaths(display.innerText);};
-            }else if(["mod","&div;","&times;","+","&radic;","%"].includes(buttons[rowI][cellI])){
+            }else if(["mod","&div;","&times;","+","%"].includes(buttons[rowI][cellI])){
                 let txt = buttons[rowI][cellI];
                 button.onclick = function(){display.innerHTML = display.innerHTML+txt;}
             }
