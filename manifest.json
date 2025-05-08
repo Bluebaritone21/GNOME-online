@@ -2,7 +2,7 @@
   "name": "GNOME-online",
   "short_name": "GNOME",
   "description": "A simulation of GNOME, running in your web browser",
-  "start_url": "/",
+  "start_url": "/GNOME-online",
   "display": "fullscreen",
   "background_color": "#000000",
   "theme_color": "#3584e4",
@@ -13,12 +13,12 @@
       "type": "image/png"
     },
     {
-        "src": "/gnome_192.png",
+        "src": "/GNOME-online/gnome_192.png",
         "sizes": "192x192",
         "type": "image/png"
     },
     {
-        "src": "/gnome_512.png", 
+        "src": "/GNOME-online/gnome_512.png", 
         "sizes": "512x512",
         "type": "image/png"
     }
