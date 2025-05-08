@@ -199,6 +199,7 @@ function setAccent(clr){
     for(let i=1;i<=5;i++){
         document.documentElement.style.setProperty("--accent"+i,colour(clr+i));
     }
+    $("col-meta").setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--accent3').trim());
     localStorage.accentColour=clr;
 }
 
