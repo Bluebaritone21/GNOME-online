@@ -1,6 +1,7 @@
 # Plans for GNOME Online
 
 1. Multiple Workspaces
+   1. Add API for workspaces
 1. Nautilus App
    1. Add the drop-down menu for creating directories and moving directories and files
    2. Add an argument to Nautilus to make it function as a file picker (I.E. Pass the file

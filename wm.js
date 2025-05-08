@@ -203,12 +203,15 @@ function setAccent(clr){
 }
 
 window.onload = function() {
+    online();
+    function hideBoot(){$("boot-cover").style.display = "none";
+        lock();}
     if(localStorage.darkStyle=="true"){
         d.documentElement.classList.add("dark-mode");
-        darkButton.classList.remove("bg-dark");
-        darkButton.classList.add("bg-accent");
+        $("darkmode-button").classList.remove("bg-dark");
+        $("darkmode-button").classList.add("bg-accent");
+        setTimeout(hideBoot,3000);
     }
-    online();
     if(localStorage.accentColour){
         setAccent(localStorage.accentColour);
     }else{
@@ -265,7 +268,9 @@ window.onload = function() {
         time();
         setInterval(time, 1000);
         
-        setTimeout(function(){$("boot-cover").style.display = "none";lock()},1000);
+        if(localStorage.darkStyle!="true"){
+            hideBoot()
+        }
     }
 };
 

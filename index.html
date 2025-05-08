@@ -33,6 +33,12 @@
         </div>
     </hidden>
     <body>
+        <div id="workspaces-bar">
+            <button id="del-workspace" class="bg-dark">&minus;</button>
+            <span id=workspace-buttons style="display:inline;">
+            </span>
+            <button id="add-workspace" class="bg-dark" onclick="$('workspace-buttons').appendChild(label('','button','workspace-button'));">&plus;</button>
+        </div>
         <div id="boot-cover" onclick="document.documentElement.requestFullscreen()">
             <style>
                 @keyframes load{from{transform: rotate(0);    } 
