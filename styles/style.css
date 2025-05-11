@@ -195,12 +195,13 @@ desktop{
     overflow:hidden;
 }
 desktop.small{
-    scale:0.7;
-    border-radius: 30px;
+    display:none;
 }
 @media(min-width:600px){
-desktop.small{
-    display:none;
+body desktop.small{
+    scale:0.7;
+    border-radius:30px;
+    display:block;
 }
 #activity-button{
     background-color: rgba(0,0,0,0);
