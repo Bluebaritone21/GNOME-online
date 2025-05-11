@@ -5,22 +5,21 @@
   "start_url": "/GNOME-online",
   "display": "fullscreen",
   "background_color": "#000000",
-  "theme_color": "#3584e4",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "https://www.gnome.org/img/favicon.png",
-      "sizes": "16x16",
-      "type": "image/png"
+      "sizes": "16x16"
     },
     {
         "src": "/GNOME-online/gnome_192.png",
-        "sizes": "192x192",
-        "type": "image/png"
+        "sizes": "192x192"
     },
     {
         "src": "/GNOME-online/gnome_512.png", 
-        "sizes": "512x512",
-        "type": "image/png"
+        "sizes": "512x512"
     }
-  ]
+  ],
+  "orientation": "landscape"
+
 }
