@@ -102,3 +102,22 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+self.addEventListener("fetch", (event) => {
+    event.respondWith(
+        (async () => {
+            const cachedResponse = await caches.match(event.request);
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            try {
+                const networkResponse = await fetch(event.request);
+                const cache = await caches.open(CACHE_NAME);
+                cache.put(event.request, networkResponse.clone());
+                return networkResponse;
+            } catch (error) {
+                console.error("Fetch failed; returning offline page instead.", error);
+                return caches.match('/GNOME-online/index.html');
+            }
+        })(),
+    );
+});

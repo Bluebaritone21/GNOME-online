@@ -199,7 +199,7 @@ function setAccent(clr){
     for(let i=1;i<=5;i++){
         document.documentElement.style.setProperty("--accent"+i,colour(clr+i));
     }
-    $("col-meta").setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--accent3').trim());
+    // $("col-meta").setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--accent3').trim());
     localStorage.accentColour=clr;
 }
 
@@ -413,15 +413,18 @@ function makeWebviewWindow(w,h,url){
 
 function makeWindow(wdth,hght,contents,onClose=function(){}){
     gensym++;
-    var currentGensym=gensym;
     var clone = $("window").cloneNode(true);
     clone.id = "window"+gensym;
     clone.querySelector("#windowheader").id = "window"+gensym+"header";
     document.getElementsByTagName("desktop")[0].appendChild(clone);
     clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove();onClose()});
     dragElement(clone);
-    clone.style.width = wdth+"px";
-    clone.style.height= hght+"px";
+    if (window.innerHeight > window.innerWidth) {
+        resize(clone, '100%', 'calc(100% - 30px)');
+        repos(clone, 0, 30);
+    } else {
+        resize(clone, wdth, hght);
+    }
     clone.appendChild(contents);
     clone.style.zIndex = lastheight++;
     return clone;
