@@ -77,7 +77,7 @@ fs = null;
 
 function toggleActivities(){
     if(!activities){
-        document.getElementsByTagName("desktop").forEach(function(doc){
+        Array.from(document.getElementsByTagName("desktop")).forEach(function(doc){
             doc.classList.add("small");
         });
         $("activity-bar").style.backgroundColor="var(--dark4)";
