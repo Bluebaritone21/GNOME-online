@@ -43,7 +43,7 @@
     </hidden>
     <body>
         <div id="workspaces-bar">
-            <button id="del-workspace" onclick="isDelWork=!isDelWork;$('del-workspace').classList.toggle('bg-destructive');classList.toggle('bg-dark');" class="bg-dark">&minus;</button>
+            <button id="del-workspace" onclick="isDelWork=!isDelWork;$('del-workspace').classList.toggle('bg-destructive');$('del-workspace').classList.toggle('bg-dark');" class="bg-dark">&minus;</button>
             <span id=workspace-buttons style="display:inline;">
             </span>
             <button id="add-workspace" class="bg-dark" onclick="workspaces.push(new Workspace());">&plus;</button>

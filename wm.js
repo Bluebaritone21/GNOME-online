@@ -434,7 +434,7 @@ class Workspace {
         this.button.innerText = this.i;
         $('workspace-buttons').appendChild(this.button);
         let i = this.i;
-        this.button.onclick = function () { if(isDelWork){delWorkspace(i);isDelWork = false;}else{switchWorkspace(i)} };
+        this.button.onclick = function () { if(isDelWork){delWorkspace(i);isDelWork = false;$('del-workspace').classList.toggle('bg-destructive');$('del-workspace').classList.toggle('bg-dark');}else{switchWorkspace(i)} };
     }
 }
 
