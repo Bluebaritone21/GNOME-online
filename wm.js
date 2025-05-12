@@ -82,7 +82,9 @@ function toggleActivities(){
         });
         $("activity-bar").style.backgroundColor="var(--dark4)";
     }else{
-        document.getElementsByTagName("desktop")[0].classList.remove("small");
+        Array.from(document.getElementsByTagName("desktop")).forEach(function(doc){
+            doc.classList.remove("small");
+        });
         $("activity-bar").style.backgroundColor="var(--dark5)";
     }
     activities = !activities;
@@ -207,7 +209,10 @@ function setAccent(clr){
 
 window.onload = function() {
     online();
-    workspaces.push(new Workspace());
+    let work = new Workspace();
+    work.desk.style.display = 'block';
+    work.desk.classList.remove('small');
+    workspaces.push();
     function hideBoot(){$("boot-cover").style.display = "none";
         lock();}
     if(localStorage.darkStyle=="true"){
@@ -421,6 +426,8 @@ class Workspace {
     constructor() {
         this.desk = UIelmnt('desktop');
         document.body.appendChild(this.desk);
+        this.desk.style.display = 'none';
+        this.desk.classList.add('small');
         this.i = workspaces.length;
         this.button = UIelmnt('button');
         this.button.classList.add('workspace-button');
@@ -443,7 +450,9 @@ function delWorkspace(i){
     if(worki==i){
         worki=0;
         if(workspaces.length == 0){
-            workspaces.push(new Workspace());
+            let work = new Workspace();
+            work.desk.style.display = 'block';
+            workspaces.push(work);
         }
     }
 }
