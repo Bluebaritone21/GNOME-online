@@ -195,6 +195,7 @@ desktop{
     z-index:0;
     overflow:hidden;
 }
+
 desktop.small{
     display:none;
 }
@@ -203,6 +204,13 @@ desktop.small{
         display: none;
     }
 }
+@media(max-width:600px){
+    body desktop.small {
+        display: none;
+    }
+}
+
+
 desktop.small {
     scale: 0.7;
     border-radius: 30px;
