@@ -205,6 +205,7 @@ function setAccent(clr){
 
 window.onload = function() {
     online();
+    workspaces.push(new Workspace());
     function hideBoot(){$("boot-cover").style.display = "none";
         lock();}
     if(localStorage.darkStyle=="true"){
@@ -411,12 +412,47 @@ function makeWebviewWindow(w,h,url){
     makeWindow(w,h,iframe);
 }
 
+var worki = 0;
+var workspaces = [];
+var isDelWork = false;
+
+class Workspace {
+    constructor() {
+        this.desk = UIelmnt('desktop');
+        document.body.appendChild(this.desk);
+        this.i = workspaces.length;
+        this.button = UIelmnt('button');
+        this.button.classList.add('workspace-button');
+        this.button.innerText = this.i;
+        $('workspace-buttons').appendChild(this.button);
+        let i = this.i;
+        this.button.onclick = function () { if(isDelWork){delWorkspace(i)}else{switchWorkspace(i)} };
+    }
+}
+
+function switchWorkspace(i){
+    workspaces[worki].desk.style.display='none';
+    workspaces[i].desk.style.display='block';
+    worki=i;
+}
+
+function delWorkspace(i){
+    workspaces[i].desk.remove();
+    workspaces[i].button.remove();
+    if(worki==i){
+        worki=0;
+        if(workspaces.length == 0){
+            workspaces.push(new Workspace());
+        }
+    }
+}
+
 function makeWindow(wdth,hght,contents,onClose=function(){}){
     gensym++;
     var clone = $("window").cloneNode(true);
     clone.id = "window"+gensym;
     clone.querySelector("#windowheader").id = "window"+gensym+"header";
-    document.getElementsByTagName("desktop")[0].appendChild(clone);
+    workspaces[worki].desk.appendChild(clone);
     clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove();onClose()});
     dragElement(clone);
     if (window.innerHeight > window.innerWidth) {

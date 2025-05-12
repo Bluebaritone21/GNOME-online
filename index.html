@@ -43,10 +43,10 @@
     </hidden>
     <body>
         <div id="workspaces-bar">
-            <button id="del-workspace" class="bg-dark">&minus;</button>
+            <button id="del-workspace" onclick="isDelWork=!isDelWork;$('del-workspace').classList.toggle('bg-destructive')" class="bg-dark">&minus;</button>
             <span id=workspace-buttons style="display:inline;">
             </span>
-            <button id="add-workspace" class="bg-dark" onclick="$('workspace-buttons').appendChild(label('','button','workspace-button'));">&plus;</button>
+            <button id="add-workspace" class="bg-dark" onclick="workspaces.push(new Workspace());">&plus;</button>
         </div>
         <div id="boot-cover" onclick="document.documentElement.requestFullscreen()">
             <style>
@@ -98,7 +98,6 @@
         </div>
         <div class="taskbar" id="taskbar">
         </div>
-        <desktop id=desktop></desktop>
         <div class="activity-bar" id="activity-bar"></div>
         <button id="activity-button" onclick="toggleActivities()">Activities</button>
         <button id="quicksettings-button" onclick="toggleQuicksettings()">
