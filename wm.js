@@ -214,7 +214,6 @@ window.onload = function() {
         d.documentElement.classList.add("dark-mode");
         $("darkmode-button").classList.remove("bg-dark");
         $("darkmode-button").classList.add("bg-accent");
-        setTimeout(hideBoot,3000);
     }
     if(localStorage.accentColour){
         setAccent(localStorage.accentColour);
@@ -272,9 +271,7 @@ window.onload = function() {
         time();
         setInterval(time, 1000);
         
-        if(localStorage.darkStyle!="true"){
-            hideBoot()
-        }
+        setTimeout(hideBoot,3000);
     }
 };
 
