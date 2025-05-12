@@ -271,7 +271,9 @@ window.onload = function() {
         time();
         setInterval(time, 1000);
         
-        setTimeout(hideBoot,3000);
+        const bgImage = UIelmnt('img');
+        bgImage.src = localStorage.darkStyle=="true"?'wall-dk.webp':'wall-lt.webp';
+        bgImage.onload = hideBoot;
     }
 };
 
