@@ -212,7 +212,7 @@ window.onload = function() {
     let work = new Workspace();
     work.desk.style.display = 'block';
     work.desk.classList.remove('small');
-    workspaces.push();
+    workspaces.push(work);
     function hideBoot(){$("boot-cover").style.display = "none";
         lock();}
     if(localStorage.darkStyle=="true"){
@@ -459,6 +459,7 @@ function delWorkspace(i){
     for (let j = 0; j < workspaces.length; j++) {
         workspaces[j].i = j;
         workspaces[j].button.innerText = j;
+        workspaces[j].button.onclick = function(){if(isDelWork){delWorkspace(j);isDelWork = false;}else{switchWorkspace(j)}};
     }
 }
 
