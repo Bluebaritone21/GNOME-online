@@ -457,7 +457,7 @@ function delWorkspace(i){
     }
     workspaces.splice(i);
     for (var j = 0; j < workspaces.length; j++) {
-        alert(workspaces[j].button.innerHTML = ": " + j);
+        alert(workspaces[j].button.innertext + "<br>" + workspaces[j].i + ": " + j);
         workspaces[j].i = j;
         workspaces[j].button.innerText = j;
         workspaces[j].button.onclick = function(){if(isDelWork){delWorkspace(j);isDelWork = false;}else{switchWorkspace(j)}};
