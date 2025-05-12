@@ -455,6 +455,11 @@ function delWorkspace(i){
             workspaces.push(work);
         }
     }
+    workspaces.splice(i);
+    for (let j = 0; j < workspaces.length; j++) {
+        workspaces[j].i = j;
+        workspaces[j].button.innerText = j;
+    }
 }
 
 function makeWindow(wdth,hght,contents,onClose=function(){}){
