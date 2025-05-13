@@ -208,8 +208,10 @@ function setAccent(clr){
 }
 
 window.onload = function() {
+    debug();
+    
     online();
-
+    
     let work = new Workspace();
     currentWork = work;
     work.desk.classList.remove('small');
