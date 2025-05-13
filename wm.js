@@ -209,10 +209,12 @@ function setAccent(clr){
 
 window.onload = function() {
     online();
+
     let work = new Workspace();
-    work.desk.style.display = 'block';
     work.desk.classList.remove('small');
     workspaces.push(work);
+    switchWorkspace(work)
+
     function hideBoot(){$("boot-cover").style.display = "none";
         lock();}
     if(localStorage.darkStyle=="true"){
@@ -439,25 +441,28 @@ class Workspace {
             if(isDelWork){
                 delWorkspace(work);
                 isDelWork = false;
-                $('del-workspace').classList.toggle('bg-destructive');
-                $('del-workspace').classList.toggle('bg-dark');
+                $('del-workspace').classList.remove('bg-destructive');
+                $('del-workspace').classList.add('bg-dark');
             }else{
                 switchWorkspace(work)
             }
         };
+        alert(Object.keys(this));
     }
 }
 
-function switchWorkspace(i){
+function switchWorkspace(newWork){
+    alert(Object.keys(newWork));
     currentWork.desk.style.display='none';
-    i.desk.style.display='block';
-    currentWork = i;
+    newWork.desk.style.display='block';
+    currentWork = newWork;
 }
 
-function delWorkspace(i){
+function delWorkspace(work){
+    alert(Object.keys(work));
     currentWork.desk.remove();
     currentWork.button.remove();
-    if(currentWork==i){
+    if(currentWork==work){
         if(workspaces.length == 0){
             let work = new Workspace();
             work.desk.style.display = 'block';
@@ -465,7 +470,7 @@ function delWorkspace(i){
         }
         switchWorkspace(workspaces[0]);
     }
-    workspaces.splice(i.i,1);
+    workspaces.splice(work.i,1);
     for(let j=0;j<workspaces.length;j++){
         workspaces[j].i--;
         workspaces[j].button.innerText = workspaces[j].i;
