@@ -211,12 +211,15 @@ window.onload = function(){
     
     online();
     
-    let work = new Workspace();
-    currentWork = work;
-    work.desk.classList.remove('small');
-    workspaces.push(work);
-    console.log(work);
-    switchWorkspace(work);
+    function openWork(){
+        let work = new Workspace();
+        currentWork = work;
+        work.desk.classList.remove('small');
+        workspaces.push(work);
+        switchWorkspace(work);
+    }
+
+    openWork();
 
     function hideBoot(){$("boot-cover").style.display = "none";
         lock();}
@@ -314,7 +317,6 @@ class Workspace {
                 switchWorkspace(work)
             }
         };
-        console.log(Object.keys(this));
     }
 }
 
