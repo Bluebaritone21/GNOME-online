@@ -483,7 +483,7 @@ function makeWindow(wdth,hght,contents,onClose=function(){}){
     var clone = $("window").cloneNode(true);
     clone.id = "window"+gensym;
     clone.querySelector("#windowheader").id = "window"+gensym+"header";
-    workspaces[worki].desk.appendChild(clone);
+    currentWork.desk.appendChild(clone);
     clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove();onClose()});
     dragElement(clone);
     if (window.innerHeight > window.innerWidth) {
