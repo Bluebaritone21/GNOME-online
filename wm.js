@@ -209,7 +209,7 @@ function setAccent(clr){
 
 window.onload = function() {
     debug();
-    
+
     online();
     
     let work = new Workspace();
@@ -408,7 +408,7 @@ window.onerror = function(text,url,line,col,err){error("line "+line+", col "+col
 warn = function(text){makeAlert(text,"warning")};
 
 alert = function(text){makeAlert(text,"")};
-window.alert = alert;
+//window.alert = alert;
 
 function makeWebviewWindow(w,h,url){
     var iframe=document.createElement(`iframe`);
@@ -454,7 +454,7 @@ class Workspace {
 }
 
 function switchWorkspace(newWork){
-    alert(Object.keys(newWork));
+    window.alert(Object.keys(newWork));
     currentWork.desk.style.display='none';
     newWork.desk.style.display='block';
     currentWork = newWork;
