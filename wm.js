@@ -454,14 +454,12 @@ class Workspace {
 }
 
 function switchWorkspace(newWork){
-    window.alert(Object.keys(newWork));
     currentWork.desk.style.display='none';
     newWork.desk.style.display='block';
     currentWork = newWork;
 }
 
 function delWorkspace(work){
-    alert(Object.keys(work));
     currentWork.desk.remove();
     currentWork.button.remove();
     if(currentWork==work){
@@ -470,13 +468,13 @@ function delWorkspace(work){
             work.desk.style.display = 'block';
             workspaces.push(work);
         }
-        switchWorkspace(workspaces[0]);
     }
     workspaces.splice(work.i,1);
     for(let j=0;j<workspaces.length;j++){
-        workspaces[j].i--;
+        workspaces[j].i=j;
         workspaces[j].button.innerText = workspaces[j].i;
     }
+    switchWorkspace(workspaces[0]);
 }
 
 function makeWindow(wdth,hght,contents,onClose=function(){}){
