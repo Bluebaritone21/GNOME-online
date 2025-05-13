@@ -92,11 +92,11 @@ function toggleActivities(){
 
 var debugOn = false;
 
-function debug(){
+function debug(f=function(){}){
     if(!debugOn){
         var script = document.createElement('script');
         script.src='https://cdn.jsdelivr.net/npm/eruda';
-        script.onload=function(e){eruda.init();}
+        script.onload=function(e){eruda.init();f()}
         document.body.appendChild(script);
         $("debug-button").classList.remove("bg-dark");
         $("debug-button").classList.add("bg-accent");
@@ -208,15 +208,14 @@ function setAccent(clr){
 }
 
 window.onload = function() {
-    debug();
-
+    
     online();
     
-    let work = new Workspace();
+    debug(()=>{let work = new Workspace();
     currentWork = work;
     work.desk.classList.remove('small');
     workspaces.push(work);
-    switchWorkspace(work)
+    switchWorkspace(work)});
 
     function hideBoot(){$("boot-cover").style.display = "none";
         lock();}
@@ -403,7 +402,7 @@ function getIcon(name){
 error = function(text){makeAlert(text,"destructive")};
 console.error = error;
 
-window.onerror = function(text,url,line,col,err){error("line "+line+", col "+col+": "+text)}
+window.onerror = function(text,url,line,col,err){window.alerterror("line "+line+", col "+col+": "+text)}
 
 warn = function(text){makeAlert(text,"warning")};
 
