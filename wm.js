@@ -211,6 +211,7 @@ window.onload = function() {
     online();
 
     let work = new Workspace();
+    currentWork = work;
     work.desk.classList.remove('small');
     workspaces.push(work);
     switchWorkspace(work)
@@ -420,7 +421,6 @@ function makeWebviewWindow(w,h,url){
     makeWindow(w,h,iframe);
 }
 
-var worki = 0;
 var currentWork = null;
 var workspaces = [];
 var isDelWork = false;
