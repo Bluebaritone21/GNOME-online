@@ -419,11 +419,12 @@ function makeWebviewWindow(w,h,url){
 }
 
 var worki = 0;
+var currentWork = null;
 var workspaces = [];
 var isDelWork = false;
 
 class Workspace {
-    constructor() {
+    constructor(){
         this.desk = UIelmnt('desktop');
         document.body.appendChild(this.desk);
         this.desk.style.display = 'none';
@@ -433,35 +434,41 @@ class Workspace {
         this.button.classList.add('workspace-button');
         this.button.innerText = this.i;
         $('workspace-buttons').appendChild(this.button);
-        let i = this.i;
-        this.button.onclick = function () { if(isDelWork){delWorkspace(i);isDelWork = false;$('del-workspace').classList.toggle('bg-destructive');$('del-workspace').classList.toggle('bg-dark');}else{switchWorkspace(i)} };
+        let work = this;
+        this.button.onclick=function(){
+            if(isDelWork){
+                delWorkspace(work);
+                isDelWork = false;
+                $('del-workspace').classList.toggle('bg-destructive');
+                $('del-workspace').classList.toggle('bg-dark');
+            }else{
+                switchWorkspace(work)
+            }
+        };
     }
 }
 
 function switchWorkspace(i){
-    workspaces[worki].desk.style.display='none';
-    workspaces[i].desk.style.display='block';
-    worki=i;
+    currentWork.desk.style.display='none';
+    i.desk.style.display='block';
+    currentWork = i;
 }
 
 function delWorkspace(i){
-    workspaces[i].desk.remove();
-    workspaces[i].button.remove();
-    if(worki==i){
-        worki=0;
+    currentWork.desk.remove();
+    currentWork.button.remove();
+    if(currentWork==i){
         if(workspaces.length == 0){
             let work = new Workspace();
             work.desk.style.display = 'block';
             workspaces.push(work);
         }
+        switchWorkspace(workspaces[0]);
     }
-    workspaces.splice(i);
-    for (var j = 0; j < workspaces.length; j++) {
-        console.log(workspaces[j].button.innerText + "<br>" + workspaces[j].i + ": " + j);
-        workspaces[j].i = j;
-        workspaces[j].button.innerText = j;
-        workspaces[j].button.onclick = function(){if(isDelWork){delWorkspace(j);isDelWork = false;}else{switchWorkspace(j)}};
-        console.log(workspaces[j].button.innerText + "<br>" + workspaces[j].i + ": " + j);
+    workspaces.splice(i.i,1);
+    for(let j=0;j<workspaces.length;j++){
+        workspaces[j].i--;
+        workspaces[j].button.innerText = workspaces[j].i;
     }
 }
 
