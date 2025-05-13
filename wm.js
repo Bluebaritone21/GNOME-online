@@ -215,6 +215,7 @@ window.onload = function() {
     currentWork = work;
     work.desk.classList.remove('small');
     workspaces.push(work);
+    console.log(work);
     switchWorkspace(work)});
 
     function hideBoot(){$("boot-cover").style.display = "none";
@@ -448,7 +449,7 @@ class Workspace {
                 switchWorkspace(work)
             }
         };
-        alert(Object.keys(this));
+        console.log(Object.keys(this));
     }
 }
 
