@@ -79,7 +79,7 @@
     color: var(--light1);
 }
 
-.dark-mode .window button img.icon{
+.dark-mode .window img.icon{
     filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
 }
 
@@ -185,6 +185,7 @@ desktop{
     background-color: var(--accent3);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
     position:absolute;
     top:0px;
     left:0px;
@@ -289,6 +290,16 @@ desktop.small {
     overflow: hidden;
     box-shadow:0 0 5px rgba(0,0,0,0.4);
 }
+.container {
+    text-align: center;
+    border-radius: 20px;
+    width:calc(100% - 20px);
+    position:relative;
+    left: 10px;
+    overflow: hidden;
+    box-shadow:0 0 5px rgba(0,0,0,0.4);
+}
+
 input[type=range]{
     appearance: none; /* Hides the slider so that custom slider can be made */
     width: calc(100% - 35px); /* Specific width is required for Firefox. */
@@ -457,4 +468,7 @@ button.clear-button{
 }
 button.clear-button:hover{
     background-color: rgba(100,100,100,0.5);
+}
+a{
+ color:var(--accent3);
 }

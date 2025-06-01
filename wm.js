@@ -195,9 +195,11 @@ window.addEventListener("offline",function(e){
     wifi_button.title="not connected";
 })
 
-window.onbeforeunload = function(e) {
-    e.preventDefault();
-}
+/*window.onbeforeunload = function(e) {
+    if(top===self){
+        e.preventDefault();
+    }
+}*/
 
 function setAccent(clr){
     for(let i=1;i<=5;i++){

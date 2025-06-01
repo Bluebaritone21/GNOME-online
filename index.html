@@ -31,9 +31,11 @@
         <script src="apps/console.js" defer></script>
         <script src="apps/texteditor.js" defer></script>
         <script src="apps/loupe.js" defer></script>
+        <script src="apps/settings.js" defer></script>
         <script src="apps/epiphany.js" defer></script>
         <script src="apps/calculator.js" defer></script>
         <script src="apps/nautilus.js" defer></script>
+        <script src="apps/portfolio.js" defer></script>
     </head>
     <hidden>
         <div id="window" class="window bg-window">
@@ -44,10 +46,10 @@
     </hidden>
     <body>
         <div id="workspaces-bar">
-            <button id="del-workspace" onclick="isDelWork=!isDelWork;$('del-workspace').classList.toggle('bg-destructive');$('del-workspace').classList.toggle('bg-dark');" class="bg-dark">&minus;</button>
-            <span id=workspace-buttons style="display:inline;">
+            <button id="del-workspace" aria-label="delete workspace" onclick="isDelWork=!isDelWork;$('del-workspace').classList.toggle('bg-destructive');$('del-workspace').classList.toggle('bg-dark');" class="bg-dark">&minus;</button>
+            <span id=workspace-buttons role="tabpanel" style="display:inline;">
             </span>
-            <button id="add-workspace" class="bg-dark" onclick="workspaces.push(new Workspace());">&plus;</button>
+            <button id="add-workspace" class="bg-dark" aria-label="add workspace" onclick="workspaces.push(new Workspace());">&plus;</button>
         </div>
         <div id="boot-cover" onclick="document.documentElement.requestFullscreen()">
             <style>
